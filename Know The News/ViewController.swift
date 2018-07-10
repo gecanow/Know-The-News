@@ -20,7 +20,9 @@ class ViewController: UIViewController, WordPlayDelegate {
     var chosenArticle : [String : String]!
     
     var sources = [[String: String]]()
-    let apiKey = "5d892509a49046a087917c466fa80d09"
+    let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4"
+    let defaults = UserDefaults.standard
+    var savedArticles = [[String:String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,11 @@ class ViewController: UIViewController, WordPlayDelegate {
         
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
+        
+        for b in buttons {
+            b.titleLabel?.minimumScaleFactor = 0.1
+            b.titleLabel?.adjustsFontSizeToFitWidth = true
+        }
         
         let query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
         
@@ -45,6 +52,12 @@ class ViewController: UIViewController, WordPlayDelegate {
                 }
             }
             self.loadError()
+        }
+        
+        if let savedData = defaults.object(forKey: savedArticlesID) as? Data {
+            if let decoded = try? JSONDecoder().decode([[String: String]].self, from: savedData) {
+                savedArticles = decoded
+            }
         }
     }
     
@@ -178,18 +191,25 @@ class ViewController: UIViewController, WordPlayDelegate {
     func alertUser(_ withTitle: String) {
         let alert = UIAlertController(title: withTitle, message: "", preferredStyle: .alert)
         
-        let saveArticle = UIAlertAction(title: "Read", style: .default) { (void) in
-            let url = URL(string: self.chosenArticle["url"]!)
-            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        let saveArticle = UIAlertAction(title: "Save and Continue", style: .default) { (void) in
+            self.savedArticles.append(self.chosenArticle)
+            self.saveSaved()
+            self.onTappedUpdate(self)
         }
         
-        let next = UIAlertAction(title: "Continue", style: .cancel) { (void) in
+        let next = UIAlertAction(title: "Continue", style: .default) { (void) in
             self.onTappedUpdate(self)
         }
         
         alert.addAction(next)
         alert.addAction(saveArticle)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func saveSaved() {
+        if let encoded = try? JSONEncoder().encode(savedArticles) {
+            defaults.set(encoded, forKey: savedArticlesID)
+        }
     }
 }
 

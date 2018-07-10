@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD54D220F5153B007746C4 /* SavedViewController.swift */; };
 		CCE1B38920F4164A004B78B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B38820F4164A004B78B1 /* AppDelegate.swift */; };
 		CCE1B38B20F4164A004B78B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B38A20F4164A004B78B1 /* ViewController.swift */; };
 		CCE1B38E20F4164A004B78B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCE1B38C20F4164A004B78B1 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CCDD54D220F5153B007746C4 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		CCE1B38520F4164A004B78B1 /* Know The News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Know The News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCE1B38820F4164A004B78B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCE1B38A20F4164A004B78B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				CCE1B3B820F4180A004B78B1 /* Source.swift */,
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
+				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
 				CCE1B38F20F4164A004B78B1 /* Assets.xcassets */,
 				CCE1B39120F4164A004B78B1 /* LaunchScreen.storyboard */,
 				CCE1B39420F4164A004B78B1 /* Info.plist */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */,
 				CCE1B3B920F4180A004B78B1 /* Source.swift in Sources */,
 				CCE1B3B720F416A2004B78B1 /* SwiftyJSON.swift in Sources */,
 				CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */,
