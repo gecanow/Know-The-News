@@ -17,6 +17,7 @@ class ViewController: UIViewController, WordPlayDelegate {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     var wordPlay = WordPlay()
+    var chosenArticle : [String : String]!
     
     var sources = [[String: String]]()
     let apiKey = "5d892509a49046a087917c466fa80d09"
@@ -24,6 +25,9 @@ class ViewController: UIViewController, WordPlayDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         wordPlay.delegate = self
+        
+        sourceLabel.minimumScaleFactor = 0.1
+        sourceLabel.adjustsFontSizeToFitWidth = true
         
         let query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
         
@@ -86,19 +90,19 @@ class ViewController: UIViewController, WordPlayDelegate {
     
     
     @IBAction func onTappedUpdate(_ sender: Any) {
-        clueLabel.isHidden = true
+        clueLabel.isHidden = false
         chooseRandomArticle()
     }
     
     func chooseRandomArticle() {
         let index = Int(arc4random_uniform(UInt32(sources.count - 1)))
         let chosenSource = Source(theSource: sources[index], theApiKey: apiKey)
-        let myArticle = chosenSource.retrieveRandomArticle()
+        chosenArticle = chosenSource.retrieveRandomArticle()
         
-        let splitTitle = gamePlayTitle(myArticle["title"]!)
+        let splitTitle = gamePlayTitle(chosenArticle["title"]!)
         headlineLabel.text = splitTitle[0]
         sourceLabel.text = "\(chosenSource.source["name"]!) reports:"
-        descriptionLabel.text = myArticle["description"]
+        descriptionLabel.text = chosenArticle["description"]
         
         wordPlay.updateWord(to: splitTitle[1])
         print("The missing word is: \(wordPlay.wordID)")
@@ -145,6 +149,9 @@ class ViewController: UIViewController, WordPlayDelegate {
         if inWord.contains(":") {
             return ["______:", "\(inWord.prefix(inWord.count-1))"]
         }
+        if inWord.contains("?") {
+            return ["______?", "\(inWord.prefix(inWord.count-1))"]
+        }
         if (inWord.prefix(1) == "'" && inWord.suffix(1) == "'") ||
             (inWord.prefix(1) == "\"" && inWord.suffix(1) == "\"") {
             let char = inWord.prefix(1)
@@ -159,5 +166,30 @@ class ViewController: UIViewController, WordPlayDelegate {
         clueLabel.isHidden = !clueLabel.isHidden
     }
     
+    @IBAction func onTappedButton(_ sender: UIButton) {
+        if sender.titleLabel?.text == wordPlay.wordID {
+            alertUser("You Got It!")
+        } else {
+            print("try again")
+        }
+    }
+    
+    
+    func alertUser(_ withTitle: String) {
+        let alert = UIAlertController(title: withTitle, message: "", preferredStyle: .alert)
+        
+        let saveArticle = UIAlertAction(title: "Read", style: .default) { (void) in
+            let url = URL(string: self.chosenArticle["url"]!)
+            UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+        }
+        
+        let next = UIAlertAction(title: "Continue", style: .cancel) { (void) in
+            self.onTappedUpdate(self)
+        }
+        
+        alert.addAction(next)
+        alert.addAction(saveArticle)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
