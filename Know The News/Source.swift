@@ -45,7 +45,6 @@ class Source: NSObject {
     
     func loadError() {
         DispatchQueue.main.async {
-            [weak self] in
             print("Source: error loading")
         }
     }

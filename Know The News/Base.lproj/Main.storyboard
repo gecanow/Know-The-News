@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Headline" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-wJ-juX">
-                                <rect key="frame" x="16" y="135" width="343" height="36.5"/>
-                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="26"/>
+                                <rect key="frame" x="16" y="118" width="343" height="37.5"/>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpQ-FQ-Xkw">
-                                <rect key="frame" x="16" y="92" width="343" height="35"/>
-                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpQ-FQ-Xkw">
+                                <rect key="frame" x="16" y="90" width="343" height="20"/>
+                                <fontDescription key="fontDescription" name="Courier-Oblique" family="Courier" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -38,47 +38,159 @@
                                     <action selector="onTappedUpdate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZl-4N-wtk"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know The News?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIA-Wc-nUb">
-                                <rect key="frame" x="16" y="36" width="343" height="48"/>
-                                <color key="backgroundColor" red="0.61124674479166663" green="0.71098888118055548" blue="0.94026692708333337" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="34"/>
-                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clue: Click To Reveal Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voC-tP-4Hu">
-                                <rect key="frame" x="16" y="179" width="343" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaD-rb-1hx">
+                                <rect key="frame" x="16" y="163.5" width="343" height="43"/>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5I-jr-gph">
+                                <rect key="frame" x="16" y="214.5" width="343" height="43"/>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxW-Kw-5FO">
+                                <rect key="frame" x="16" y="265.5" width="343" height="43"/>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XV-vg-iEy">
+                                <rect key="frame" x="16" y="316.5" width="343" height="43"/>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="22"/>
+                                <state key="normal" title="Button"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2Q-2C-SNn">
+                                <rect key="frame" x="16" y="367.5" width="343" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voC-tP-4Hu">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                        <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
+                                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clue: Click To Reveal Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-Wq-fYZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                        <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="L0x-Wq-fYZ" secondAttribute="bottom" id="1Rk-3T-4yT"/>
+                                    <constraint firstAttribute="bottom" secondItem="voC-tP-4Hu" secondAttribute="bottom" id="4iQ-QZ-F7U"/>
+                                    <constraint firstItem="L0x-Wq-fYZ" firstAttribute="top" secondItem="j2Q-2C-SNn" secondAttribute="top" id="FKN-Xo-5vm"/>
+                                    <constraint firstItem="voC-tP-4Hu" firstAttribute="top" secondItem="j2Q-2C-SNn" secondAttribute="top" id="FrU-0Y-Roj"/>
+                                    <constraint firstItem="L0x-Wq-fYZ" firstAttribute="leading" secondItem="j2Q-2C-SNn" secondAttribute="leading" id="Skw-vq-3Ef"/>
+                                    <constraint firstAttribute="trailing" secondItem="voC-tP-4Hu" secondAttribute="trailing" id="eTg-Bj-D7I"/>
+                                    <constraint firstAttribute="trailing" secondItem="L0x-Wq-fYZ" secondAttribute="trailing" id="fk2-gf-nF0"/>
+                                    <constraint firstItem="voC-tP-4Hu" firstAttribute="leading" secondItem="j2Q-2C-SNn" secondAttribute="leading" id="sOW-Yd-7wd"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="pGB-Iv-qTE" appends="YES" id="8Cd-us-NOT"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yTY-e3-hab">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do You Know the News?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIA-Wc-nUb">
+                                        <rect key="frame" x="0.0" y="39" width="375" height="31"/>
+                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="22"/>
+                                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
-                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fIA-Wc-nUb" secondAttribute="trailing" id="MRj-Nx-tk7"/>
+                                    <constraint firstAttribute="bottom" secondItem="fIA-Wc-nUb" secondAttribute="bottom" id="Tx9-jx-8ZW"/>
+                                    <constraint firstItem="fIA-Wc-nUb" firstAttribute="leading" secondItem="yTY-e3-hab" secondAttribute="leading" id="aJg-hR-LcT"/>
+                                    <constraint firstAttribute="height" constant="70" id="nHs-2V-Mx6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.83517795138888884" green="0.941650390625" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fIA-Wc-nUb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="01G-sY-s4E"/>
-                            <constraint firstItem="fIA-Wc-nUb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="0SQ-nz-TfH"/>
+                            <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="top" secondItem="yTY-e3-hab" secondAttribute="bottom" constant="20" id="4RJ-71-uLS"/>
                             <constraint firstItem="frt-K1-htJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5TP-sR-1MO"/>
+                            <constraint firstItem="VxW-Kw-5FO" firstAttribute="top" secondItem="C5I-jr-gph" secondAttribute="bottom" constant="8" id="5gS-Yv-uAA"/>
+                            <constraint firstItem="j2Q-2C-SNn" firstAttribute="top" secondItem="3XV-vg-iEy" secondAttribute="bottom" constant="8" id="87t-aU-BCq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2Q-2C-SNn" secondAttribute="trailing" constant="16" id="Ahb-dN-DWf"/>
+                            <constraint firstItem="C5I-jr-gph" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="BJr-cw-2YD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C5I-jr-gph" secondAttribute="trailing" constant="16" id="ByK-s5-qn9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O1v-wJ-juX" secondAttribute="trailing" constant="16" id="Cxf-qW-EEc"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EHf-2I-2bu"/>
-                            <constraint firstItem="voC-tP-4Hu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="IJc-dZ-Hgl"/>
+                            <constraint firstItem="C5I-jr-gph" firstAttribute="top" secondItem="qaD-rb-1hx" secondAttribute="bottom" constant="8" id="Fpt-mj-x7J"/>
+                            <constraint firstItem="3XV-vg-iEy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="GHW-Ge-f6k"/>
+                            <constraint firstItem="qaD-rb-1hx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="LCK-ul-6zk"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="top" secondItem="OpQ-FQ-Xkw" secondAttribute="bottom" constant="8" id="OxQ-7V-ts4"/>
                             <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="P5x-Ic-mzU"/>
-                            <constraint firstItem="voC-tP-4Hu" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="TF0-ba-eLM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="voC-tP-4Hu" secondAttribute="trailing" constant="16" id="XbG-iS-gpQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VxW-Kw-5FO" secondAttribute="trailing" constant="16" id="ZhH-Px-dT6"/>
+                            <constraint firstItem="qaD-rb-1hx" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="Zvo-4h-in9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OpQ-FQ-Xkw" secondAttribute="trailing" constant="16" id="b1q-gM-M7e"/>
-                            <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="top" secondItem="fIA-Wc-nUb" secondAttribute="bottom" constant="8" id="jUX-LX-hBt"/>
+                            <constraint firstItem="j2Q-2C-SNn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eC7-Wd-FOP"/>
+                            <constraint firstItem="yTY-e3-hab" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="iJs-Tj-vrM"/>
+                            <constraint firstItem="yTY-e3-hab" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="l6i-XF-8ax"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3XV-vg-iEy" secondAttribute="trailing" constant="16" id="oD2-It-2an"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="frt-K1-htJ" secondAttribute="bottom" constant="20" id="pfD-EM-NaM"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fIA-Wc-nUb" secondAttribute="trailing" constant="16" id="xgv-BU-fNO"/>
+                            <constraint firstItem="VxW-Kw-5FO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="sJg-Mj-Tda"/>
+                            <constraint firstItem="yTY-e3-hab" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="shf-77-4Gj"/>
+                            <constraint firstItem="3XV-vg-iEy" firstAttribute="top" secondItem="VxW-Kw-5FO" secondAttribute="bottom" constant="8" id="tpP-DQ-n3r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qaD-rb-1hx" secondAttribute="trailing" constant="16" id="yGA-Uc-dK4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="clueLabel" destination="L0x-Wq-fYZ" id="s7B-Fw-Nj1"/>
                         <outlet property="descriptionLabel" destination="voC-tP-4Hu" id="qoN-uG-bEo"/>
                         <outlet property="headlineLabel" destination="O1v-wJ-juX" id="WkR-bJ-fIX"/>
                         <outlet property="sourceLabel" destination="OpQ-FQ-Xkw" id="0TZ-HT-DO9"/>
+                        <outletCollection property="buttons" destination="qaD-rb-1hx" collectionClass="NSMutableArray" id="mog-ZG-kfg"/>
+                        <outletCollection property="buttons" destination="C5I-jr-gph" collectionClass="NSMutableArray" id="AST-yF-CVA"/>
+                        <outletCollection property="buttons" destination="VxW-Kw-5FO" collectionClass="NSMutableArray" id="rZp-uO-i2W"/>
+                        <outletCollection property="buttons" destination="3XV-vg-iEy" collectionClass="NSMutableArray" id="rNw-QZ-HZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pGB-Iv-qTE">
+                    <connections>
+                        <action selector="onTappedClueView:" destination="BYZ-38-t0r" id="frr-de-aRY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>

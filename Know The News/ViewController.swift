@@ -8,18 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WordPlayDelegate {
+    
+    @IBOutlet weak var clueLabel: UILabel!
+    @IBOutlet var buttons: [UIButton]!
     
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    var missingWord : String?
+    var wordPlay = WordPlay()
     
     var sources = [[String: String]]()
     let apiKey = "5d892509a49046a087917c466fa80d09"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        wordPlay.delegate = self
         
         let query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
         
@@ -37,6 +41,17 @@ class ViewController: UIViewController {
                 }
             }
             self.loadError()
+        }
+    }
+    
+    func loadUpOptions(selection: [String]) {
+        DispatchQueue.main.async {
+            var arr = selection
+            for index in stride(from: 3, through: 0, by: -1) {
+                let rand = Int(arc4random_uniform(UInt32(index+1)))
+                self.buttons[index].setTitle(arr[rand], for: .normal)
+                arr.remove(at: rand)
+            }
         }
     }
     
@@ -71,6 +86,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func onTappedUpdate(_ sender: Any) {
+        clueLabel.isHidden = true
         chooseRandomArticle()
     }
     
@@ -79,38 +95,69 @@ class ViewController: UIViewController {
         let chosenSource = Source(theSource: sources[index], theApiKey: apiKey)
         let myArticle = chosenSource.retrieveRandomArticle()
         
-        
-        headlineLabel.text = gamePlayTitle(myArticle["title"]!)
+        let splitTitle = gamePlayTitle(myArticle["title"]!)
+        headlineLabel.text = splitTitle[0]
         sourceLabel.text = "\(chosenSource.source["name"]!) reports:"
         descriptionLabel.text = myArticle["description"]
         
-        let myWord = WordPlay(word: missingWord!)
-        print("The missing word is: \(myWord.wordID)")
+        wordPlay.updateWord(to: splitTitle[1])
+        print("The missing word is: \(wordPlay.wordID)")
     }
     
-    func gamePlayTitle(_ fromName: String) -> String {
+    func gamePlayTitle(_ fromName: String) -> [String] {
         let arr = fromName.split(separator: " ")
         
-        var longest = 0
-        for wordI in 1..<arr.count {
-            if arr[wordI].count > arr[longest].count && !arr[wordI].contains("-") && !arr[wordI].contains("\'") {
-                longest = wordI
+        if arr.count > 1 {
+            var longest = 0
+            for wordI in 1..<arr.count {
+                if arr[wordI].count > arr[longest].count && !arr[wordI].contains("-") && !arr[wordI].contains("’") {
+                    longest = wordI
+                }
             }
-        }
-        missingWord = String(arr[longest])
-        if (missingWord?.contains("."))! {
-            missingWord?.remove(at: (missingWord?.index(of: "."))!)
-        }
-        
-        var outputString = ""
-        for wordI in 0..<arr.count {
-            if wordI == longest {
-                outputString += "_____ "
-            } else {
-                outputString += arr[wordI] + " "
+            
+            let replacementAndReal = parseForPunctuation(inWord: String(arr[longest]))
+            let replacement = replacementAndReal[0]
+            let missingWord = replacementAndReal[1]
+            
+            var outputString = ""
+            for wordI in 0..<arr.count {
+                if wordI == longest {
+                    outputString += "\(replacement) "
+                } else {
+                    outputString += arr[wordI] + " "
+                }
             }
+            return [outputString, missingWord]
         }
-        return outputString
+        return [String(arr[0]), String(arr[0])]
     }
+    
+    func parseForPunctuation(inWord: String) -> [String] {
+        if inWord.contains(".") {
+            return ["______.", "\(inWord.prefix(inWord.count-1))"]
+        }
+        if inWord.contains(",") {
+            return ["______,", "\(inWord.prefix(inWord.count-1))"]
+        }
+        if inWord.contains("’s") {
+            return ["______’s", "\(inWord.prefix(inWord.count-2))"]
+        }
+        if inWord.contains(":") {
+            return ["______:", "\(inWord.prefix(inWord.count-1))"]
+        }
+        if (inWord.prefix(1) == "'" && inWord.suffix(1) == "'") ||
+            (inWord.prefix(1) == "\"" && inWord.suffix(1) == "\"") {
+            let char = inWord.prefix(1)
+            var changed = inWord.prefix(inWord.count-1)
+            changed = changed.suffix(changed.count-1)
+            return ["\(char)______\(char)", "\(changed)"]
+        }
+        return ["______", inWord]
+    }
+    
+    @IBAction func onTappedClueView(_ sender: UITapGestureRecognizer) {
+        clueLabel.isHidden = !clueLabel.isHidden
+    }
+    
 }
 

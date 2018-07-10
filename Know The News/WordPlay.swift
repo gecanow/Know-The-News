@@ -8,18 +8,36 @@
 
 import UIKit
 
+var politicalWords = [String: [String]]() //global
+
+protocol WordPlayDelegate {
+    func loadUpOptions(selection: [String])
+}
+
 class WordPlay: NSObject {
     
+    var delegate : WordPlayDelegate?
     var wordID : String!
-    var words = [String]()
     
     let appId = "2a87bd3b"
     let appKey = "e2b929b0f6976ff5e0084a1503530f2a"
     let language = "en"
     
-    convenience init(word: String) {
-        self.init()
-        wordID = word.lowercased()
+    let defaults = UserDefaults.standard
+    
+    override init() {
+        super.init()
+        // do nothing
+    }
+    
+    func updateWord(to: String) {
+        wordID = to.lowercased()
+        
+        if let savedData = defaults.object(forKey: "politcalWordsArray") as? Data {
+            if let decoded = try? JSONDecoder().decode([String: [String]].self, from: savedData) {
+                politicalWords = decoded
+            }
+        }
         
         let query = "https://od-api.oxforddictionaries.com:443/api/v1/inflections/\(language)/\(wordID!)"
         if let url = URL(string: query) {
@@ -45,16 +63,27 @@ class WordPlay: NSObject {
     func parse(json: JSON) {
         let result = json["results"][0]
         let entries = result["lexicalEntries"][0]
-        let partOfSpeech = entries["lexicalCategory"]
+        let partOfSpeech = "\(entries["lexicalCategory"])"
         
         print("\(wordID!) is a \(partOfSpeech)")
-        loadWordListWithSame(speechType: "\(partOfSpeech)")
+        
+        if politicalWords[partOfSpeech] == nil {
+            loadWordListWithSame(speechType: partOfSpeech)
+        } else {
+            retrieveAndSendFrom(list: politicalWords[partOfSpeech]!, num: 3)
+        }
     }
     
     func loadError() {
         DispatchQueue.main.async {
-            [weak self] in
             print("Word Play: error loading")
+            print("assuming it's a noun...")
+            
+            if politicalWords["Noun"] == nil {
+                self.loadWordListWithSame(speechType: "Noun")
+            } else {
+                self.retrieveAndSendFrom(list: politicalWords["Noun"]!, num: 3)
+            }
         }
     }
     
@@ -72,7 +101,7 @@ class WordPlay: NSObject {
             if let _ = response,
                 let data = data,
                 let jsonData = try? JSON(data: data) {
-                self.extractWordData(json: jsonData)
+                self.extractWordData(json: jsonData, ofType: speechType)
                 return
             } else {
                 self.loadError()
@@ -80,13 +109,24 @@ class WordPlay: NSObject {
         }).resume()
     }
     
-    func extractWordData(json: JSON) {
-        var allWords = [String]()
+    func extractWordData(json: JSON, ofType: String) {
+        print(json["results"])
         for information in json["results"] {
-            allWords.append("\(information.1["word"])")
+            let word = "\(information.1["word"])"
+            
+            if politicalWords[ofType] == nil {
+                politicalWords[ofType] = [word]
+            } else {
+                politicalWords[ofType]!.append(word)
+            }
         }
-        words = randomList(from: allWords, amount: 3)
-        print(words)
+        saveData()
+        retrieveAndSendFrom(list: politicalWords[ofType]!, num: 3)
+    }
+    
+    func retrieveAndSendFrom(list: [String], num: Int) {
+        let output = randomList(from: list, amount: num) + [wordID]
+        delegate?.loadUpOptions(selection: output)
     }
     
     func randomList(from: [String], amount: Int) -> [String] {
@@ -100,5 +140,11 @@ class WordPlay: NSObject {
             output.append(wordChoice)
         }
         return output
+    }
+    
+    func saveData() {
+        if let encoded = try? JSONEncoder().encode(politicalWords) {
+            defaults.set(encoded, forKey: "politcalWordsArray")
+        }
     }
 }
