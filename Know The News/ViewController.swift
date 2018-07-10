@@ -146,7 +146,7 @@ class ViewController: UIViewController, WordPlayDelegate {
             }
             return [outputString, missingWord]
         }
-        return [String(arr[0]), String(arr[0])]
+        return ["", ""]
     }
     
     func parseForPunctuation(inWord: String) -> [String] {

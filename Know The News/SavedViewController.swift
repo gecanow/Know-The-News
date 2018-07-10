@@ -57,6 +57,9 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let article = savedArticles[indexPath.row]
         cell.textLabel?.text = article["title"]
+        cell.textLabel?.minimumScaleFactor = 0.1
+        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        
         cell.detailTextLabel?.text = article["description"]
         return cell
     }
@@ -66,4 +69,40 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // Return false if you do not want the specified item to be editable.
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            savedArticles.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            saveSaved()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let objectToMove = savedArticles.remove(at: sourceIndexPath.row)
+        savedArticles.insert(objectToMove, at: destinationIndexPath.row)
+        saveSaved()
+    }
+    
+    @IBAction func onTappedEdit(_ sender: UIBarButtonItem) {
+        if sender.title == "Edit" {
+            tableView.setEditing(true, animated: true)
+            sender.title = "Done"
+        } else {
+            tableView.setEditing(false, animated: true)
+            sender.title = "Edit"
+        }
+    }
+    
+    func saveSaved() {
+        if let encoded = try? JSONEncoder().encode(savedArticles) {
+            defaults.set(encoded, forKey: savedArticlesID)
+        }
+    }
 }
