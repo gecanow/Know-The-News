@@ -29,7 +29,7 @@ class WordPlay: NSObject {
             
             let session = URLSession.shared
             _ = session.dataTask(with: request, completionHandler: { data, response, error in
-                if let response = response,
+                if let _ = response,
                     let data = data,
                     let jsonData = try? JSON(data: data) {
                     self.parse(json: jsonData)
@@ -47,6 +47,7 @@ class WordPlay: NSObject {
         let partOfSpeech = entries["lexicalCategory"]
         
         print("\(wordID!) is a \(partOfSpeech)")
+        let _ = wordListWithSame(speechType: "\(partOfSpeech)")
     }
     
     func loadError() {
@@ -56,4 +57,27 @@ class WordPlay: NSObject {
         }
     }
     
+    
+    func wordListWithSame(speechType: String) -> [String] {
+        let words = [String]()
+        let filters = "lexicalCategory=\(speechType)"
+        
+        let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/wordlist/\(language)/\(filters)")!
+        var request = URLRequest(url: url)
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue(appId, forHTTPHeaderField: "app_id")
+        request.addValue(appKey, forHTTPHeaderField: "app_key")
+        
+        let session = URLSession.shared
+        _ = session.dataTask(with: request, completionHandler: { data, response, error in
+            if let _ = response,
+                let data = data,
+                let jsonData = try? JSON(data: data) {
+                print(jsonData["results"])
+            } else {
+                self.loadError()
+            }
+        }).resume()
+        return words
+    }
 }

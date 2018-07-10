@@ -105,8 +105,8 @@
 			children = (
 				CCE1B38820F4164A004B78B1 /* AppDelegate.swift */,
 				CCE1B38A20F4164A004B78B1 /* ViewController.swift */,
-				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B3B820F4180A004B78B1 /* Source.swift */,
+				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
 				CCE1B38F20F4164A004B78B1 /* Assets.xcassets */,
 				CCE1B39120F4164A004B78B1 /* LaunchScreen.storyboard */,
