@@ -11,6 +11,7 @@ import UIKit
 class WordPlay: NSObject {
     
     var wordID : String!
+    var words = [String]()
     
     let appId = "2a87bd3b"
     let appKey = "e2b929b0f6976ff5e0084a1503530f2a"
@@ -47,7 +48,7 @@ class WordPlay: NSObject {
         let partOfSpeech = entries["lexicalCategory"]
         
         print("\(wordID!) is a \(partOfSpeech)")
-        let _ = wordListWithSame(speechType: "\(partOfSpeech)")
+        loadWordListWithSame(speechType: "\(partOfSpeech)")
     }
     
     func loadError() {
@@ -57,10 +58,8 @@ class WordPlay: NSObject {
         }
     }
     
-    
-    func wordListWithSame(speechType: String) -> [String] {
-        let words = [String]()
-        let filters = "lexicalCategory=\(speechType)"
+    func loadWordListWithSame(speechType: String) {
+        let filters = "lexicalCategory=\(speechType);domains=Politics"
         
         let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/wordlist/\(language)/\(filters)")!
         var request = URLRequest(url: url)
@@ -73,11 +72,33 @@ class WordPlay: NSObject {
             if let _ = response,
                 let data = data,
                 let jsonData = try? JSON(data: data) {
-                print(jsonData["results"])
+                self.extractWordData(json: jsonData)
+                return
             } else {
                 self.loadError()
             }
         }).resume()
-        return words
+    }
+    
+    func extractWordData(json: JSON) {
+        var allWords = [String]()
+        for information in json["results"] {
+            allWords.append("\(information.1["word"])")
+        }
+        words = randomList(from: allWords, amount: 3)
+        print(words)
+    }
+    
+    func randomList(from: [String], amount: Int) -> [String] {
+        var output = [String]()
+        var wordChoice = ""
+        
+        for _ in 0..<amount {
+            repeat {
+                wordChoice = from[Int(arc4random_uniform(UInt32(from.count-1)))]
+            } while output.contains(wordChoice)
+            output.append(wordChoice)
+        }
+        return output
     }
 }
