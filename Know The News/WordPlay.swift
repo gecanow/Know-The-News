@@ -40,6 +40,8 @@ class WordPlay: NSObject {
         }
         
         let query = "https://od-api.oxforddictionaries.com:443/api/v1/inflections/\(language)/\(wordID!)"
+        //let query = "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(wordID!)"
+        //let query = "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(wordID!)/synonyms;antonyms"
         if let url = URL(string: query) {
             var request = URLRequest(url: url)
             request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -51,6 +53,7 @@ class WordPlay: NSObject {
                 if let _ = response,
                     let data = data,
                     let jsonData = try? JSON(data: data) {
+                    //print(jsonData)
                     self.parse(json: jsonData)
                     return
                 } else {
@@ -64,6 +67,8 @@ class WordPlay: NSObject {
         let result = json["results"][0]
         let entries = result["lexicalEntries"][0]
         let partOfSpeech = "\(entries["lexicalCategory"])"
+        
+        let _ = entries["entries"][0]["grammaticalFeatures"] //grammatical features
         
         print("\(wordID!) is a \(partOfSpeech)")
         
@@ -110,7 +115,6 @@ class WordPlay: NSObject {
     }
     
     func extractWordData(json: JSON, ofType: String) {
-        print(json["results"])
         for information in json["results"] {
             let word = "\(information.1["word"])"
             

@@ -156,7 +156,7 @@ class ViewController: UIViewController, WordPlayDelegate {
         if inWord.contains(",") {
             return ["______,", "\(inWord.prefix(inWord.count-1))"]
         }
-        if inWord.contains("’s") {
+        if inWord.contains("’s") || inWord.contains("'s") {
             return ["______’s", "\(inWord.prefix(inWord.count-2))"]
         }
         if inWord.contains(":") {

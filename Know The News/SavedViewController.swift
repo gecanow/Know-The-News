@@ -90,13 +90,14 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         saveSaved()
     }
     
-    @IBAction func onTappedEdit(_ sender: UIBarButtonItem) {
-        if sender.title == "Edit" {
+    @IBAction func onTappedEdit(_ sender: UIButton) {
+        if sender.titleLabel?.text == "Edit" {
             tableView.setEditing(true, animated: true)
-            sender.title = "Done"
+            sender.setTitle("Done", for: .normal)
         } else {
             tableView.setEditing(false, animated: true)
-            sender.title = "Edit"
+            sender.setTitle("Edit", for: .normal)
+            
         }
     }
     
