@@ -50,7 +50,7 @@ class Source: NSObject {
     }
     
     func retrieveRandomArticle() -> [String: String] {
-        let randomIndex = Int(arc4random_uniform(UInt32(self.articles.count - 1)))
+        let randomIndex = Int(arc4random_uniform(UInt32(self.articles.count)))
         return articles[randomIndex]
     }
 }

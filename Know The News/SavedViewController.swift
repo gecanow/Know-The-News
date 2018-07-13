@@ -56,9 +56,10 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let article = savedArticles[indexPath.row]
+        
         cell.textLabel?.text = article["title"]
-        cell.textLabel?.minimumScaleFactor = 0.1
-        cell.textLabel?.adjustsFontSizeToFitWidth = true
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.lineBreakMode = .byWordWrapping
         
         cell.detailTextLabel?.text = article["description"]
         return cell

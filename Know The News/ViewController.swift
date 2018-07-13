@@ -24,6 +24,8 @@ class ViewController: UIViewController, WordPlayDelegate {
     let defaults = UserDefaults.standard
     var savedArticles = [[String:String]]()
     
+    var sourceType : String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         wordPlay.delegate = self
@@ -36,7 +38,12 @@ class ViewController: UIViewController, WordPlayDelegate {
             b.titleLabel?.adjustsFontSizeToFitWidth = true
         }
         
-        let query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
+        var query : String!
+        if sourceType == "all" {
+            query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
+        } else {
+            query = "https://newsapi.org/v1/sources?language=en&country=us&category=\(sourceType!)&apiKey=\(apiKey)"
+        }
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
@@ -73,6 +80,7 @@ class ViewController: UIViewController, WordPlayDelegate {
     }
     
     func parse(json: JSON) {
+        //print(json["sources"])
         for result in json["sources"].arrayValue {
             let id = result["id"].stringValue
             let name = result["name"].stringValue
@@ -108,7 +116,11 @@ class ViewController: UIViewController, WordPlayDelegate {
     }
     
     func chooseRandomArticle() {
-        let index = Int(arc4random_uniform(UInt32(sources.count - 1)))
+        var index = 0
+        if sources.count > 1 {
+            index = Int(arc4random_uniform(UInt32(sources.count)))
+        }
+        
         let chosenSource = Source(theSource: sources[index], theApiKey: apiKey)
         chosenArticle = chosenSource.retrieveRandomArticle()
         
@@ -118,7 +130,7 @@ class ViewController: UIViewController, WordPlayDelegate {
         descriptionLabel.text = chosenArticle["description"]
         
         wordPlay.updateWord(to: splitTitle[1])
-        print("The missing word is: \(wordPlay.wordID)")
+        print("The missing word is: \(wordPlay.wordID!)")
     }
     
     func gamePlayTitle(_ fromName: String) -> [String] {
