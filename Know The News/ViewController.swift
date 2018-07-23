@@ -216,14 +216,13 @@ class ViewController: UIViewController, WordPlayDelegate {
     }
     
     func droppedInPlace(guessIndex: Int) {
-        if !answerArr[guessIndex].atHome {
+        if currentAnswerIndexArr[guessIndex] != -1 {
             // move the chip to its origin
             let chipIndex = currentAnswerIndexArr[guessIndex]
             let chip = optionsArr[chipIndex]
-            let placement = optionsArr[chipIndex].home
             
             UIView.animate(withDuration: 0.2) {
-                chip.frame.origin = placement!
+                chip.frame.origin = chip.home
             }
         }
         currentAnswerIndexArr[guessIndex] = movable!
