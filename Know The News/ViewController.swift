@@ -204,12 +204,19 @@ class ViewController: UIViewController, WordPlayDelegate {
                 if answerArr[guessIndex].frame.contains(loc!) {
                     droppedInPlace(guessIndex: guessIndex)
                     foundProperPlace = true
+                    
+                    checkForCompletion()
                     break
                 }
             }
             
             if !foundProperPlace {
+                if !optionsArr[movable!].atHome {
+                    currentAnswerIndexArr[optionsArr[movable!].guessIndex] = -1
+                }
+                
                 optionsArr[movable!].frame.origin = optionsArr[movable!].home
+                optionsArr[movable!].atHome = true
             }
         }
         movable = nil
@@ -220,13 +227,24 @@ class ViewController: UIViewController, WordPlayDelegate {
             // move the chip to its origin
             let chipIndex = currentAnswerIndexArr[guessIndex]
             let chip = optionsArr[chipIndex]
-            
-            UIView.animate(withDuration: 0.2) {
-                chip.frame.origin = chip.home
-            }
+            chip.frame.origin = chip.home // can animate later?
+            chip.atHome = true
+            chip.guessIndex = -1
         }
         currentAnswerIndexArr[guessIndex] = movable!
         optionsArr[movable!].frame.origin = answerArr[guessIndex].home!
+        optionsArr[movable!].guessIndex = guessIndex
+    }
+    
+    func checkForCompletion() {
+        if !currentAnswerIndexArr.contains(-1) {
+            var send = ""
+            for l in answerArr {
+                send += l.text!
+            }
+        }
+        
+        
     }
     
     func gamePlayTitle(_ fromName: String) -> [String] {

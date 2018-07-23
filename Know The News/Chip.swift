@@ -12,6 +12,7 @@ class Chip: UILabel {
     
     var home : CGPoint!
     var atHome = true
+    var guessIndex = -1
     
     convenience init(atPoint: CGPoint, ofSize: CGSize, str: String) {
         self.init(frame: CGRect(origin: atPoint, size: ofSize))
