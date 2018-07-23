@@ -11,13 +11,21 @@ import UIKit
 class ViewController: UIViewController, WordPlayDelegate {
     
     @IBOutlet weak var clueLabel: UILabel!
-    @IBOutlet var buttons: [UIButton]!
     
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     var wordPlay = WordPlay()
     var chosenArticle : [String : String]!
+    
+    @IBOutlet weak var gamePlayView: UIView!
+    @IBOutlet weak var guessView: UIView!
+    @IBOutlet weak var optionsView: UIView!
+    
+    var answerArr = [Chip]()
+    var currentAnswerIndexArr = [Int]()
+    var optionsArr = [Chip]()
+    var movable : Int?
     
     var sources = [[String: String]]()
     let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4"
@@ -32,12 +40,7 @@ class ViewController: UIViewController, WordPlayDelegate {
         
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
-        
-        for b in buttons {
-            b.titleLabel?.minimumScaleFactor = 0.1
-            b.titleLabel?.adjustsFontSizeToFitWidth = true
-        }
-        
+
         var query : String!
         if sourceType == "all" {
             query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
@@ -73,7 +76,7 @@ class ViewController: UIViewController, WordPlayDelegate {
             var arr = selection
             for index in stride(from: 3, through: 0, by: -1) {
                 let rand = Int(arc4random_uniform(UInt32(index+1)))
-                self.buttons[index].setTitle(arr[rand], for: .normal)
+                //self.buttons[index].setTitle(arr[rand], for: .normal)
                 arr.remove(at: rand)
             }
         }
@@ -131,6 +134,100 @@ class ViewController: UIViewController, WordPlayDelegate {
         
         wordPlay.updateWord(to: splitTitle[1])
         print("The missing word is: \(wordPlay.wordID!)")
+        
+        //-------
+        let maxWidth = ((optionsView.frame.width-8)/10)-8
+        var size = CGSize(width: ((optionsView.frame.width-8)/CGFloat(wordPlay.wordID.count))-8, height: ((optionsView.frame.height-8)/2)-8)
+        if size.width > maxWidth {
+            size.width = maxWidth
+        }
+        
+        // where the missing word is!
+        let totalHalfWidth = (((Int(size.width)+8)*wordPlay.wordID.count)-8)/2
+        let startX = (Int(guessView.frame.width)/2) - totalHalfWidth
+        let endX = (Int(guessView.frame.width)/2) + totalHalfWidth
+        
+        for x in stride(from: startX, to: endX, by: Int(size.width)+8) {
+            //guessLabel.text! = "_ " + guessLabel.text!
+            answerArr.append(createNewCharLabel(atPoint: CGPoint(x: x, y: 16), ofSize: size, str: ""))
+            currentAnswerIndexArr.append(-1)
+        }
+        
+        // set up the character guesses
+        let set = wordPlay.randomizedCharacterList()
+        
+        var count = 0
+        var y = guessView.frame.height+16
+        for _ in 0..<2 {
+            var x = optionsView.frame.minX+8
+            for _ in 0..<10 {
+                optionsArr.append(createNewCharLabel(atPoint: CGPoint(x: x, y: y), ofSize: size, str: String(set[count])))
+                count += 1
+                x += size.width+8
+            }
+            y += size.height + 8
+        }
+    }
+    
+    func createNewCharLabel(atPoint: CGPoint, ofSize: CGSize, str: String) -> Chip {
+        
+        let b = Chip(atPoint: atPoint, ofSize: ofSize, str: str)
+        
+        gamePlayView.addSubview(b)
+        gamePlayView.bringSubview(toFront: b)
+        return b
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let loc = touches.first?.location(in: self.gamePlayView)
+        for index in 0..<optionsArr.count {
+            if optionsArr[index].frame.contains(loc!) {
+                movable = index
+                break
+            }
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let loc = touches.first?.location(in: self.gamePlayView)
+        if movable != nil {
+            optionsArr[movable!].frame.origin = loc!
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let loc = touches.first?.location(in: self.gamePlayView)
+        
+        if movable != nil {
+            var foundProperPlace = false
+            for guessIndex in 0..<answerArr.count {
+                if answerArr[guessIndex].frame.contains(loc!) {
+                    droppedInPlace(guessIndex: guessIndex)
+                    foundProperPlace = true
+                    break
+                }
+            }
+            
+            if !foundProperPlace {
+                optionsArr[movable!].frame.origin = optionsArr[movable!].home
+            }
+        }
+        movable = nil
+    }
+    
+    func droppedInPlace(guessIndex: Int) {
+        if !answerArr[guessIndex].atHome {
+            // move the chip to its origin
+            let chipIndex = currentAnswerIndexArr[guessIndex]
+            let chip = optionsArr[chipIndex]
+            let placement = optionsArr[chipIndex].home
+            
+            UIView.animate(withDuration: 0.2) {
+                chip.frame.origin = placement!
+            }
+        }
+        currentAnswerIndexArr[guessIndex] = movable!
+        optionsArr[movable!].frame.origin = answerArr[guessIndex].home!
     }
     
     func gamePlayTitle(_ fromName: String) -> [String] {
@@ -191,14 +288,13 @@ class ViewController: UIViewController, WordPlayDelegate {
         clueLabel.isHidden = !clueLabel.isHidden
     }
     
-    @IBAction func onTappedButton(_ sender: UIButton) {
-        if sender.titleLabel?.text == wordPlay.wordID {
+    @IBAction func finishedGuess(_ sender: UITextField) {
+        if sender.text?.lowercased() == wordPlay.wordID {
             alertUser("You Got It!")
         } else {
             print("try again")
         }
     }
-    
     
     func alertUser(_ withTitle: String) {
         let alert = UIAlertController(title: withTitle, message: "", preferredStyle: .alert)

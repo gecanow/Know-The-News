@@ -78,9 +78,9 @@ class WordPlay: NSObject {
             gF = "grammaticalFeatures=" + gF.prefix(gF.count-1) //+ ";"
         }
         
-        print("\(wordID!) is a \(pOs)")
-        print("\(wordID!) has features \(gF)")
-        print("\(wordID!)'s root is \(rootWordID)")
+        //print("\(wordID!) is a \(pOs)")
+        //print("\(wordID!) has features \(gF)")
+        //print("\(wordID!)'s root is \(rootWordID)")
         
         let thesaurusQuery = "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(rootWordID)/synonyms;antonyms"
         if let url = URL(string: thesaurusQuery) {
@@ -114,7 +114,7 @@ class WordPlay: NSObject {
         }
         print(synonymList)
         for synonymID in synonymList {
-            print("Querying for proper form of \(synonymID)")
+            //print("Querying for proper form of \(synonymID)")
             
             let synonymQuery = "https://od-api.oxforddictionaries.com:443/api/v1/inflections/\(language)/\(synonymID)"//"/\(grammaticalFeatures)"//"\(withPartOfSpeech)"
             print(synonymQuery)
@@ -147,13 +147,13 @@ class WordPlay: NSObject {
     }
     
     func parseSynonym(json: JSON) {
-        print("inside parseSynonym:")
+        //print("inside parseSynonym:")
         let entries = json["results"][0]["lexicalEntries"][0]
-        print(entries)
-        print()
-        print()
-        print()
-        print()
+        //print(entries)
+        //print()
+        //print()
+        //print()
+        //print()
         
         let partOfSpeech = entries["lexicalCategory"].stringValue
         let grammaticalFeatures = entries["grammaticalFeatures"].arrayValue
@@ -224,6 +224,28 @@ class WordPlay: NSObject {
             output.append(wordChoice)
         }
         return output
+    }
+    
+    func randomizedCharacterList() -> [Character] {
+        var mustHaveChars = [Character]()
+        
+        for char in 0..<wordID.count {
+            let index = wordID.index(wordID.startIndex, offsetBy: char)
+            let myChar = wordID[index]
+            
+            let randomIndex = arc4random_uniform(UInt32(mustHaveChars.count))
+            mustHaveChars.insert(myChar, at: Int(randomIndex))
+        }
+        let alphabet = "abcdefghijklmnopqrstuvwxyz"
+        for _ in 0..<(20-wordID.count) {
+            let randomChar = arc4random_uniform(26)
+            let index = alphabet.index(alphabet.startIndex, offsetBy: randomChar)
+            let myChar = alphabet[index]
+            
+            let randomIndex = arc4random_uniform(UInt32(mustHaveChars.count))
+            mustHaveChars.insert(myChar, at: Int(randomIndex))
+        }
+        return mustHaveChars
     }
     
     func saveData() {

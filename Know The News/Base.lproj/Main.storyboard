@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e7J-6k-Gq2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Z3-zF-tD9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,72 +36,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qaD-rb-1hx">
-                                <rect key="frame" x="16" y="164" width="167.5" height="40"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <state key="normal" title="a"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onTappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vMn-U7-EUA"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C5I-jr-gph">
-                                <rect key="frame" x="191.5" y="164" width="167.5" height="40"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <state key="normal" title="b"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onTappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eoB-Xh-vg3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxW-Kw-5FO">
-                                <rect key="frame" x="16" y="212" width="167.5" height="40"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <state key="normal" title="c"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onTappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OrV-rY-Y9O"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XV-vg-iEy">
-                                <rect key="frame" x="191" y="212" width="167.5" height="40"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <state key="normal" title="d"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onTappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jL1-Go-XiQ"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2Q-2C-SNn">
-                                <rect key="frame" x="16" y="260" width="343" height="44"/>
+                                <rect key="frame" x="16" y="164.5" width="343" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voC-tP-4Hu">
                                         <rect key="frame" x="0.0" y="10" width="343" height="24"/>
@@ -149,36 +85,53 @@
                                     <action selector="onTappedUpdate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZl-4N-wtk"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMs-Ed-m6R">
+                                <rect key="frame" x="16" y="216" width="343" height="188"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-4f-3BE">
+                                        <rect key="frame" x="8" y="86" width="327" height="94"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="94" id="gXF-Yz-9yi"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJe-dq-ek8">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="70"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="Usq-u2-4J7"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Rdk-4f-3BE" secondAttribute="bottom" constant="8" id="IxM-qH-dtY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rdk-4f-3BE" secondAttribute="trailing" constant="8" id="KQA-Es-dNl"/>
+                                    <constraint firstItem="Rdk-4f-3BE" firstAttribute="leading" secondItem="dMs-Ed-m6R" secondAttribute="leading" constant="8" id="LvI-aU-aVd"/>
+                                    <constraint firstItem="jJe-dq-ek8" firstAttribute="leading" secondItem="dMs-Ed-m6R" secondAttribute="leading" id="S4O-nV-oyb"/>
+                                    <constraint firstItem="Rdk-4f-3BE" firstAttribute="top" secondItem="jJe-dq-ek8" secondAttribute="bottom" constant="16" id="cFZ-4n-wCU"/>
+                                    <constraint firstItem="jJe-dq-ek8" firstAttribute="top" secondItem="dMs-Ed-m6R" secondAttribute="top" id="xnr-DO-Tgl"/>
+                                    <constraint firstAttribute="trailing" secondItem="jJe-dq-ek8" secondAttribute="trailing" id="yDk-kP-UGg"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.83517795138888884" green="0.941650390625" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="j2Q-2C-SNn" firstAttribute="top" secondItem="3XV-vg-iEy" secondAttribute="bottom" constant="8" id="3zF-9f-JcD"/>
-                            <constraint firstItem="C5I-jr-gph" firstAttribute="leading" secondItem="qaD-rb-1hx" secondAttribute="trailing" constant="8" id="9A8-VO-gqS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2Q-2C-SNn" secondAttribute="trailing" constant="16" id="Ahb-dN-DWf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O1v-wJ-juX" secondAttribute="trailing" constant="16" id="Cxf-qW-EEc"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EHf-2I-2bu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0KF-Ut-W52" secondAttribute="bottom" constant="20" id="ILg-dk-sJv"/>
-                            <constraint firstItem="qaD-rb-1hx" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="MAh-RO-5i3"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="top" secondItem="OpQ-FQ-Xkw" secondAttribute="bottom" constant="8" id="OxQ-7V-ts4"/>
                             <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="P5x-Ic-mzU"/>
+                            <constraint firstItem="dMs-Ed-m6R" firstAttribute="top" secondItem="j2Q-2C-SNn" secondAttribute="bottom" constant="8" id="TfE-Sx-a5Y"/>
+                            <constraint firstItem="dMs-Ed-m6R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="V4c-sU-rb0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="frt-K1-htJ" secondAttribute="trailing" constant="16" id="VuV-o9-xdP"/>
-                            <constraint firstItem="VxW-Kw-5FO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="WKU-yb-rD0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3XV-vg-iEy" secondAttribute="trailing" constant="16" id="YCV-zA-kXq"/>
-                            <constraint firstItem="j2Q-2C-SNn" firstAttribute="top" secondItem="VxW-Kw-5FO" secondAttribute="bottom" constant="8" id="Z0b-Dw-nxs"/>
                             <constraint firstItem="0KF-Ut-W52" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="anf-OP-gpb"/>
+                            <constraint firstItem="j2Q-2C-SNn" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="ap8-ty-xAk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OpQ-FQ-Xkw" secondAttribute="trailing" constant="16" id="b1q-gM-M7e"/>
-                            <constraint firstItem="3XV-vg-iEy" firstAttribute="leading" secondItem="VxW-Kw-5FO" secondAttribute="trailing" constant="8" id="buP-0l-um6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C5I-jr-gph" secondAttribute="trailing" constant="16" id="daM-Ii-r28"/>
                             <constraint firstItem="j2Q-2C-SNn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eC7-Wd-FOP"/>
-                            <constraint firstItem="C5I-jr-gph" firstAttribute="width" secondItem="qaD-rb-1hx" secondAttribute="width" id="iSK-FQ-RIO"/>
                             <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="jNr-bH-hg0"/>
-                            <constraint firstItem="qaD-rb-1hx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="mEU-gu-YtE"/>
-                            <constraint firstItem="3XV-vg-iEy" firstAttribute="top" secondItem="qaD-rb-1hx" secondAttribute="bottom" constant="8" id="nBv-ip-3ij"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="frt-K1-htJ" secondAttribute="bottom" constant="20" id="pfD-EM-NaM"/>
-                            <constraint firstItem="VxW-Kw-5FO" firstAttribute="width" secondItem="qaD-rb-1hx" secondAttribute="width" id="tx4-hl-qdM"/>
-                            <constraint firstItem="C5I-jr-gph" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="uku-Y9-ddU"/>
-                            <constraint firstItem="3XV-vg-iEy" firstAttribute="width" secondItem="qaD-rb-1hx" secondAttribute="width" id="y4f-Hh-utL"/>
-                            <constraint firstItem="VxW-Kw-5FO" firstAttribute="top" secondItem="qaD-rb-1hx" secondAttribute="bottom" constant="8" id="zaC-gw-Egd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dMs-Ed-m6R" secondAttribute="trailing" constant="16" id="vmX-jB-kfR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -186,12 +139,11 @@
                     <connections>
                         <outlet property="clueLabel" destination="L0x-Wq-fYZ" id="s7B-Fw-Nj1"/>
                         <outlet property="descriptionLabel" destination="voC-tP-4Hu" id="qoN-uG-bEo"/>
+                        <outlet property="gamePlayView" destination="dMs-Ed-m6R" id="SW7-Kc-mF4"/>
+                        <outlet property="guessView" destination="jJe-dq-ek8" id="QCr-dj-7XV"/>
                         <outlet property="headlineLabel" destination="O1v-wJ-juX" id="WkR-bJ-fIX"/>
+                        <outlet property="optionsView" destination="Rdk-4f-3BE" id="oBH-YD-gpA"/>
                         <outlet property="sourceLabel" destination="OpQ-FQ-Xkw" id="0TZ-HT-DO9"/>
-                        <outletCollection property="buttons" destination="qaD-rb-1hx" collectionClass="NSMutableArray" id="mog-ZG-kfg"/>
-                        <outletCollection property="buttons" destination="C5I-jr-gph" collectionClass="NSMutableArray" id="AST-yF-CVA"/>
-                        <outletCollection property="buttons" destination="VxW-Kw-5FO" collectionClass="NSMutableArray" id="rZp-uO-i2W"/>
-                        <outletCollection property="buttons" destination="3XV-vg-iEy" collectionClass="NSMutableArray" id="rNw-QZ-HZz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -201,7 +153,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1668" y="940"/>
+            <point key="canvasLocation" x="2420" y="922.48875562218893"/>
         </scene>
         <!--News Type-->
         <scene sceneID="cOk-qe-PA3">
@@ -302,7 +254,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="925.60000000000002" y="939.58020989505258"/>
+            <point key="canvasLocation" x="1668" y="922"/>
         </scene>
         <!--My Articles-->
         <scene sceneID="yTu-0h-qBh">
@@ -382,9 +334,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="47"/>
                                 <state key="normal" title="Begin"/>
-                                <connections>
-                                    <segue destination="8Z3-zF-tD9" kind="show" animates="NO" id="aa1-Sk-fwy"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newspaper" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-Ps-sEd">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -406,7 +355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRh-Bg-ZUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="160.80000000000001" y="167.76611694152925"/>
+            <point key="canvasLocation" x="-434" y="92"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OGt-0V-dlq">
@@ -444,7 +393,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpT-QY-NSR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="161" y="940"/>
+            <point key="canvasLocation" x="926" y="922"/>
         </scene>
         <!--Saved-->
         <scene sceneID="DkY-y1-Yao">
