@@ -238,9 +238,19 @@ class ViewController: UIViewController, WordPlayDelegate {
     
     func checkForCompletion() {
         if !currentAnswerIndexArr.contains(-1) {
-            var send = ""
-            for l in answerArr {
-                send += l.text!
+            var wordGuess = ""
+            for i in currentAnswerIndexArr {
+                wordGuess += optionsArr[i].text!
+            }
+            
+            let analysis = wordPlay.analyze(word: wordGuess)
+            
+            for x in 0..<analysis.count {
+                if analysis[x] == 0 {
+                    answerArr[x].backgroundColor = .red
+                } else {
+                    answerArr[x].backgroundColor = .green
+                }
             }
         }
         

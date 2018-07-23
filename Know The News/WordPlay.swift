@@ -250,7 +250,18 @@ class WordPlay: NSObject {
     
     func analyze(word: String) -> [Int] {
         var output = [Int]()
-        return word.lowercased() == wordID
+        
+        for i in 0..<word.count {
+            let indexGuess = word.index(word.startIndex, offsetBy: i)
+            let indexReal = wordID.index(wordID.startIndex, offsetBy: i)
+            
+            if word[indexGuess] == wordID[indexReal] {
+                output += [1]
+            } else {
+                output += [0]
+            }
+        }
+        return output
     }
     
     func saveData() {
