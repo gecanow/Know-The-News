@@ -8,15 +8,8 @@
 
 import UIKit
 
-var politicalWords = [String: [String]]() //global
-
-protocol WordPlayDelegate {
-    func loadUpOptions(selection: [String])
-}
-
 class WordPlay: NSObject {
     
-    var delegate : WordPlayDelegate?
     var wordID : String!
     
     let appId = "2a87bd3b"
@@ -32,12 +25,6 @@ class WordPlay: NSObject {
     
     func updateWord(to: String) {
         wordID = to.lowercased()
-        
-        if let savedData = defaults.object(forKey: "politcalWordsArray") as? Data {
-            if let decoded = try? JSONDecoder().decode([String: [String]].self, from: savedData) {
-                politicalWords = decoded
-            }
-        }
         
 //        let inflectionQuery = "https://od-api.oxforddictionaries.com:443/api/v1/inflections/\(language)/\(wordID!)"
 //        let thesaurusQuery = "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(wordID!)/synonyms;antonyms"
@@ -62,170 +49,6 @@ class WordPlay: NSObject {
 //        }
     }
     
-    func parseInflection(json: JSON) {
-        let entries = json["results"][0]["lexicalEntries"][0]
-        
-        let partOfSpeech = entries["lexicalCategory"].stringValue
-        let grammaticalFeatures = entries["grammaticalFeatures"].arrayValue
-        let rootWordID = entries["inflectionOf"][0]["id"].stringValue
-        
-        let pOs = "lexicalCategory=\(partOfSpeech.lowercased())"
-        var gF = ""
-        for feature in grammaticalFeatures {
-            gF += "\((feature["text"].stringValue).lowercased()),"
-        }
-        if gF != "" {
-            gF = "grammaticalFeatures=" + gF.prefix(gF.count-1) //+ ";"
-        }
-        
-        //print("\(wordID!) is a \(pOs)")
-        //print("\(wordID!) has features \(gF)")
-        //print("\(wordID!)'s root is \(rootWordID)")
-        
-        let thesaurusQuery = "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(rootWordID)/synonyms;antonyms"
-        if let url = URL(string: thesaurusQuery) {
-            var request = URLRequest(url: url)
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            request.addValue(appId, forHTTPHeaderField: "app_id")
-            request.addValue(appKey, forHTTPHeaderField: "app_key")
-            
-            let session = URLSession.shared
-            _ = session.dataTask(with: request, completionHandler: { data, response, error in
-                if let _ = response,
-                    let data = data,
-                    let jsonData = try? JSON(data: data) {
-                    self.parseThesaurus(json: jsonData, withPartOfSpeech: pOs, grammaticalFeatures: gF)
-                    return
-                } else {
-                    self.loadError()
-                }
-            }).resume()
-        }
-    }
-    
-    func parseThesaurus(json: JSON, withPartOfSpeech: String, grammaticalFeatures: String) {
-        let result = json["results"][0]
-        let entries = result["lexicalEntries"][0]["entries"]
-        let synonyms = entries[0]["senses"][0]["synonyms"]
-        
-        var synonymList = [String]()
-        for word in synonyms.arrayValue {
-            synonymList.append(word["id"].stringValue)
-        }
-        print(synonymList)
-        for synonymID in synonymList {
-            //print("Querying for proper form of \(synonymID)")
-            
-            let synonymQuery = "https://od-api.oxforddictionaries.com:443/api/v1/inflections/\(language)/\(synonymID)"//"/\(grammaticalFeatures)"//"\(withPartOfSpeech)"
-            print(synonymQuery)
-            if let url = URL(string: synonymQuery) {
-                var request = URLRequest(url: url)
-                request.addValue("application/json", forHTTPHeaderField: "Accept")
-                request.addValue(appId, forHTTPHeaderField: "app_id")
-                request.addValue(appKey, forHTTPHeaderField: "app_key")
-                
-                let session = URLSession.shared
-                _ = session.dataTask(with: request, completionHandler: { data, response, error in
-                    if let _ = response,
-                        let data = data,
-                        let jsonData = try? JSON(data: data) {
-                        self.parseSynonym(json: jsonData)
-                        return
-                    } else {
-                        self.loadError()
-                    }
-                }).resume()
-            }
-        }
-        retrieveAndSendFrom(list: synonymList, num: 3)
-        
-        //if politicalWords[partOfSpeech] == nil {
-          //  loadWordListWithSame(speechType: partOfSpeech)
-        //} else {
-          //  retrieveAndSendFrom(list: politicalWords[partOfSpeech]!, num: 3)
-        //}
-    }
-    
-    func parseSynonym(json: JSON) {
-        //print("inside parseSynonym:")
-        let entries = json["results"][0]["lexicalEntries"][0]
-        //print(entries)
-        //print()
-        //print()
-        //print()
-        //print()
-        
-        let partOfSpeech = entries["lexicalCategory"].stringValue
-        let grammaticalFeatures = entries["grammaticalFeatures"].arrayValue
-    }
-    
-    func loadError() {
-        DispatchQueue.main.async {
-            print("Word Play: error loading")
-            //print("assuming it's a noun...")
-            
-            //if politicalWords["Noun"] == nil {
-              //  self.loadWordListWithSame(speechType: "Noun")
-            //} else {
-              //  self.retrieveAndSendFrom(list: politicalWords["Noun"]!, num: 3)
-            //}
-        }
-    }
-    
-    func loadWordListWithSame(speechType: String) {
-        let filters = "lexicalCategory=\(speechType);domains=Politics"
-        
-        let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/wordlist/\(language)/\(filters)")!
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue(appId, forHTTPHeaderField: "app_id")
-        request.addValue(appKey, forHTTPHeaderField: "app_key")
-        
-        let session = URLSession.shared
-        _ = session.dataTask(with: request, completionHandler: { data, response, error in
-            if let _ = response,
-                let data = data,
-                let jsonData = try? JSON(data: data) {
-                self.extractWordData(json: jsonData, ofType: speechType)
-                return
-            } else {
-                self.loadError()
-            }
-        }).resume()
-    }
-    
-    func extractWordData(json: JSON, ofType: String) {
-        for information in json["results"] {
-            let word = "\(information.1["word"])"
-            
-            if politicalWords[ofType] == nil {
-                politicalWords[ofType] = [word]
-            } else {
-                politicalWords[ofType]!.append(word)
-            }
-        }
-        saveData()
-        retrieveAndSendFrom(list: politicalWords[ofType]!, num: 3)
-    }
-    
-    func retrieveAndSendFrom(list: [String], num: Int) {
-        let output = randomList(from: list, amount: num) + [wordID]
-        delegate?.loadUpOptions(selection: output)
-    }
-    
-    func randomList(from: [String], amount: Int) -> [String] {
-        var output = [String]()
-        var wordChoice = ""
-        
-        for _ in 0..<amount {
-            repeat {
-                wordChoice = from[Int(arc4random_uniform(UInt32(from.count-1)))]
-            } while output.contains(wordChoice)
-            output.append(wordChoice)
-        }
-        return output
-    }
-    
     func randomizedCharacterList() -> [Character] {
         var mustHaveChars = [Character]()
         
@@ -248,25 +71,20 @@ class WordPlay: NSObject {
         return mustHaveChars
     }
     
-    func analyze(word: String) -> [Int] {
+    func analyze(word: [String]) -> [Int] {
         var output = [Int]()
         
         for i in 0..<word.count {
-            let indexGuess = word.index(word.startIndex, offsetBy: i)
             let indexReal = wordID.index(wordID.startIndex, offsetBy: i)
             
-            if word[indexGuess] == wordID[indexReal] {
+            if word[i] == String(wordID[indexReal]) {
                 output += [1]
+            } else if word[i] == " " {
+                output += [-1]
             } else {
                 output += [0]
             }
         }
         return output
-    }
-    
-    func saveData() {
-        if let encoded = try? JSONEncoder().encode(politicalWords) {
-            defaults.set(encoded, forKey: "politcalWordsArray")
-        }
     }
 }

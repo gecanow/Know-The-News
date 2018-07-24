@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC0615962106682B004A9BFB /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0615952106682B004A9BFB /* Chip.swift */; };
+		CC0615982106C25C004A9BFB /* ChipHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0615972106C25C004A9BFB /* ChipHolder.swift */; };
 		CC810F4E20F64D8800EC6F62 /* SourceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */; };
 		CCC11A1520F9026C00D2482C /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC11A1420F9026C00D2482C /* BeginViewController.swift */; };
 		CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD54D220F5153B007746C4 /* SavedViewController.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		CC0615952106682B004A9BFB /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
+		CC0615972106C25C004A9BFB /* ChipHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipHolder.swift; sourceTree = "<group>"; };
 		CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTypeViewController.swift; sourceTree = "<group>"; };
 		CCC11A1420F9026C00D2482C /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		CCDD54D220F5153B007746C4 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				CCE1B38820F4164A004B78B1 /* AppDelegate.swift */,
 				CCE1B38A20F4164A004B78B1 /* ViewController.swift */,
 				CC0615952106682B004A9BFB /* Chip.swift */,
+				CC0615972106C25C004A9BFB /* ChipHolder.swift */,
 				CCE1B3B820F4180A004B78B1 /* Source.swift */,
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
@@ -282,6 +285,7 @@
 				CCE1B3B920F4180A004B78B1 /* Source.swift in Sources */,
 				CCE1B3B720F416A2004B78B1 /* SwiftyJSON.swift in Sources */,
 				CC0615962106682B004A9BFB /* Chip.swift in Sources */,
+				CC0615982106C25C004A9BFB /* ChipHolder.swift in Sources */,
 				CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */,
 				CCE1B38B20F4164A004B78B1 /* ViewController.swift in Sources */,
 				CC810F4E20F64D8800EC6F62 /* SourceTypeViewController.swift in Sources */,

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, WordPlayDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var clueLabel: UILabel!
     
@@ -22,9 +22,9 @@ class ViewController: UIViewController, WordPlayDelegate {
     @IBOutlet weak var guessView: UIView!
     @IBOutlet weak var optionsView: UIView!
     
-    var answerArr = [Chip]()
-    var currentAnswerIndexArr = [Int]()
+    var chipHolderArr = [ChipHolder]()
     var optionsArr = [Chip]()
+    
     var movable : Int?
     
     var sources = [[String: String]]()
@@ -36,8 +36,6 @@ class ViewController: UIViewController, WordPlayDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        wordPlay.delegate = self
-        
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
 
@@ -67,17 +65,6 @@ class ViewController: UIViewController, WordPlayDelegate {
         if let savedData = defaults.object(forKey: savedArticlesID) as? Data {
             if let decoded = try? JSONDecoder().decode([[String: String]].self, from: savedData) {
                 savedArticles = decoded
-            }
-        }
-    }
-    
-    func loadUpOptions(selection: [String]) {
-        DispatchQueue.main.async {
-            var arr = selection
-            for index in stride(from: 3, through: 0, by: -1) {
-                let rand = Int(arc4random_uniform(UInt32(index+1)))
-                //self.buttons[index].setTitle(arr[rand], for: .normal)
-                arr.remove(at: rand)
             }
         }
     }
@@ -118,6 +105,20 @@ class ViewController: UIViewController, WordPlayDelegate {
         chooseRandomArticle()
     }
     
+    func removeAll() {
+        while !chipHolderArr.isEmpty {
+            let holder = chipHolderArr[0]
+            holder.removeFromSuperview()
+            chipHolderArr.remove(at: 0)
+        }
+        
+        while !optionsArr.isEmpty {
+            let option = optionsArr[0]
+            option.removeFromSuperview()
+            optionsArr.remove(at: 0)
+        }
+    }
+    
     func chooseRandomArticle() {
         var index = 0
         if sources.count > 1 {
@@ -136,6 +137,8 @@ class ViewController: UIViewController, WordPlayDelegate {
         print("The missing word is: \(wordPlay.wordID!)")
         
         //-------
+        removeAll()
+        //-------
         let maxWidth = ((optionsView.frame.width-8)/10)-8
         var size = CGSize(width: ((optionsView.frame.width-8)/CGFloat(wordPlay.wordID.count))-8, height: ((optionsView.frame.height-8)/2)-8)
         if size.width > maxWidth {
@@ -147,10 +150,11 @@ class ViewController: UIViewController, WordPlayDelegate {
         let startX = (Int(guessView.frame.width)/2) - totalHalfWidth
         let endX = (Int(guessView.frame.width)/2) + totalHalfWidth
         
+        var ctr = 0
         for x in stride(from: startX, to: endX, by: Int(size.width)+8) {
             //guessLabel.text! = "_ " + guessLabel.text!
-            answerArr.append(createNewCharLabel(atPoint: CGPoint(x: x, y: 16), ofSize: size, str: ""))
-            currentAnswerIndexArr.append(-1)
+            chipHolderArr.append(createNewChipHolder(atPoint: CGPoint(x: x, y: 16), ofSize: size, atI: ctr))
+            ctr += 1
         }
         
         // set up the character guesses
@@ -170,9 +174,13 @@ class ViewController: UIViewController, WordPlayDelegate {
     }
     
     func createNewCharLabel(atPoint: CGPoint, ofSize: CGSize, str: String) -> Chip {
-        
         let b = Chip(atPoint: atPoint, ofSize: ofSize, str: str)
-        
+        gamePlayView.addSubview(b)
+        gamePlayView.bringSubview(toFront: b)
+        return b
+    }
+    func createNewChipHolder(atPoint: CGPoint, ofSize: CGSize, atI: Int) -> ChipHolder {
+        let b = ChipHolder(atPoint: atPoint, ofSize: ofSize, index: atI)
         gamePlayView.addSubview(b)
         gamePlayView.bringSubview(toFront: b)
         return b
@@ -200,61 +208,55 @@ class ViewController: UIViewController, WordPlayDelegate {
         
         if movable != nil {
             var foundProperPlace = false
-            for guessIndex in 0..<answerArr.count {
-                if answerArr[guessIndex].frame.contains(loc!) {
+            for guessIndex in 0..<chipHolderArr.count {
+                if chipHolderArr[guessIndex].frame.contains(loc!) {
                     droppedInPlace(guessIndex: guessIndex)
                     foundProperPlace = true
-                    
-                    checkForCompletion()
                     break
                 }
             }
             
             if !foundProperPlace {
-                if !optionsArr[movable!].atHome {
-                    currentAnswerIndexArr[optionsArr[movable!].guessIndex] = -1
+                if optionsArr[movable!].holderIndex() != -1 {
+                    chipHolderArr[optionsArr[movable!].holderIndex()].removeChip()
                 }
-                
                 optionsArr[movable!].frame.origin = optionsArr[movable!].home
-                optionsArr[movable!].atHome = true
             }
+            
+            checkForCompletion()
         }
         movable = nil
     }
     
     func droppedInPlace(guessIndex: Int) {
-        if currentAnswerIndexArr[guessIndex] != -1 {
-            // move the chip to its origin
-            let chipIndex = currentAnswerIndexArr[guessIndex]
-            let chip = optionsArr[chipIndex]
-            chip.frame.origin = chip.home // can animate later?
-            chip.atHome = true
-            chip.guessIndex = -1
+        if optionsArr[movable!].holderIndex() != -1 {
+            chipHolderArr[guessIndex].removeChip()
         }
-        currentAnswerIndexArr[guessIndex] = movable!
-        optionsArr[movable!].frame.origin = answerArr[guessIndex].home!
-        optionsArr[movable!].guessIndex = guessIndex
+        chipHolderArr[guessIndex].setIn(chip: optionsArr[movable!])
     }
     
     func checkForCompletion() {
-        if !currentAnswerIndexArr.contains(-1) {
-            var wordGuess = ""
-            for i in currentAnswerIndexArr {
-                wordGuess += optionsArr[i].text!
-            }
-            
-            let analysis = wordPlay.analyze(word: wordGuess)
-            
-            for x in 0..<analysis.count {
-                if analysis[x] == 0 {
-                    answerArr[x].backgroundColor = .red
-                } else {
-                    answerArr[x].backgroundColor = .green
-                }
+        
+        var wordGuess = [String]()
+        for holder in chipHolderArr {
+            if holder.myChip == nil {
+                wordGuess += [" "]
+            } else {
+                wordGuess += [holder.myChip!.text!]
             }
         }
         
+        let analysis = wordPlay.analyze(word: wordGuess)
         
+        for x in 0..<analysis.count {
+            if analysis[x] == 0 {
+                chipHolderArr[x].backgroundColor = .red
+            } else if analysis[x] == 1 {
+                chipHolderArr[x].backgroundColor = .green
+            } else {
+                chipHolderArr[x].backgroundColor = .white
+            }
+        }
     }
     
     func gamePlayTitle(_ fromName: String) -> [String] {
@@ -313,14 +315,6 @@ class ViewController: UIViewController, WordPlayDelegate {
     
     @IBAction func onTappedClueView(_ sender: UITapGestureRecognizer) {
         clueLabel.isHidden = !clueLabel.isHidden
-    }
-    
-    @IBAction func finishedGuess(_ sender: UITextField) {
-        if sender.text?.lowercased() == wordPlay.wordID {
-            alertUser("You Got It!")
-        } else {
-            print("try again")
-        }
     }
     
     func alertUser(_ withTitle: String) {
