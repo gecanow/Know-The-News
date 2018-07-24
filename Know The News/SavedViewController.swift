@@ -15,6 +15,9 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var savedArticles = [[String:String]]()
     let defaults = UserDefaults.standard
     
+    //=========================================
+    // VIEW DID LOAD
+    //=========================================
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,6 +30,9 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.start()
     }
     
+    //=========================================
+    // Retrieves the saved articles
+    //=========================================
     func start() {
         if let savedData = defaults.object(forKey: savedArticlesID) as? Data {
             if let decoded = try? JSONDecoder().decode([[String: String]].self, from: savedData) {
@@ -36,6 +42,9 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.reloadData()
     }
     
+    //=========================================
+    // Alerts the user of a loading error
+    //=========================================
     func loadError() {
         DispatchQueue.main.async {
             [unowned self] in
@@ -48,6 +57,10 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+    //===============================//
+    // TABLE VIEW DELEGATE FUNCTIONS //
+    //===============================//
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return savedArticles.count
@@ -91,6 +104,9 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         saveSaved()
     }
     
+    //=========================================
+    // Handles when the user taps edit
+    //=========================================
     @IBAction func onTappedEdit(_ sender: UIButton) {
         if sender.titleLabel?.text == "Edit" {
             tableView.setEditing(true, animated: true)
@@ -102,6 +118,9 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+    //=================================================
+    // Saves the saved articles array to user defaults
+    //=================================================
     func saveSaved() {
         if let encoded = try? JSONEncoder().encode(savedArticles) {
             defaults.set(encoded, forKey: savedArticlesID)

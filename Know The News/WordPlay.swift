@@ -12,15 +12,26 @@ class WordPlay: NSObject {
     
     var wordID : String!
     
+    //=========================================
+    // INIT
+    //=========================================
     override init() {
         super.init()
         // do nothing
     }
     
+    //=========================================
+    // Updates the wordplay word
+    //=========================================
     func updateWord(to: String) {
         wordID = to.lowercased()
     }
     
+    //==============================================
+    // Returns an array of 20 characters in a
+    // random order, containing all the characters
+    // in the wordID plus extra random characters
+    //==============================================
     func randomizedCharacterList() -> [Character] {
         var mustHaveChars = [Character]()
         
@@ -43,6 +54,13 @@ class WordPlay: NSObject {
         return mustHaveChars
     }
     
+    //=========================================
+    // Analyzes a String array compared to the
+    // wordID. At each placement...
+    //  1 - correct character
+    //  0 - wrong character
+    // -1 - no character
+    //=========================================
     func analyze(word: [String]) -> [Int] {
         var output = [Int]()
         

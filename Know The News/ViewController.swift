@@ -33,17 +33,22 @@ class ViewController: UIViewController {
     
     var sourceType : String!
     
+    //=========================================
+    // VIEW DID LOAD
+    //=========================================
     override func viewDidLoad() {
         super.viewDidLoad()
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
-
+        self.title = getTitle()
+        
         var query : String!
         if sourceType == "all" {
             query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
         } else {
             query = "https://newsapi.org/v1/sources?language=en&country=us&category=\(sourceType!)&apiKey=\(apiKey)"
         }
+        print("querying: \(query)")
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
@@ -68,6 +73,23 @@ class ViewController: UIViewController {
         }
     }
     
+    //=========================================
+    // Returns the title given the sourceType
+    //=========================================
+    func getTitle() -> String {
+        switch sourceType {
+        case "general":
+            return "Politics"
+        default:
+            let capsFirst = sourceType.prefix(1).uppercased()
+            let rest = sourceType.suffix(sourceType.count-1)
+            return capsFirst + rest
+        }
+    }
+    
+    //=========================================
+    // Parses for all sources of a given type
+    //=========================================
     func parse(json: JSON) {
         //print(json["sources"])
         for result in json["sources"].arrayValue {
@@ -85,6 +107,9 @@ class ViewController: UIViewController {
         }
     }
     
+    //=========================================
+    // Informs the user of a loading error
+    //=========================================
     func loadError() {
         DispatchQueue.main.async {
             [unowned self] in
@@ -98,12 +123,17 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    //===========================================
+    // Retrieves new article when user taps next
+    //===========================================
     @IBAction func onTappedUpdate(_ sender: Any) {
         clueLabel.isHidden = false
         chooseRandomArticle()
     }
     
+    //=========================================
+    // Removes all the chips and chip holders
+    //=========================================
     func removeAll() {
         while !chipHolderArr.isEmpty {
             let holder = chipHolderArr[0]
@@ -118,6 +148,11 @@ class ViewController: UIViewController {
         }
     }
     
+    //=========================================
+    // Chooses a random article from a random
+    // source and removes the longest word from
+    // that article's headline
+    //=========================================
     func chooseRandomArticle() {
         var index = 0
         if sources.count > 1 {
@@ -136,6 +171,14 @@ class ViewController: UIViewController {
         print("The missing word is: \(wordPlay.wordID!)")
         
         //-------
+        setUpChips()
+    }
+    
+    //=========================================
+    // Sets up and displays the chips and the
+    // chip holders
+    //=========================================
+    func setUpChips() {
         removeAll()
         //-------
         let maxWidth = ((optionsView.frame.width-8)/10)-8
@@ -151,7 +194,6 @@ class ViewController: UIViewController {
         
         var ctr = 0
         for x in stride(from: startX, to: endX, by: Int(size.width)+8) {
-            //guessLabel.text! = "_ " + guessLabel.text!
             chipHolderArr.append(createNewChipHolder(atPoint: CGPoint(x: x, y: 16), ofSize: size, atI: ctr))
             ctr += 1
         }
@@ -172,6 +214,10 @@ class ViewController: UIViewController {
         }
     }
     
+    //==========================================
+    // 1 - creates new character labels (chips)
+    // 2 - creates new chip holders
+    //==========================================
     func createNewCharLabel(atPoint: CGPoint, ofSize: CGSize, str: String) -> Chip {
         let b = Chip(atPoint: atPoint, ofSize: ofSize, str: str)
         gamePlayView.addSubview(b)
@@ -185,6 +231,10 @@ class ViewController: UIViewController {
         return b
     }
     
+    //=========================================
+    // TOUCHES BEGAN
+    // Sets movable? to the tapped chip
+    //=========================================
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let loc = touches.first?.location(in: self.gamePlayView)
         for index in 0..<optionsArr.count {
@@ -195,6 +245,10 @@ class ViewController: UIViewController {
         }
     }
     
+    //=========================================
+    // TOUCHES MOVED
+    // If movable isn't nil, move it
+    //=========================================
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let loc = touches.first?.location(in: self.gamePlayView)
         if movable != nil {
@@ -202,6 +256,11 @@ class ViewController: UIViewController {
         }
     }
     
+    //=========================================
+    // TOUCHES ENDED
+    // Either place movable in a chip holder
+    // or send it back home.
+    //=========================================
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let loc = touches.first?.location(in: self.gamePlayView)
         
@@ -227,6 +286,10 @@ class ViewController: UIViewController {
         movable = nil
     }
     
+    //=========================================
+    // Handles when a chip is dropped into a
+    // chip holder.
+    //=========================================
     func droppedInPlace(guessIndex: Int) {
         if optionsArr[movable!].holderIndex() != -1 {
             chipHolderArr[optionsArr[movable!].holderIndex()].removeChip()
@@ -234,6 +297,12 @@ class ViewController: UIViewController {
         chipHolderArr[guessIndex].setIn(chip: optionsArr[movable!])
     }
     
+    //=========================================
+    // Checks for completion of puzzle.
+    //  0 - wrong chip placement
+    //  1 - right chip placement
+    // -1 - empty chip holder
+    //=========================================
     func checkForCompletion() {
         
         var wordGuess = [String]()
@@ -265,6 +334,12 @@ class ViewController: UIViewController {
         }
     }
     
+    //=========================================
+    // Responsible for retrieving the longest
+    // word from a title. Returns arr where:
+    // - index 0 is title without a word
+    // - index 1 is the missing word
+    //=========================================
     func gamePlayTitle(_ fromName: String) -> [String] {
         let arr = fromName.split(separator: " ")
         
@@ -293,36 +368,46 @@ class ViewController: UIViewController {
         return ["", ""]
     }
     
+    //=========================================
+    // Parses the missing word for punctuation
+    //=========================================
     func parseForPunctuation(inWord: String) -> [String] {
-        if inWord.contains(".") {
-            return ["______.", "\(inWord.prefix(inWord.count-1))"]
-        }
-        if inWord.contains(",") {
-            return ["______,", "\(inWord.prefix(inWord.count-1))"]
+        let length = inWord.count
+        
+        if inWord.contains(".") ||
+            inWord.contains(",") ||
+            inWord.contains(":") ||
+            inWord.contains("?") {
+            let finalChar = inWord.suffix(1)
+            return ["______\(finalChar)", "\(inWord.prefix(length-1))"]
         }
         if inWord.contains("’s") || inWord.contains("'s") {
-            return ["______’s", "\(inWord.prefix(inWord.count-2))"]
-        }
-        if inWord.contains(":") {
-            return ["______:", "\(inWord.prefix(inWord.count-1))"]
-        }
-        if inWord.contains("?") {
-            return ["______?", "\(inWord.prefix(inWord.count-1))"]
+            return ["______’s", "\(inWord.prefix(length-2))"]
         }
         if (inWord.prefix(1) == "'" && inWord.suffix(1) == "'") ||
             (inWord.prefix(1) == "\"" && inWord.suffix(1) == "\"") {
             let char = inWord.prefix(1)
-            var changed = inWord.prefix(inWord.count-1)
+            var changed = inWord.prefix(length-1)
             changed = changed.suffix(changed.count-1)
             return ["\(char)______\(char)", "\(changed)"]
+        }
+        if inWord.prefix(2) == "r/" {
+            return ["r/______", "\(inWord.suffix(length-2))"]
         }
         return ["______", inWord]
     }
     
+    //=========================================
+    // Reveals of hides the clue
+    //=========================================
     @IBAction func onTappedClueView(_ sender: UITapGestureRecognizer) {
         clueLabel.isHidden = !clueLabel.isHidden
     }
     
+    //=========================================
+    // Alerts the user of a win and gives the
+    // option to continue or save and continue
+    //=========================================
     func alertUser(_ withTitle: String) {
         let alert = UIAlertController(title: withTitle, message: "", preferredStyle: .alert)
         
@@ -341,6 +426,9 @@ class ViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    //=========================================
+    // Saves the saved articles to defaults
+    //=========================================
     func saveSaved() {
         if let encoded = try? JSONEncoder().encode(savedArticles) {
             defaults.set(encoded, forKey: savedArticlesID)

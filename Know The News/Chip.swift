@@ -13,6 +13,9 @@ class Chip: UILabel {
     var home : CGPoint!
     var delegate : ChipDelegate?
     
+    //=========================================
+    // INIT - atPoint, ofSize, str
+    //=========================================
     convenience init(atPoint: CGPoint, ofSize: CGSize, str: String) {
         self.init(frame: CGRect(origin: atPoint, size: ofSize))
         home = atPoint
@@ -29,6 +32,11 @@ class Chip: UILabel {
         layer.borderWidth = 1
     }
     
+    //============================================
+    // If the chip is in a holder and therefore
+    // has a delegate, return the holder's index.
+    // Otherwise, return -1
+    //============================================
     func holderIndex() -> Int {
         if delegate == nil {
             return -1

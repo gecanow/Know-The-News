@@ -14,6 +14,9 @@ class Source: NSObject {
     var apiKey = ""
     var source = [String: String]()
     
+    //=========================================
+    // INIT - the source, the ApiKey
+    //=========================================
     convenience init(theSource: [String: String], theApiKey: String) {
         self.init()
         self.source = theSource
@@ -33,6 +36,9 @@ class Source: NSObject {
         }
     }
     
+    //=========================================
+    // Parses for all articles from source
+    //=========================================
     func parse(json: JSON) {
         for result in json["articles"].arrayValue {
             let title = result["title"].stringValue
@@ -43,12 +49,18 @@ class Source: NSObject {
         }
     }
     
+    //=========================================
+    // Alerts of an error
+    //=========================================
     func loadError() {
         DispatchQueue.main.async {
             print("Source: error loading")
         }
     }
     
+    //===========================================
+    // Returns a random article from this source
+    //===========================================
     func retrieveRandomArticle() -> [String: String] {
         let randomIndex = Int(arc4random_uniform(UInt32(self.articles.count)))
         return articles[randomIndex]

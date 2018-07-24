@@ -17,18 +17,25 @@ class ChipHolder: UILabel, ChipDelegate {
     var myChip : Chip?
     var index = -1
     
+    //=========================================
+    // INIT - atPoint, ofSize, atIndex index
+    //=========================================
     convenience init(atPoint: CGPoint, ofSize: CGSize, index: Int) {
         self.init(frame: CGRect(origin: atPoint, size: ofSize))
         self.index = index
+        self.backgroundColor = .white
         
         self.text = " "
         self.textColor = .black
         self.textAlignment = .center
         
-        layer.cornerRadius = 2
+        layer.cornerRadius = 4
         layer.borderWidth = 1
     }
     
+    //=========================================
+    // Insert a chip into the holder
+    //=========================================
     func setIn(chip: Chip) {
         if myChip != nil {
             removeChip() // fail-safe
@@ -38,6 +45,9 @@ class ChipHolder: UILabel, ChipDelegate {
         myChip?.frame.origin = self.frame.origin
     }
     
+    //=========================================
+    // Remove the chip I'm currently holding
+    //=========================================
     func removeChip() {
         if myChip != nil {
             myChip!.frame.origin = myChip!.home // can animate later?
@@ -46,6 +56,9 @@ class ChipHolder: UILabel, ChipDelegate {
         }
     }
     
+    //=========================================
+    // Returns my index
+    //=========================================
     func getIndex() -> Int {
         return index
     }

@@ -15,10 +15,16 @@ class SourceTypeViewController: UIViewController {
     @IBOutlet var typeViews: [UIImageView]!
     let names = ["general", "business", "technology", "entertainment", "science", "sports", "health", "all"]
     
+    //=========================================
+    // VIEW DID LOAD
+    //=========================================
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    //=========================================
+    // Handles when a news type is tapped
+    //=========================================
     @IBAction func onTappedScreen(_ sender: UITapGestureRecognizer) {
         let loc = sender.location(in: sourceBok)
         
@@ -31,7 +37,9 @@ class SourceTypeViewController: UIViewController {
         }
     }
     
-    
+    //=========================================
+    // Sends the VC the sourceType selected
+    //=========================================
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
         dvc.sourceType = passType
