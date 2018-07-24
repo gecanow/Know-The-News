@@ -13,7 +13,7 @@
         <!--Game-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Know_The_News" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="Know_The_News" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,42 +36,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2Q-2C-SNn">
-                                <rect key="frame" x="16" y="164.5" width="343" height="44"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voC-tP-4Hu">
-                                        <rect key="frame" x="0.0" y="10" width="343" height="24"/>
-                                        <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
-                                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clue: Click To Reveal The Article's Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-Wq-fYZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
-                                        <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="voC-tP-4Hu" firstAttribute="top" secondItem="j2Q-2C-SNn" secondAttribute="top" constant="10" id="7nx-so-Eya"/>
-                                    <constraint firstItem="L0x-Wq-fYZ" firstAttribute="top" secondItem="j2Q-2C-SNn" secondAttribute="top" id="ACa-2k-ZWj"/>
-                                    <constraint firstItem="L0x-Wq-fYZ" firstAttribute="leading" secondItem="j2Q-2C-SNn" secondAttribute="leading" id="Skw-vq-3Ef"/>
-                                    <constraint firstAttribute="bottom" secondItem="L0x-Wq-fYZ" secondAttribute="bottom" id="Sqj-sf-zbQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="voC-tP-4Hu" secondAttribute="trailing" id="eTg-Bj-D7I"/>
-                                    <constraint firstAttribute="trailing" secondItem="L0x-Wq-fYZ" secondAttribute="trailing" id="fk2-gf-nF0"/>
-                                    <constraint firstAttribute="bottom" secondItem="voC-tP-4Hu" secondAttribute="bottom" constant="10" id="qcn-mE-aNY"/>
-                                    <constraint firstItem="voC-tP-4Hu" firstAttribute="leading" secondItem="j2Q-2C-SNn" secondAttribute="leading" id="sOW-Yd-7wd"/>
-                                </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="pGB-Iv-qTE" appends="YES" id="8Cd-us-NOT"/>
-                                </connections>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KF-Ut-W52">
-                                <rect key="frame" x="16" y="570" width="84.5" height="28"/>
+                                <rect key="frame" x="16" y="570" width="85" height="28"/>
                                 <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="20"/>
                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -86,7 +52,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMs-Ed-m6R">
-                                <rect key="frame" x="16" y="216" width="343" height="188"/>
+                                <rect key="frame" x="16" y="294.5" width="343" height="188"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-4f-3BE">
                                         <rect key="frame" x="8" y="86" width="327" height="94"/>
@@ -113,25 +79,77 @@
                                     <constraint firstAttribute="trailing" secondItem="jJe-dq-ek8" secondAttribute="trailing" id="yDk-kP-UGg"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdY-1g-H6C">
+                                <rect key="frame" x="16" y="164.5" width="343" height="122"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYI-Os-Z1Y" userLabel="ContentView">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="24"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voC-tP-4Hu">
+                                                <rect key="frame" x="8" y="0.0" width="327" height="24"/>
+                                                <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
+                                                <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="voC-tP-4Hu" firstAttribute="leading" secondItem="bYI-Os-Z1Y" secondAttribute="leading" constant="8" id="1md-O4-9Qb"/>
+                                            <constraint firstAttribute="bottom" secondItem="voC-tP-4Hu" secondAttribute="bottom" id="F0a-VH-W0v"/>
+                                            <constraint firstItem="voC-tP-4Hu" firstAttribute="top" secondItem="bYI-Os-Z1Y" secondAttribute="top" id="XBr-D4-Yhl"/>
+                                            <constraint firstAttribute="trailing" secondItem="voC-tP-4Hu" secondAttribute="trailing" constant="8" id="rNZ-dA-3iG"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="bYI-Os-Z1Y" firstAttribute="width" secondItem="LdY-1g-H6C" secondAttribute="width" id="CbE-kg-I8q"/>
+                                    <constraint firstItem="bYI-Os-Z1Y" firstAttribute="top" secondItem="LdY-1g-H6C" secondAttribute="top" id="RXc-ik-PBo"/>
+                                    <constraint firstAttribute="trailing" secondItem="bYI-Os-Z1Y" secondAttribute="trailing" id="hH5-HS-FnF"/>
+                                    <constraint firstAttribute="bottom" secondItem="bYI-Os-Z1Y" secondAttribute="bottom" id="qGp-Ev-WIr"/>
+                                    <constraint firstItem="bYI-Os-Z1Y" firstAttribute="leading" secondItem="LdY-1g-H6C" secondAttribute="leading" id="sjP-sB-ZbS"/>
+                                    <constraint firstAttribute="height" constant="122" id="ywW-bT-hBO"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="4b5-eP-HQ2" appends="YES" id="1GI-eb-97t"/>
+                                </connections>
+                            </scrollView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clue: Click To Reveal The Article's Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-Wq-fYZ">
+                                <rect key="frame" x="16" y="165" width="343" height="122"/>
+                                <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="jaS-2j-exs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.83517795138888884" green="0.941650390625" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="j2Q-2C-SNn" secondAttribute="trailing" constant="16" id="Ahb-dN-DWf"/>
+                            <constraint firstItem="L0x-Wq-fYZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="6pq-Ba-Knl"/>
+                            <constraint firstItem="LdY-1g-H6C" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="9KL-x9-8g2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O1v-wJ-juX" secondAttribute="trailing" constant="16" id="Cxf-qW-EEc"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="EHf-2I-2bu"/>
+                            <constraint firstItem="dMs-Ed-m6R" firstAttribute="top" secondItem="LdY-1g-H6C" secondAttribute="bottom" constant="8" id="FdF-iV-Wbi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0KF-Ut-W52" secondAttribute="bottom" constant="20" id="ILg-dk-sJv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L0x-Wq-fYZ" secondAttribute="trailing" constant="16" id="L5I-ES-s0E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LdY-1g-H6C" secondAttribute="trailing" constant="16" id="NQk-RK-txo"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="top" secondItem="OpQ-FQ-Xkw" secondAttribute="bottom" constant="8" id="OxQ-7V-ts4"/>
                             <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="P5x-Ic-mzU"/>
-                            <constraint firstItem="dMs-Ed-m6R" firstAttribute="top" secondItem="j2Q-2C-SNn" secondAttribute="bottom" constant="8" id="TfE-Sx-a5Y"/>
+                            <constraint firstItem="LdY-1g-H6C" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Skp-ys-uIk"/>
                             <constraint firstItem="dMs-Ed-m6R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="V4c-sU-rb0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="frt-K1-htJ" secondAttribute="trailing" constant="16" id="VuV-o9-xdP"/>
                             <constraint firstItem="0KF-Ut-W52" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="anf-OP-gpb"/>
-                            <constraint firstItem="j2Q-2C-SNn" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="ap8-ty-xAk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OpQ-FQ-Xkw" secondAttribute="trailing" constant="16" id="b1q-gM-M7e"/>
-                            <constraint firstItem="j2Q-2C-SNn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="eC7-Wd-FOP"/>
+                            <constraint firstItem="LdY-1g-H6C" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" symbolic="YES" id="f09-s3-8UY"/>
                             <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="jNr-bH-hg0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="frt-K1-htJ" secondAttribute="bottom" constant="20" id="pfD-EM-NaM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dMs-Ed-m6R" secondAttribute="trailing" constant="16" id="vmX-jB-kfR"/>
+                            <constraint firstItem="LdY-1g-H6C" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="y3e-sg-rh8"/>
+                            <constraint firstItem="L0x-Wq-fYZ" firstAttribute="top" secondItem="O1v-wJ-juX" secondAttribute="bottom" constant="8" id="zVT-G6-2xn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -147,9 +165,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="pGB-Iv-qTE">
+                <tapGestureRecognizer id="4b5-eP-HQ2">
                     <connections>
-                        <action selector="onTappedClueView:" destination="BYZ-38-t0r" id="frr-de-aRY"/>
+                        <action selector="onTappedClueView:" destination="BYZ-38-t0r" id="B6g-8F-5rC"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

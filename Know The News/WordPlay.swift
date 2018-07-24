@@ -12,12 +12,6 @@ class WordPlay: NSObject {
     
     var wordID : String!
     
-    let appId = "2a87bd3b"
-    let appKey = "e2b929b0f6976ff5e0084a1503530f2a"
-    let language = "en"
-    
-    let defaults = UserDefaults.standard
-    
     override init() {
         super.init()
         // do nothing
@@ -25,28 +19,6 @@ class WordPlay: NSObject {
     
     func updateWord(to: String) {
         wordID = to.lowercased()
-        
-//        let inflectionQuery = "https://od-api.oxforddictionaries.com:443/api/v1/inflections/\(language)/\(wordID!)"
-//        let thesaurusQuery = "https://od-api.oxforddictionaries.com:443/api/v1/entries/\(language)/\(wordID!)/synonyms;antonyms"
-//        if let url = URL(string: inflectionQuery) {
-//            var request = URLRequest(url: url)
-//            request.addValue("application/json", forHTTPHeaderField: "Accept")
-//            request.addValue(appId, forHTTPHeaderField: "app_id")
-//            request.addValue(appKey, forHTTPHeaderField: "app_key")
-//
-//            let session = URLSession.shared
-//            _ = session.dataTask(with: request, completionHandler: { data, response, error in
-//                if let _ = response,
-//                    let data = data,
-//                    let jsonData = try? JSON(data: data) {
-//                    //print(jsonData)
-//                    self.parseInflection(json: jsonData)
-//                    return
-//                } else {
-//                    self.loadError()
-//                }
-//            }).resume()
-//        }
     }
     
     func randomizedCharacterList() -> [Character] {

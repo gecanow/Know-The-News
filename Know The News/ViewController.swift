@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var clueLabel: UILabel!
-    
     @IBOutlet weak var headlineLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -230,7 +229,7 @@ class ViewController: UIViewController {
     
     func droppedInPlace(guessIndex: Int) {
         if optionsArr[movable!].holderIndex() != -1 {
-            chipHolderArr[guessIndex].removeChip()
+            chipHolderArr[optionsArr[movable!].holderIndex()].removeChip()
         }
         chipHolderArr[guessIndex].setIn(chip: optionsArr[movable!])
     }
@@ -247,15 +246,22 @@ class ViewController: UIViewController {
         }
         
         let analysis = wordPlay.analyze(word: wordGuess)
+        var completed = true
         
         for x in 0..<analysis.count {
             if analysis[x] == 0 {
                 chipHolderArr[x].backgroundColor = .red
+                completed = false
             } else if analysis[x] == 1 {
                 chipHolderArr[x].backgroundColor = .green
             } else {
                 chipHolderArr[x].backgroundColor = .white
+                completed = false
             }
+        }
+        
+        if completed {
+            alertUser("You got it!")
         }
     }
     
