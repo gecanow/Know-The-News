@@ -11,9 +11,14 @@ import UIKit
 class SourceTypeViewController: UIViewController {
     
     @IBOutlet weak var sourceBok: UIView!
-    var passType = "all" // default
+    var passType = "general" // default
     @IBOutlet var typeViews: [UIImageView]!
-    let names = ["general", "business", "technology", "entertainment", "science", "sports", "health", "all"]
+    let names = ["general", "business", "technology", "entertainment", "science", "sports", "all"]
+    
+    var language = "en" // default
+    @IBOutlet var languageButtons: [UIButton]!
+    let languageCodes = ["ar", "de", "en", "es", "fr", "he", "it", "nl", "no", "pt", "ru", "se", "zh"]
+    
     
     //=========================================
     // VIEW DID LOAD
@@ -31,11 +36,31 @@ class SourceTypeViewController: UIViewController {
         
         for type in typeViews {
             if type.frame.contains(loc) {
-                passType = names[type.tag]
-                performSegue(withIdentifier: "gameSegue", sender: self)
+                let selected = names[type.tag]
+                
+                if !(passType == selected) {
+                    for t in typeViews { t.backgroundColor = .clear }
+                    type.backgroundColor = .white
+                    passType = selected
+                }
                 break
             }
         }
+    }
+    
+    @IBAction func onTappedLanguage(_ sender: UIButton) {
+        let selectedCode = languageCodes[sender.tag]
+        
+        if !(language == selectedCode) {
+            for b in languageButtons { b.backgroundColor = .clear }
+            sender.backgroundColor = .white
+            language = selectedCode
+        }
+    }
+    
+    
+    @IBAction func onTappedBegin(_ sender: Any) {
+        performSegue(withIdentifier: "gameSegue", sender: self)
     }
     
     //=========================================
@@ -44,6 +69,7 @@ class SourceTypeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
         dvc.sourceType = passType
+        dvc.language = language
     }
     
     //=========================================

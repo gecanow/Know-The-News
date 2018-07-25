@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     var savedArticles = [[String:String]]()
     
     var sourceType : String!
+    var language : String!
     
     //=========================================
     // VIEW DID LOAD
@@ -48,12 +49,9 @@ class ViewController: UIViewController {
         self.title = getTitle()
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
         
-        var query = "https://newsapi.org/v1/sources?language=en&country=us&"
-        if sourceType == "all" {
-            query += "apiKey=\(apiKey)"
-        } else {
-            query += "category=\(sourceType!)&apiKey=\(apiKey)"
-        }
+        var query = "https://newsapi.org/v1/sources?language=\(language!)"//"&country=us"
+        query += (sourceType == "all" ? "&apiKey=\(apiKey)" : "&category=\(sourceType!)&apiKey=\(apiKey)")
+        print("querying: \(query)")
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
