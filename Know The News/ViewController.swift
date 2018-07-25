@@ -8,6 +8,8 @@
 
 import UIKit
 
+let titleAttributes = [NSAttributedStringKey.font: UIFont(name: "Sofija", size: 30)!]
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var clueLabel: UILabel!
@@ -20,6 +22,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var gamePlayView: UIView!
     @IBOutlet weak var guessView: UIView!
     @IBOutlet weak var optionsView: UIView!
+    
+    @IBOutlet weak var gameTimer: GameTimer!
     
     var chipHolderArr = [ChipHolder]()
     var optionsArr = [Chip]()
@@ -40,15 +44,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
-        self.title = getTitle()
         
-        var query : String!
+        self.title = getTitle()
+        self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
+        
+        var query = "https://newsapi.org/v1/sources?language=en&country=us&"
         if sourceType == "all" {
-            query = "https://newsapi.org/v1/sources?language=en&country=us&apiKey=\(apiKey)"
+            query += "apiKey=\(apiKey)"
         } else {
-            query = "https://newsapi.org/v1/sources?language=en&country=us&category=\(sourceType!)&apiKey=\(apiKey)"
+            query += "category=\(sourceType!)&apiKey=\(apiKey)"
         }
-        print("querying: \(query)")
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
@@ -128,6 +133,7 @@ class ViewController: UIViewController {
     //===========================================
     @IBAction func onTappedUpdate(_ sender: Any) {
         clueLabel.isHidden = false
+        self.gameTimer.reset()
         chooseRandomArticle()
     }
     
@@ -167,7 +173,7 @@ class ViewController: UIViewController {
         sourceLabel.text = "\(chosenSource.source["name"]!) reports:"
         descriptionLabel.text = chosenArticle["description"]
         
-        wordPlay.updateWord(to: splitTitle[1])
+        wordPlay.updateWord(to: splitTitle[1], fromArticle: chosenArticle)
         print("The missing word is: \(wordPlay.wordID!)")
         
         //-------
@@ -180,38 +186,50 @@ class ViewController: UIViewController {
     //=========================================
     func setUpChips() {
         removeAll()
+        
         //-------
-        let maxWidth = ((optionsView.frame.width-8)/10)-8
-        var size = CGSize(width: ((optionsView.frame.width-8)/CGFloat(wordPlay.wordID.count))-8, height: ((optionsView.frame.height-8)/2)-8)
-        if size.width > maxWidth {
-            size.width = maxWidth
-        }
+        let cols = CGFloat(7.0)
+        let rows = CGFloat(3.0)
+        let space = CGFloat(8.0)
+        //-------
         
-        // where the missing word is!
-        let totalHalfWidth = (((Int(size.width)+8)*wordPlay.wordID.count)-8)/2
-        let startX = (Int(guessView.frame.width)/2) - totalHalfWidth
-        let endX = (Int(guessView.frame.width)/2) + totalHalfWidth
+        //-------
+        let maxWidth = ((optionsView.frame.width-space)/cols)-space
+        var size = CGSize(width: ((optionsView.frame.width-space)/CGFloat(wordPlay.wordID.count))-space, height: ((optionsView.frame.height-space)/rows)-space)
         
-        var ctr = 0
-        for x in stride(from: startX, to: endX, by: Int(size.width)+8) {
+        if size.width > maxWidth { size.width = maxWidth }
+        //-------
+        
+        // CHARACTER HOLDERS
+        var totalHalfWidth = (((Double(size.width + space)) * Double(wordPlay.wordID.count))-Double(space))/2
+        var startX = (Double(guessView.frame.width)/2) - totalHalfWidth
+        
+        var x = startX
+        for ctr in 0..<wordPlay.wordID.count {
             chipHolderArr.append(createNewChipHolder(atPoint: CGPoint(x: x, y: 16), ofSize: size, atI: ctr))
-            ctr += 1
+            x += Double(size.width+space)
         }
         
-        // set up the character guesses
-        let set = wordPlay.randomizedCharacterList()
+        // CHIP OPTIONS
+        totalHalfWidth = Double((size.width + space) * cols - space)/2
+        startX = (Double(optionsView.frame.width)/2) - totalHalfWidth
+        
+        let set = wordPlay.randomizedCharacterList(length: Int(rows*cols))
         
         var count = 0
         var y = guessView.frame.height+16
-        for _ in 0..<2 {
-            var x = optionsView.frame.minX+8
-            for _ in 0..<10 {
+        for _ in 0..<Int(rows) {
+            var x = CGFloat(startX) + space
+            for _ in 0..<Int(cols) {
                 optionsArr.append(createNewCharLabel(atPoint: CGPoint(x: x, y: y), ofSize: size, str: String(set[count])))
                 count += 1
-                x += size.width+8
+                x += size.width + space
             }
-            y += size.height + 8
+            y += size.height + space
         }
+        
+        // OFFICIALLY START THE GAME
+        gameTimer.start()
     }
     
     //==========================================
@@ -330,7 +348,13 @@ class ViewController: UIViewController {
         }
         
         if completed {
-            alertUser("You got it!")
+            // END THE GAME
+            gameTimer.stop()
+            
+            let source = wordPlay.article["sourceName"]
+            let date = wordPlay.article["date"]
+            let fullTitle = wordPlay.article["title"]
+            alertUser("You got it! On \(date!), \(source!) published \n\"\(fullTitle!)\"")
         }
     }
     
@@ -409,20 +433,24 @@ class ViewController: UIViewController {
     // option to continue or save and continue
     //=========================================
     func alertUser(_ withTitle: String) {
-        let alert = UIAlertController(title: withTitle, message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: withTitle, message: "If you would like to save this article to your library, select 'Save and Continue'", preferredStyle: .alert)
         
         let saveArticle = UIAlertAction(title: "Save and Continue", style: .default) { (void) in
             self.savedArticles.append(self.chosenArticle)
             self.saveSaved()
+            
             self.onTappedUpdate(self)
         }
         
-        let next = UIAlertAction(title: "Continue", style: .default) { (void) in
+        let next = UIAlertAction(title: "Continue to Next Article", style: .default) { (void) in
             self.onTappedUpdate(self)
         }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         
         alert.addAction(next)
         alert.addAction(saveArticle)
+        alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
     

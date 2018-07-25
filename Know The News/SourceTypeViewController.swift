@@ -20,6 +20,7 @@ class SourceTypeViewController: UIViewController {
     //=========================================
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
     }
     
     //=========================================
@@ -44,5 +45,15 @@ class SourceTypeViewController: UIViewController {
         let dvc = segue.destination as! ViewController
         dvc.sourceType = passType
     }
+    
+    //=========================================
+    // Handles when user taps on the NewsAPI
+    // attribution
+    //=========================================
+    @IBAction func openNewsAPI(_ sender: Any) {
+        let url = URL(string: "https://newsapi.org/")
+        UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+    }
+    
     
 }

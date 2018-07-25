@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		CC0615962106682B004A9BFB /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0615952106682B004A9BFB /* Chip.swift */; };
 		CC0615982106C25C004A9BFB /* ChipHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0615972106C25C004A9BFB /* ChipHolder.swift */; };
+		CC5DD6EE2107F5C500FEA0A4 /* Sofija.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */; };
+		CC5DD6EF2107F5C500FEA0A4 /* Sofija.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */; };
+		CC5DD6F02107F5C500FEA0A4 /* Sofija.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */; };
+		CC5DD6F12107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */; };
+		CC5DD6F22107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */; };
+		CC5DD6F32107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */; };
+		CC5DD6F521081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
+		CC5DD6F621081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
+		CC5DD6F721081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC810F4E20F64D8800EC6F62 /* SourceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */; };
 		CCC11A1520F9026C00D2482C /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC11A1420F9026C00D2482C /* BeginViewController.swift */; };
 		CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD54D220F5153B007746C4 /* SavedViewController.swift */; };
@@ -44,6 +53,9 @@
 /* Begin PBXFileReference section */
 		CC0615952106682B004A9BFB /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		CC0615972106C25C004A9BFB /* ChipHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipHolder.swift; sourceTree = "<group>"; };
+		CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sofija.ttf; sourceTree = "<group>"; };
+		CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sofija-Italic.ttf"; sourceTree = "<group>"; };
+		CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTypeViewController.swift; sourceTree = "<group>"; };
 		CCC11A1420F9026C00D2482C /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		CCDD54D220F5153B007746C4 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC5DD6EB2107F5C300FEA0A4 /* sofija */ = {
+			isa = PBXGroup;
+			children = (
+				CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */,
+				CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */,
+			);
+			path = sofija;
+			sourceTree = "<group>";
+		};
 		CCE1B37C20F4164A004B78B1 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +141,8 @@
 				CCE1B3B820F4180A004B78B1 /* Source.swift */,
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
+				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
+				CC5DD6EB2107F5C300FEA0A4 /* sofija */,
 				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
 				CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */,
 				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
@@ -253,8 +276,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5DD6F12107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */,
 				CCE1B39320F4164A004B78B1 /* LaunchScreen.storyboard in Resources */,
 				CCE1B39020F4164A004B78B1 /* Assets.xcassets in Resources */,
+				CC5DD6EE2107F5C500FEA0A4 /* Sofija.ttf in Resources */,
 				CCE1B38E20F4164A004B78B1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,6 +288,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5DD6F22107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */,
+				CC5DD6EF2107F5C500FEA0A4 /* Sofija.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +297,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC5DD6F32107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */,
+				CC5DD6F02107F5C500FEA0A4 /* Sofija.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +312,7 @@
 				CCC11A1520F9026C00D2482C /* BeginViewController.swift in Sources */,
 				CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */,
 				CCE1B3B920F4180A004B78B1 /* Source.swift in Sources */,
+				CC5DD6F521081AF200FEA0A4 /* GameTimer.swift in Sources */,
 				CCE1B3B720F416A2004B78B1 /* SwiftyJSON.swift in Sources */,
 				CC0615962106682B004A9BFB /* Chip.swift in Sources */,
 				CC0615982106C25C004A9BFB /* ChipHolder.swift in Sources */,
@@ -298,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCE1B39E20F4164B004B78B1 /* Know_The_NewsTests.swift in Sources */,
+				CC5DD6F621081AF200FEA0A4 /* GameTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCE1B3A920F4164B004B78B1 /* Know_The_NewsUITests.swift in Sources */,
+				CC5DD6F721081AF200FEA0A4 /* GameTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

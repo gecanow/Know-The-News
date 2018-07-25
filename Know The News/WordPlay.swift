@@ -11,6 +11,7 @@ import UIKit
 class WordPlay: NSObject {
     
     var wordID : String!
+    var article : [String: String]!
     
     //=========================================
     // INIT
@@ -23,16 +24,17 @@ class WordPlay: NSObject {
     //=========================================
     // Updates the wordplay word
     //=========================================
-    func updateWord(to: String) {
+    func updateWord(to: String, fromArticle: [String: String]) {
         wordID = to.lowercased()
+        article = fromArticle
     }
     
     //==============================================
-    // Returns an array of 20 characters in a
+    // Returns an array of *length* characters in a
     // random order, containing all the characters
     // in the wordID plus extra random characters
     //==============================================
-    func randomizedCharacterList() -> [Character] {
+    func randomizedCharacterList(length: Int) -> [Character] {
         var mustHaveChars = [Character]()
         
         for char in 0..<wordID.count {
@@ -43,7 +45,7 @@ class WordPlay: NSObject {
             mustHaveChars.insert(myChar, at: Int(randomIndex))
         }
         let alphabet = "abcdefghijklmnopqrstuvwxyz"
-        for _ in 0..<(20-wordID.count) {
+        for _ in 0..<(length-wordID.count) {
             let randomChar = arc4random_uniform(26)
             let index = alphabet.index(alphabet.startIndex, offsetBy: randomChar)
             let myChar = alphabet[index]

@@ -20,6 +20,8 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //=========================================
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -107,13 +109,13 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
     //=========================================
     // Handles when the user taps edit
     //=========================================
-    @IBAction func onTappedEdit(_ sender: UIButton) {
-        if sender.titleLabel?.text == "Edit" {
+    @IBAction func onTappedEdit(_ sender: UIBarButtonItem) {
+        if sender.title == "Edit" {
             tableView.setEditing(true, animated: true)
-            sender.setTitle("Done", for: .normal)
+            sender.title = "Done"
         } else {
             tableView.setEditing(false, animated: true)
-            sender.setTitle("Edit", for: .normal)
+            sender.title = "Edit"
             
         }
     }

@@ -44,7 +44,10 @@ class Source: NSObject {
             let title = result["title"].stringValue
             let description = result["description"].stringValue
             let url = result["url"].stringValue
-            let article = ["title": title, "description": description, "url": url]
+            let date = String(result["publishedAt"].stringValue.prefix(10))
+            let sourceName = source["name"]!
+            
+            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date]
             articles.append(article)
         }
     }
