@@ -93,8 +93,8 @@ class SourceTypeViewController: UIViewController {
     func setAndSearchQuery() {
         var query = "https://newsapi.org/v1/sources?language=en"
         query += (country == "all" ? "" : "&country=\(country)") //add country code, if applicable
-        query += (passType == "all" ? "&apiKey=\(apiKey)" : "&category=\(passType)&apiKey=\(apiKey)") //add source type, if applicable
-        print("querying: \(query)")
+        query += (passType == "all" ? "" : "&category=\(passType)") //add source type, if applicable
+        query += "&apiKey=\(apiKey)"
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
