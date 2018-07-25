@@ -31,12 +31,8 @@ class ViewController: UIViewController {
     var movable : Int?
     
     var sources : [[String: String]]!
-    //let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4"
     let defaults = UserDefaults.standard
     var savedArticles = [[String:String]]()
-    
-    //var sourceType : String!
-    //var country : String!
     
     //=========================================
     // VIEW DID LOAD
@@ -46,71 +42,17 @@ class ViewController: UIViewController {
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
         
-        //self.title = getTitle()
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
         
-//        var query = "https://newsapi.org/v1/sources?language=en"
-//        query += (country == "all" ? "" : "&country=\(country)") //add country code, if applicable
-//        query += (sourceType == "all" ? "&apiKey=\(apiKey)" : "&category=\(sourceType!)&apiKey=\(apiKey)") //add source type, if applicable
-//        print("querying: \(query)")
-//
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            [unowned self] in
-//            // rest of method goes here
-//
-//            if let url = URL(string: query) {
-//                if let data = try? Data(contentsOf: url) {
-//                    let json = try! JSON(data: data)
-//                    if json["status"] == "ok" {
-//                        self.parse(json: json)
-//                        return
-//                    }
-//                }
-//            }
-//            self.loadError()
-//        }
-//
         if let savedData = defaults.object(forKey: savedArticlesID) as? Data {
             if let decoded = try? JSONDecoder().decode([[String: String]].self, from: savedData) {
                 savedArticles = decoded
             }
         }
+        // start the game!
+        self.onTappedUpdate(self)
     }
     
-    //=========================================
-    // Returns the title given the sourceType
-    //=========================================
-//    func getTitle() -> String {
-//        switch self.title {
-//        case "general":
-//            return "Politics"
-//        default:
-//            let capsFirst = sourceType.prefix(1).uppercased()
-//            let rest = sourceType.suffix(sourceType.count-1)
-//            return capsFirst + rest
-//        }
-//    }
-    
-//    //=========================================
-//    // Parses for all sources of a given type
-//    //=========================================
-//    func parse(json: JSON) {
-//        //print(json["sources"])
-//        for result in json["sources"].arrayValue {
-//            let id = result["id"].stringValue
-//            let name = result["name"].stringValue
-//            let description = result["description"].stringValue
-//
-//            let source = ["id": id, "name": name, "description": description]
-//            sources.append(source)
-//        }
-//
-//        DispatchQueue.main.async {
-//            [unowned self] in
-//            self.chooseRandomArticle()
-//        }
-//    }
-//
     //=========================================
     // Informs the user of a loading error
     //=========================================

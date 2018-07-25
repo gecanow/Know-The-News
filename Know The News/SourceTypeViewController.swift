@@ -64,7 +64,7 @@ class SourceTypeViewController: UIViewController {
     
     
     @IBAction func onTappedBegin(_ sender: Any) {
-        //performSegue(withIdentifier: "gameSegue", sender: self)
+        sources = [[String: String]]()
         setAndSearchQuery()
     }
     
@@ -109,7 +109,7 @@ class SourceTypeViewController: UIViewController {
                     }
                 }
             }
-            self.loadError()
+            self.loadError(problem: "There was a problem loading the news feed.")
         }
     }
     
@@ -125,31 +125,27 @@ class SourceTypeViewController: UIViewController {
             let source = ["id": id, "name": name, "description": description]
             sources.append(source)
         }
-        nowSegue() // segue after all the sources have been appended
         
-//        DispatchQueue.main.async {
-//            [unowned self] in
-//            //self.chooseRandomArticle()
-//            self.performSegue(withIdentifier: "gameSegue", sender: self)
-//        }
-    }
-    func nowSegue() {
-        DispatchQueue.main.async {
-            [unowned self] in
-            self.performSegue(withIdentifier: "gameSegue", sender: self)
+        if sources.count > 0 {
+            DispatchQueue.main.async {
+                [unowned self] in
+                self.performSegue(withIdentifier: "gameSegue", sender: self)
+            }
+        } else {
+            loadError(problem: "Not enough sources available.")
         }
     }
     
     //=========================================
     // Informs the user of a loading error
     //=========================================
-    func loadError() {
+    func loadError(problem: String) {
         DispatchQueue.main.async {
             [unowned self] in
             //(rest of method goes here)
             
             let alert = UIAlertController(title: "Loading Error",
-                                          message: "There was a problem loading the news feed",
+                                          message: problem,
                                           preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
