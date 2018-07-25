@@ -8,16 +8,20 @@
 
 import UIKit
 
+let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4" // global API Key
+
 class SourceTypeViewController: UIViewController {
+    
+    var sources = [[String: String]]()
     
     @IBOutlet weak var sourceBok: UIView!
     var passType = "general" // default
     @IBOutlet var typeViews: [UIImageView]!
     let names = ["general", "business", "technology", "entertainment", "science", "sports", "all"]
     
-    var language = "en" // default
-    @IBOutlet var languageButtons: [UIButton]!
-    let languageCodes = ["ar", "de", "en", "es", "fr", "he", "it", "nl", "no", "pt", "ru", "se", "zh"]
+    var country = "us" // default
+    @IBOutlet var countryButtons: [UIButton]!
+    let countryCodes = ["au", "de", "us", "gb", "in", "it", "all"]
     
     
     //=========================================
@@ -49,18 +53,19 @@ class SourceTypeViewController: UIViewController {
     }
     
     @IBAction func onTappedLanguage(_ sender: UIButton) {
-        let selectedCode = languageCodes[sender.tag]
+        let selectedCode = countryCodes[sender.tag]
         
-        if !(language == selectedCode) {
-            for b in languageButtons { b.backgroundColor = .clear }
+        if !(country == selectedCode) {
+            for b in countryButtons { b.backgroundColor = .clear }
             sender.backgroundColor = .white
-            language = selectedCode
+            country = selectedCode
         }
     }
     
     
     @IBAction func onTappedBegin(_ sender: Any) {
-        performSegue(withIdentifier: "gameSegue", sender: self)
+        //performSegue(withIdentifier: "gameSegue", sender: self)
+        setAndSearchQuery()
     }
     
     //=========================================
@@ -68,8 +73,8 @@ class SourceTypeViewController: UIViewController {
     //=========================================
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
-        dvc.sourceType = passType
-        dvc.language = language
+        dvc.title = self.passType
+        dvc.sources = self.sources
     }
     
     //=========================================
@@ -81,5 +86,74 @@ class SourceTypeViewController: UIViewController {
         UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
     }
     
+    //--------------------//
+    // QUERYING FUNCTIONS //
+    //--------------------//
+    
+    func setAndSearchQuery() {
+        var query = "https://newsapi.org/v1/sources?language=en"
+        query += (country == "all" ? "" : "&country=\(country)") //add country code, if applicable
+        query += (passType == "all" ? "&apiKey=\(apiKey)" : "&category=\(passType)&apiKey=\(apiKey)") //add source type, if applicable
+        print("querying: \(query)")
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            [unowned self] in
+            // rest of method goes here
+            
+            if let url = URL(string: query) {
+                if let data = try? Data(contentsOf: url) {
+                    let json = try! JSON(data: data)
+                    if json["status"] == "ok" {
+                        self.parse(json: json)
+                        return
+                    }
+                }
+            }
+            self.loadError()
+        }
+    }
+    
+    //=========================================
+    // Parses for all sources of a given type
+    //=========================================
+    func parse(json: JSON) {
+        for result in json["sources"].arrayValue {
+            let id = result["id"].stringValue
+            let name = result["name"].stringValue
+            let description = result["description"].stringValue
+            
+            let source = ["id": id, "name": name, "description": description]
+            sources.append(source)
+        }
+        nowSegue() // segue after all the sources have been appended
+        
+//        DispatchQueue.main.async {
+//            [unowned self] in
+//            //self.chooseRandomArticle()
+//            self.performSegue(withIdentifier: "gameSegue", sender: self)
+//        }
+    }
+    func nowSegue() {
+        DispatchQueue.main.async {
+            [unowned self] in
+            self.performSegue(withIdentifier: "gameSegue", sender: self)
+        }
+    }
+    
+    //=========================================
+    // Informs the user of a loading error
+    //=========================================
+    func loadError() {
+        DispatchQueue.main.async {
+            [unowned self] in
+            //(rest of method goes here)
+            
+            let alert = UIAlertController(title: "Loading Error",
+                                          message: "There was a problem loading the news feed",
+                                          preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
     
 }

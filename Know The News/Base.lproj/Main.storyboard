@@ -272,6 +272,11 @@
                                             <constraint firstAttribute="width" constant="50" id="MiF-p3-VzV"/>
                                             <constraint firstAttribute="height" constant="50" id="RkS-bb-5bR"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -316,17 +321,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAg-dO-vY5">
-                                <rect key="frame" x="102.5" y="254" width="170.5" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Region" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAg-dO-vY5">
+                                <rect key="frame" x="115.5" y="254" width="144" height="25"/>
                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7M4-me-gYd">
-                                <rect key="frame" x="8" y="287" width="360" height="100"/>
+                                <rect key="frame" x="20" y="287" width="336" height="72"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QIp-tu-Ixi">
-                                        <rect key="frame" x="20" y="8" width="320" height="84"/>
+                                        <rect key="frame" x="8" y="8" width="320" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTk-Ej-TXX">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
@@ -337,8 +342,8 @@
                                                             <constraint firstAttribute="width" constant="80" id="CXR-Jz-3W3"/>
                                                             <constraint firstAttribute="height" constant="28" id="JAP-iU-aVk"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                                                        <state key="normal" title="عربى">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <state key="normal" title="Australia">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -351,8 +356,8 @@
                                                             <constraint firstAttribute="height" constant="28" id="EWF-4Q-h58"/>
                                                             <constraint firstAttribute="width" constant="80" id="KTc-Oo-Km4"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Deutsche">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <state key="normal" title="Germany">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -366,8 +371,8 @@
                                                             <constraint firstAttribute="height" constant="28" id="TB1-hx-Gas"/>
                                                             <constraint firstAttribute="width" constant="80" id="zaf-YK-vWA"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="English">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <state key="normal" title="USA">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -380,8 +385,8 @@
                                                             <constraint firstAttribute="width" constant="80" id="rsS-av-Ul6"/>
                                                             <constraint firstAttribute="height" constant="28" id="ycM-lf-2ff"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Español">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <state key="normal" title="Great Britain">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -393,121 +398,45 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfD-uC-RRf">
                                                 <rect key="frame" x="0.0" y="28" width="320" height="28"/>
                                                 <subviews>
-                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-T3-YA5">
+                                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjW-Mf-2c2">
                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="28" id="RSK-f7-CLP"/>
-                                                            <constraint firstAttribute="width" constant="80" id="hbq-dr-TdT"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Français">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="32B-ut-mEA"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjW-Mf-2c2">
-                                                        <rect key="frame" x="80" y="0.0" width="80" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="80" id="a7n-4o-gxV"/>
                                                             <constraint firstAttribute="height" constant="28" id="cM1-Jm-Uco"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="עִברִית">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <state key="normal" title="India">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="fYd-DG-PBe"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtG-CO-gh5">
-                                                        <rect key="frame" x="160" y="0.0" width="80" height="28"/>
+                                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtG-CO-gh5">
+                                                        <rect key="frame" x="80" y="0.0" width="80" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="1zj-cu-Qbu"/>
                                                             <constraint firstAttribute="width" constant="80" id="Cx8-5h-m0l"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Italiano">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <state key="normal" title="Italy">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="SbE-Tx-CX1"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-8s-YZo">
-                                                        <rect key="frame" x="240" y="0.0" width="80" height="28"/>
+                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-8s-YZo">
+                                                        <rect key="frame" x="160" y="0.0" width="160" height="28"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="6oa-TN-bYA"/>
                                                             <constraint firstAttribute="height" constant="28" id="K7b-OJ-eEO"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Nederlands">
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <state key="normal" title="All">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="LkW-sh-lah"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vP-0O-LTQ">
-                                                <rect key="frame" x="0.0" y="56" width="320" height="28"/>
-                                                <subviews>
-                                                    <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xds-jT-wNQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="28" id="EyV-fz-SLM"/>
-                                                            <constraint firstAttribute="width" constant="80" id="bWj-Ir-94U"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Português">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="16d-4u-SuW"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBR-X7-wue">
-                                                        <rect key="frame" x="80" y="0.0" width="80" height="28"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="8Lp-Jx-Qxm"/>
-                                                            <constraint firstAttribute="height" constant="28" id="ov2-DN-eg4"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="русский">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="Bnz-mC-wP9"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMj-vz-6Ck">
-                                                        <rect key="frame" x="160" y="0.0" width="80" height="28"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="JFh-Sd-dDG"/>
-                                                            <constraint firstAttribute="height" constant="28" id="Us4-Dp-hc0"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="Sami">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="sZH-2L-dI0"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vkf-Ao-OMC">
-                                                        <rect key="frame" x="240" y="0.0" width="80" height="28"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="NM6-xI-mp1"/>
-                                                            <constraint firstAttribute="height" constant="28" id="XYz-1f-i7e"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                        <state key="normal" title="中文">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="NH9-M8-bvt"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -518,8 +447,8 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="QIp-tu-Ixi" secondAttribute="bottom" constant="8" id="0L9-xu-bUH"/>
                                     <constraint firstItem="QIp-tu-Ixi" firstAttribute="top" secondItem="7M4-me-gYd" secondAttribute="top" constant="8" id="Ho6-gM-Kco"/>
-                                    <constraint firstAttribute="trailing" secondItem="QIp-tu-Ixi" secondAttribute="trailing" constant="20" id="RT4-R7-bUI"/>
-                                    <constraint firstItem="QIp-tu-Ixi" firstAttribute="leading" secondItem="7M4-me-gYd" secondAttribute="leading" constant="20" id="rpD-eA-qyK"/>
+                                    <constraint firstAttribute="trailing" secondItem="QIp-tu-Ixi" secondAttribute="trailing" constant="8" id="RT4-R7-bUI"/>
+                                    <constraint firstItem="QIp-tu-Ixi" firstAttribute="leading" secondItem="7M4-me-gYd" secondAttribute="leading" constant="8" id="rpD-eA-qyK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -564,18 +493,13 @@
                         <outletCollection property="typeViews" destination="rdx-fx-JdN" collectionClass="NSMutableArray" id="mg6-zu-qXT"/>
                         <outletCollection property="typeViews" destination="vhi-oD-cDj" collectionClass="NSMutableArray" id="ZRD-YZ-VLb"/>
                         <outletCollection property="typeViews" destination="Sx0-sE-M5Y" collectionClass="NSMutableArray" id="GIc-BW-yT3"/>
-                        <outletCollection property="languageButtons" destination="49Q-K0-8NM" collectionClass="NSMutableArray" id="KQH-h4-fHn"/>
-                        <outletCollection property="languageButtons" destination="tA5-li-clC" collectionClass="NSMutableArray" id="heK-oN-YRe"/>
-                        <outletCollection property="languageButtons" destination="P0f-X6-Zee" collectionClass="NSMutableArray" id="4dY-O2-ytn"/>
-                        <outletCollection property="languageButtons" destination="XBf-qf-h0b" collectionClass="NSMutableArray" id="KxX-1W-Qll"/>
-                        <outletCollection property="languageButtons" destination="HSh-T3-YA5" collectionClass="NSMutableArray" id="8B0-fd-hX5"/>
-                        <outletCollection property="languageButtons" destination="rjW-Mf-2c2" collectionClass="NSMutableArray" id="M11-f4-MkD"/>
-                        <outletCollection property="languageButtons" destination="PtG-CO-gh5" collectionClass="NSMutableArray" id="55A-pg-uIs"/>
-                        <outletCollection property="languageButtons" destination="WEa-8s-YZo" collectionClass="NSMutableArray" id="fTD-7f-h7A"/>
-                        <outletCollection property="languageButtons" destination="Xds-jT-wNQ" collectionClass="NSMutableArray" id="HfP-c1-VFn"/>
-                        <outletCollection property="languageButtons" destination="MBR-X7-wue" collectionClass="NSMutableArray" id="TzG-oe-KDD"/>
-                        <outletCollection property="languageButtons" destination="MMj-vz-6Ck" collectionClass="NSMutableArray" id="cMD-11-hdI"/>
-                        <outletCollection property="languageButtons" destination="Vkf-Ao-OMC" collectionClass="NSMutableArray" id="pQa-dm-atO"/>
+                        <outletCollection property="countryButtons" destination="49Q-K0-8NM" collectionClass="NSMutableArray" id="KQH-h4-fHn"/>
+                        <outletCollection property="countryButtons" destination="tA5-li-clC" collectionClass="NSMutableArray" id="heK-oN-YRe"/>
+                        <outletCollection property="countryButtons" destination="P0f-X6-Zee" collectionClass="NSMutableArray" id="4dY-O2-ytn"/>
+                        <outletCollection property="countryButtons" destination="XBf-qf-h0b" collectionClass="NSMutableArray" id="KxX-1W-Qll"/>
+                        <outletCollection property="countryButtons" destination="rjW-Mf-2c2" collectionClass="NSMutableArray" id="M11-f4-MkD"/>
+                        <outletCollection property="countryButtons" destination="PtG-CO-gh5" collectionClass="NSMutableArray" id="55A-pg-uIs"/>
+                        <outletCollection property="countryButtons" destination="WEa-8s-YZo" collectionClass="NSMutableArray" id="fTD-7f-h7A"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="gameSegue" id="JMh-Gx-lus"/>
                     </connections>
                 </viewController>
