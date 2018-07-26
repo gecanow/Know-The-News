@@ -215,7 +215,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mY5-ns-H26">
-                                <rect key="frame" x="39.5" y="114" width="296" height="56"/>
+                                <rect key="frame" x="8" y="114" width="296" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7kC-ha-FNy">
                                         <rect key="frame" x="8" y="8" width="280" height="40"/>
@@ -228,6 +228,11 @@
                                                     <constraint firstAttribute="height" constant="40" id="Wc3-eb-qUT"/>
                                                     <constraint firstAttribute="width" constant="40" id="d4k-Ch-TG9"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sports" translatesAutoresizingMaskIntoConstraints="NO" id="rld-un-TrS">
                                                 <rect key="frame" x="40" y="0.0" width="40" height="40"/>
@@ -235,6 +240,11 @@
                                                     <constraint firstAttribute="width" constant="40" id="YnM-Yh-bM3"/>
                                                     <constraint firstAttribute="height" constant="40" id="rdL-OY-iuv"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tech" translatesAutoresizingMaskIntoConstraints="NO" id="0be-qA-3k7">
                                                 <rect key="frame" x="80" y="0.0" width="40" height="40"/>
@@ -242,6 +252,11 @@
                                                     <constraint firstAttribute="height" constant="40" id="6aw-3e-OoI"/>
                                                     <constraint firstAttribute="width" constant="40" id="YN4-wO-FqF"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="science" translatesAutoresizingMaskIntoConstraints="NO" id="rdx-fx-JdN">
                                                 <rect key="frame" x="120" y="0.0" width="40" height="40"/>
@@ -249,6 +264,11 @@
                                                     <constraint firstAttribute="height" constant="40" id="3bV-lN-YCP"/>
                                                     <constraint firstAttribute="width" constant="40" id="fEE-8b-pt4"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="entertainment" translatesAutoresizingMaskIntoConstraints="NO" id="vhi-oD-cDj">
                                                 <rect key="frame" x="160" y="0.0" width="40" height="40"/>
@@ -256,6 +276,11 @@
                                                     <constraint firstAttribute="height" constant="40" id="chn-bg-QK1"/>
                                                     <constraint firstAttribute="width" constant="40" id="z30-7n-As6"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="business" translatesAutoresizingMaskIntoConstraints="NO" id="Sx0-sE-M5Y">
                                                 <rect key="frame" x="200" y="0.0" width="40" height="40"/>
@@ -263,6 +288,11 @@
                                                     <constraint firstAttribute="height" constant="40" id="RxA-aM-W0N"/>
                                                     <constraint firstAttribute="width" constant="40" id="VB3-g0-sYs"/>
                                                 </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="all" translatesAutoresizingMaskIntoConstraints="NO" id="Dh6-0o-Zde">
                                                 <rect key="frame" x="240" y="0.0" width="40" height="40"/>
@@ -304,9 +334,12 @@
                                     <action selector="openNewsAPI:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="V7T-pd-rfx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izl-Dl-baZ">
-                                <rect key="frame" x="147" y="250" width="80" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izl-Dl-baZ">
+                                <rect key="frame" x="287" y="242" width="72" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="nA9-R7-Jid"/>
+                                    <constraint firstAttribute="width" constant="72" id="phD-t8-huL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="17"/>
                                 <state key="normal" title="Begin!" backgroundImage="beginArrow">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -315,74 +348,120 @@
                                     <action selector="onTappedBegin:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="MkD-JI-cHr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-HC-PmY">
+                                <rect key="frame" x="287" y="381" width="72" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="QWs-Z2-bNB"/>
+                                    <constraint firstAttribute="height" constant="40" id="wbK-Ly-8cC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="17"/>
+                                <state key="normal" title="Begin!" backgroundImage="beginArrow">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTappedBegin:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="Id9-Cn-Rc8"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a News Type And Region" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFf-5N-e1z">
-                                <rect key="frame" x="44.5" y="80" width="286" height="25"/>
+                                <rect key="frame" x="8" y="80" width="286" height="25"/>
                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7M4-me-gYd">
-                                <rect key="frame" x="20" y="178" width="336" height="72"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Input a Keyword" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHj-iN-iiG">
+                                <rect key="frame" x="8" y="290" width="182" height="25"/>
+                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Select News Outlets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgr-4V-iBM">
+                                <rect key="frame" x="8" y="429" width="219" height="25"/>
+                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7M4-me-gYd" userLabel="Country Bok">
+                                <rect key="frame" x="8" y="178" width="280" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QIp-tu-Ixi">
-                                        <rect key="frame" x="8" y="8" width="320" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTk-Ej-TXX">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="280" height="28"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49Q-K0-8NM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="CXR-Jz-3W3"/>
+                                                            <constraint firstAttribute="width" constant="70" id="CXR-Jz-3W3"/>
                                                             <constraint firstAttribute="height" constant="28" id="JAP-iU-aVk"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <state key="normal" title="Australia">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="6Gp-kt-H7p"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tA5-li-clC">
-                                                        <rect key="frame" x="80" y="0.0" width="80" height="28"/>
+                                                        <rect key="frame" x="70" y="0.0" width="70" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="EWF-4Q-h58"/>
-                                                            <constraint firstAttribute="width" constant="80" id="KTc-Oo-Km4"/>
+                                                            <constraint firstAttribute="width" constant="70" id="KTc-Oo-Km4"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <state key="normal" title="Germany">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="h1b-Wn-Mbj"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0f-X6-Zee">
-                                                        <rect key="frame" x="160" y="0.0" width="80" height="28"/>
+                                                        <rect key="frame" x="140" y="0.0" width="70" height="28"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="TB1-hx-Gas"/>
-                                                            <constraint firstAttribute="width" constant="80" id="zaf-YK-vWA"/>
+                                                            <constraint firstAttribute="width" constant="70" id="zaf-YK-vWA"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <state key="normal" title="USA">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="xKK-04-vzq"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBf-qf-h0b">
-                                                        <rect key="frame" x="240" y="0.0" width="80" height="28"/>
+                                                        <rect key="frame" x="210" y="0.0" width="70" height="28"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="rsS-av-Ul6"/>
+                                                            <constraint firstAttribute="width" constant="70" id="rsS-av-Ul6"/>
                                                             <constraint firstAttribute="height" constant="28" id="ycM-lf-2ff"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                                                        <state key="normal" title="Great Britain">
+                                                        <state key="normal" title="UK">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="roT-If-BkQ"/>
                                                         </connections>
@@ -390,38 +469,48 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfD-uC-RRf">
-                                                <rect key="frame" x="0.0" y="28" width="320" height="28"/>
+                                                <rect key="frame" x="0.0" y="28" width="280" height="28"/>
                                                 <subviews>
                                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rjW-Mf-2c2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="28"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="28"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="a7n-4o-gxV"/>
+                                                            <constraint firstAttribute="width" constant="70" id="a7n-4o-gxV"/>
                                                             <constraint firstAttribute="height" constant="28" id="cM1-Jm-Uco"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <state key="normal" title="India">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="fYd-DG-PBe"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtG-CO-gh5">
-                                                        <rect key="frame" x="80" y="0.0" width="80" height="28"/>
+                                                        <rect key="frame" x="70" y="0.0" width="70" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="1zj-cu-Qbu"/>
-                                                            <constraint firstAttribute="width" constant="80" id="Cx8-5h-m0l"/>
+                                                            <constraint firstAttribute="width" constant="70" id="Cx8-5h-m0l"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                         <state key="normal" title="Italy">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="SbE-Tx-CX1"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEa-8s-YZo">
-                                                        <rect key="frame" x="160" y="0.0" width="160" height="28"/>
+                                                        <rect key="frame" x="140" y="0.0" width="140" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="28" id="K7b-OJ-eEO"/>
                                                         </constraints>
@@ -429,6 +518,11 @@
                                                         <state key="normal" title="All">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="onTappedLanguage:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="LkW-sh-lah"/>
                                                         </connections>
@@ -439,10 +533,10 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="QIp-tu-Ixi" secondAttribute="bottom" constant="8" id="0L9-xu-bUH"/>
-                                    <constraint firstItem="QIp-tu-Ixi" firstAttribute="top" secondItem="7M4-me-gYd" secondAttribute="top" constant="8" id="Ho6-gM-Kco"/>
-                                    <constraint firstAttribute="trailing" secondItem="QIp-tu-Ixi" secondAttribute="trailing" constant="8" id="RT4-R7-bUI"/>
-                                    <constraint firstItem="QIp-tu-Ixi" firstAttribute="leading" secondItem="7M4-me-gYd" secondAttribute="leading" constant="8" id="rpD-eA-qyK"/>
+                                    <constraint firstAttribute="bottom" secondItem="QIp-tu-Ixi" secondAttribute="bottom" id="0L9-xu-bUH"/>
+                                    <constraint firstItem="QIp-tu-Ixi" firstAttribute="top" secondItem="7M4-me-gYd" secondAttribute="top" id="Ho6-gM-Kco"/>
+                                    <constraint firstAttribute="trailing" secondItem="QIp-tu-Ixi" secondAttribute="trailing" id="RT4-R7-bUI"/>
+                                    <constraint firstItem="QIp-tu-Ixi" firstAttribute="leading" secondItem="7M4-me-gYd" secondAttribute="leading" id="rpD-eA-qyK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -453,29 +547,71 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Or Input a Keyword" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHj-iN-iiG">
-                                <rect key="frame" x="91" y="300" width="182" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="25"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex. 'Trump' or 'Bitcoin'" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fa1-ms-nQa">
+                                <rect key="frame" x="8" y="323" width="164.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Article count: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mA-ua-BNQ">
+                                <rect key="frame" x="8" y="361" width="74.5" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Jh-qO-5sV">
+                                <rect key="frame" x="8" y="462" width="351" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="4eC-py-g6j"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ore-TJ-bQB">
+                                <rect key="frame" x="287" y="524" width="72" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6d4-4U-c1s"/>
+                                    <constraint firstAttribute="width" constant="72" id="cIN-4B-Fyk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="17"/>
+                                <state key="normal" title="Begin!" backgroundImage="beginArrow">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTappedBegin:" destination="Kyj-f9-zzv" eventType="touchUpInside" id="eCY-wC-I6E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="y2K-FJ-aC6" firstAttribute="trailing" secondItem="izl-Dl-baZ" secondAttribute="trailing" constant="16" id="0Iy-0i-Xb8"/>
+                            <constraint firstItem="0mA-ua-BNQ" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="7Xu-82-Rz7"/>
+                            <constraint firstItem="fa1-ms-nQa" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="9jT-gd-ejO"/>
+                            <constraint firstItem="Fgr-4V-iBM" firstAttribute="top" secondItem="IBi-HC-PmY" secondAttribute="bottom" constant="8" id="C13-i2-fHn"/>
                             <constraint firstItem="y2K-FJ-aC6" firstAttribute="bottom" secondItem="rAI-gz-XNl" secondAttribute="bottom" constant="8" id="HMp-yz-d31"/>
-                            <constraint firstItem="AFf-5N-e1z" firstAttribute="centerX" secondItem="pEv-sT-821" secondAttribute="centerX" id="IDb-BW-cCd"/>
+                            <constraint firstItem="0mA-ua-BNQ" firstAttribute="top" secondItem="fa1-ms-nQa" secondAttribute="bottom" constant="8" id="J3J-zd-wPY"/>
+                            <constraint firstItem="mY5-ns-H26" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="Tea-4i-Kqd"/>
+                            <constraint firstItem="y2K-FJ-aC6" firstAttribute="trailing" secondItem="Ore-TJ-bQB" secondAttribute="trailing" constant="16" id="UwS-Kh-kOG"/>
                             <constraint firstItem="mY5-ns-H26" firstAttribute="top" secondItem="y2K-FJ-aC6" secondAttribute="top" constant="50" id="VE6-XP-63t"/>
+                            <constraint firstItem="AFf-5N-e1z" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="WeY-j6-pH4"/>
                             <constraint firstItem="Xv2-Qw-ouG" firstAttribute="trailing" secondItem="y2K-FJ-aC6" secondAttribute="trailing" id="Z5i-Bs-vZz"/>
-                            <constraint firstItem="mY5-ns-H26" firstAttribute="centerX" secondItem="pEv-sT-821" secondAttribute="centerX" id="a2g-ol-LZi"/>
                             <constraint firstItem="Xv2-Qw-ouG" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" id="aIP-Au-oDs"/>
+                            <constraint firstItem="y2K-FJ-aC6" firstAttribute="trailing" secondItem="IBi-HC-PmY" secondAttribute="trailing" constant="16" id="anh-vP-Ex9"/>
+                            <constraint firstItem="Fgr-4V-iBM" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="dCf-1V-Qgn"/>
+                            <constraint firstItem="Ore-TJ-bQB" firstAttribute="top" secondItem="1Jh-qO-5sV" secondAttribute="bottom" constant="8" id="dOk-6l-SBd"/>
                             <constraint firstItem="AFf-5N-e1z" firstAttribute="top" secondItem="y2K-FJ-aC6" secondAttribute="top" constant="16" id="ex8-ZH-O7b"/>
                             <constraint firstAttribute="bottom" secondItem="Xv2-Qw-ouG" secondAttribute="bottom" id="hMr-yT-lpg"/>
+                            <constraint firstItem="1Jh-qO-5sV" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="iST-y2-clV"/>
+                            <constraint firstItem="y2K-FJ-aC6" firstAttribute="trailing" secondItem="1Jh-qO-5sV" secondAttribute="trailing" constant="16" id="jIV-TT-bBS"/>
+                            <constraint firstItem="fa1-ms-nQa" firstAttribute="top" secondItem="DHj-iN-iiG" secondAttribute="bottom" constant="8" id="kHZ-hh-t4p"/>
                             <constraint firstItem="7M4-me-gYd" firstAttribute="top" secondItem="mY5-ns-H26" secondAttribute="bottom" constant="8" id="kOV-32-pTE"/>
                             <constraint firstItem="rAI-gz-XNl" firstAttribute="centerX" secondItem="pEv-sT-821" secondAttribute="centerX" id="lA8-fS-yIz"/>
                             <constraint firstItem="Xv2-Qw-ouG" firstAttribute="top" secondItem="pEv-sT-821" secondAttribute="top" id="lN0-7Q-Swr"/>
-                            <constraint firstItem="7M4-me-gYd" firstAttribute="centerX" secondItem="pEv-sT-821" secondAttribute="centerX" id="xIc-RA-NpO"/>
+                            <constraint firstItem="IBi-HC-PmY" firstAttribute="top" secondItem="0mA-ua-BNQ" secondAttribute="bottom" constant="8" id="lYo-PH-eG1"/>
+                            <constraint firstItem="7M4-me-gYd" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="lea-c8-7Ri"/>
+                            <constraint firstItem="izl-Dl-baZ" firstAttribute="top" secondItem="7M4-me-gYd" secondAttribute="bottom" constant="8" id="mBp-BL-9nT"/>
+                            <constraint firstItem="1Jh-qO-5sV" firstAttribute="top" secondItem="Fgr-4V-iBM" secondAttribute="bottom" constant="8" id="qHt-DR-Wo7"/>
+                            <constraint firstItem="DHj-iN-iiG" firstAttribute="top" secondItem="izl-Dl-baZ" secondAttribute="bottom" constant="8" id="x4K-b1-TyD"/>
+                            <constraint firstItem="DHj-iN-iiG" firstAttribute="leading" secondItem="y2K-FJ-aC6" secondAttribute="leading" constant="8" id="zT9-Q5-X8z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y2K-FJ-aC6"/>
                         <connections>
@@ -671,7 +807,7 @@
     </scenes>
     <resources>
         <image name="all" width="912" height="912"/>
-        <image name="beginArrow" width="528" height="278"/>
+        <image name="beginArrow" width="620" height="252"/>
         <image name="business" width="1046" height="1046"/>
         <image name="check" width="41" height="41"/>
         <image name="entertainment" width="1044" height="1044"/>

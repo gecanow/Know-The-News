@@ -13,6 +13,7 @@ let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4" // global API Key
 class SourceTypeViewController: UIViewController {
     
     var sources = [[String: String]]()
+    var articles = [[String: String]]()
     
     @IBOutlet weak var sourceBok: UIView!
     var passType = "general" // default
@@ -74,7 +75,8 @@ class SourceTypeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
         dvc.title = self.passType
-        dvc.sources = self.sources
+        //dvc.sources = self.sources
+        dvc.articles = self.articles
     }
     
     //=========================================
@@ -95,6 +97,7 @@ class SourceTypeViewController: UIViewController {
         query += (country == "all" ? "" : "&country=\(country)") //add country code, if applicable
         query += (passType == "all" ? "" : "&category=\(passType)") //add source type, if applicable
         query += "&apiKey=\(apiKey)"
+        print("querying: \(query)")
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
@@ -117,6 +120,7 @@ class SourceTypeViewController: UIViewController {
     // Parses for all sources of a given type
     //=========================================
     func parse(json: JSON) {
+        
         for result in json["sources"].arrayValue {
             let id = result["id"].stringValue
             let name = result["name"].stringValue
@@ -124,9 +128,12 @@ class SourceTypeViewController: UIViewController {
             
             let source = ["id": id, "name": name, "description": description]
             sources.append(source)
+            
+            let captialSource = Source(theSource: source, theApiKey: apiKey)
+            articles += captialSource.articles
         }
         
-        if sources.count > 0 {
+        if articles.count > 0 {
             DispatchQueue.main.async {
                 [unowned self] in
                 self.performSegue(withIdentifier: "gameSegue", sender: self)
