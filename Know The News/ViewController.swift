@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     
     var movable : Int?
     
-    var sources : [[String: String]]!
     var articles : [[String: String]]!
     
     let defaults = UserDefaults.standard
@@ -112,22 +111,6 @@ class ViewController: UIViewController {
             let splitTitle = gamePlayTitle(chosenArticle["title"]!)
             headlineLabel.text = splitTitle[0]
             sourceLabel.text = "\(chosenArticle["sourceName"]!) reports:"
-            descriptionLabel.text = chosenArticle["description"]
-            
-            wordPlay.updateWord(to: splitTitle[1], fromArticle: chosenArticle)
-            print("The missing word is: \(wordPlay.wordID!)")
-            
-            //-------
-            setUpChips()
-        } else if sources.count > 1 {
-            index = Int(arc4random_uniform(UInt32(sources.count)))
-            
-            let chosenSource = Source(theSource: sources[index], theApiKey: apiKey)
-            chosenArticle = chosenSource.retrieveRandomArticle()
-            
-            let splitTitle = gamePlayTitle(chosenArticle["title"]!)
-            headlineLabel.text = splitTitle[0]
-            sourceLabel.text = "\(chosenSource.source["name"]!) reports:"
             descriptionLabel.text = chosenArticle["description"]
             
             wordPlay.updateWord(to: splitTitle[1], fromArticle: chosenArticle)

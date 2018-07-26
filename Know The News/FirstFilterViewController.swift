@@ -10,9 +10,8 @@ import UIKit
 
 let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4" // global API Key
 
-class SourceTypeViewController: UIViewController {
+class FirstFilterViewController: UIViewController {
     
-    var sources = [[String: String]]()
     var articles = [[String: String]]()
     
     @IBOutlet weak var sourceBok: UIView!
@@ -65,7 +64,6 @@ class SourceTypeViewController: UIViewController {
     
     
     @IBAction func onTappedBegin(_ sender: Any) {
-        sources = [[String: String]]()
         setAndSearchQuery()
     }
     
@@ -75,17 +73,7 @@ class SourceTypeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
         dvc.title = self.passType
-        //dvc.sources = self.sources
         dvc.articles = self.articles
-    }
-    
-    //=========================================
-    // Handles when user taps on the NewsAPI
-    // attribution
-    //=========================================
-    @IBAction func openNewsAPI(_ sender: Any) {
-        let url = URL(string: "https://newsapi.org/")
-        UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
     }
     
     //--------------------//
@@ -127,8 +115,6 @@ class SourceTypeViewController: UIViewController {
             let description = result["description"].stringValue
             
             let source = ["id": id, "name": name, "description": description]
-            sources.append(source)
-            
             let captialSource = Source(theSource: source, theApiKey: apiKey)
             articles += captialSource.articles
         }

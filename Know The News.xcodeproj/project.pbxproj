@@ -18,7 +18,7 @@
 		CC5DD6F521081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC5DD6F621081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC5DD6F721081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
-		CC810F4E20F64D8800EC6F62 /* SourceTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */; };
+		CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */; };
 		CCC11A1520F9026C00D2482C /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC11A1420F9026C00D2482C /* BeginViewController.swift */; };
 		CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD54D220F5153B007746C4 /* SavedViewController.swift */; };
 		CCE1B38920F4164A004B78B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B38820F4164A004B78B1 /* AppDelegate.swift */; };
@@ -31,6 +31,8 @@
 		CCE1B3B720F416A2004B78B1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3B620F416A2004B78B1 /* SwiftyJSON.swift */; };
 		CCE1B3B920F4180A004B78B1 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3B820F4180A004B78B1 /* Source.swift */; };
 		CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3BA20F42696004B78B1 /* WordPlay.swift */; };
+		CCE9D486210A935C00FE0948 /* SecondFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */; };
+		CCE9D488210A943A00FE0948 /* FilterTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +58,7 @@
 		CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sofija.ttf; sourceTree = "<group>"; };
 		CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sofija-Italic.ttf"; sourceTree = "<group>"; };
 		CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
-		CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTypeViewController.swift; sourceTree = "<group>"; };
+		CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFilterViewController.swift; sourceTree = "<group>"; };
 		CCC11A1420F9026C00D2482C /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		CCDD54D220F5153B007746C4 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		CCE1B38520F4164A004B78B1 /* Know The News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Know The News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +77,8 @@
 		CCE1B3B620F416A2004B78B1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		CCE1B3B820F4180A004B78B1 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		CCE1B3BA20F42696004B78B1 /* WordPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlay.swift; sourceTree = "<group>"; };
+		CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFilterViewController.swift; sourceTree = "<group>"; };
+		CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +145,12 @@
 				CCE1B3B820F4180A004B78B1 /* Source.swift */,
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
+				CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */,
 				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
 				CC5DD6EB2107F5C300FEA0A4 /* sofija */,
 				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
-				CC810F4D20F64D8800EC6F62 /* SourceTypeViewController.swift */,
+				CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */,
+				CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */,
 				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
 				CCE1B38F20F4164A004B78B1 /* Assets.xcassets */,
 				CCE1B39120F4164A004B78B1 /* LaunchScreen.storyboard */,
@@ -309,16 +315,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCE9D486210A935C00FE0948 /* SecondFilterViewController.swift in Sources */,
 				CCC11A1520F9026C00D2482C /* BeginViewController.swift in Sources */,
 				CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */,
 				CCE1B3B920F4180A004B78B1 /* Source.swift in Sources */,
 				CC5DD6F521081AF200FEA0A4 /* GameTimer.swift in Sources */,
 				CCE1B3B720F416A2004B78B1 /* SwiftyJSON.swift in Sources */,
 				CC0615962106682B004A9BFB /* Chip.swift in Sources */,
+				CCE9D488210A943A00FE0948 /* FilterTypeViewController.swift in Sources */,
 				CC0615982106C25C004A9BFB /* ChipHolder.swift in Sources */,
 				CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */,
 				CCE1B38B20F4164A004B78B1 /* ViewController.swift in Sources */,
-				CC810F4E20F64D8800EC6F62 /* SourceTypeViewController.swift in Sources */,
+				CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */,
 				CCE1B38920F4164A004B78B1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
