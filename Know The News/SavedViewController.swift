@@ -75,8 +75,13 @@ class SavedViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.textLabel?.text = article["title"]
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
+        cell.textLabel?.font = UIFont(name: "CaslonOS-Regular", size: 16.0)
         
         cell.detailTextLabel?.text = article["description"]
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.detailTextLabel?.lineBreakMode = .byWordWrapping
+        cell.detailTextLabel?.font = UIFont(name: "CaslonOS-Regular", size: 12.0)
+        
         return cell
     }
     

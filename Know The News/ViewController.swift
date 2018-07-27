@@ -61,6 +61,28 @@ class ViewController: UIViewController {
     }
     
     //=========================================
+    // Unpauses the Timer when the view first
+    // appears (if it was unpaused)
+    //=========================================
+    override func viewDidAppear(_ animated: Bool) {
+        if gameTimer != nil {
+            if gameTimer.paused {
+                gameTimer.unpause()
+            }
+        }
+    }
+    
+    //=========================================
+    // Pauses the Timer when the view is about
+    // disappear
+    //=========================================
+    override func viewWillDisappear(_ animated: Bool) {
+        if gameTimer != nil {
+            gameTimer.pause()
+        }
+    }
+    
+    //=========================================
     // Informs the user of a loading error
     //=========================================
     func loadError() {

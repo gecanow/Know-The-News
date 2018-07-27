@@ -120,8 +120,9 @@
 				CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */,
 				CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */,
 			);
-			path = sofija;
-			sourceTree = "<group>";
+			name = sofija;
+			path = "Know The News/Custom Fonts/sofija";
+			sourceTree = SOURCE_ROOT;
 		};
 		CCC10F3E210B67C400783130 /* Filter VCs */ = {
 			isa = PBXGroup;
@@ -140,8 +141,9 @@
 				CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */,
 				CCC10F42210B8ED300783130 /* OFL-FAQ.txt */,
 			);
-			path = "caslon-os";
-			sourceTree = "<group>";
+			name = "caslon-os";
+			path = "Know The News/Custom Fonts/caslon-os";
+			sourceTree = SOURCE_ROOT;
 		};
 		CCC10F47210B8F7400783130 /* Custom Fonts */ = {
 			isa = PBXGroup;
