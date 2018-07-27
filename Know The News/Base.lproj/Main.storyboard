@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="CaslonOS-Regular.otf">
+            <string>CaslonOS-Regular</string>
+        </array>
         <array key="Sofija.ttf">
             <string>Sofija</string>
         </array>
@@ -33,8 +36,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Headline" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-wJ-juX">
-                                <rect key="frame" x="16" y="110" width="343" height="27.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <rect key="frame" x="16" y="110" width="343" height="23.5"/>
+                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -52,15 +55,15 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdY-1g-H6C">
-                                <rect key="frame" x="16" y="146" width="343" height="122"/>
+                                <rect key="frame" x="16" y="142" width="343" height="122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYI-Os-Z1Y" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="8" width="343" height="24"/>
+                                        <rect key="frame" x="0.0" y="8" width="343" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voC-tP-4Hu">
-                                                <rect key="frame" x="8" y="0.0" width="327" height="24"/>
+                                                <rect key="frame" x="8" y="0.0" width="327" height="20"/>
                                                 <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="17"/>
                                                 <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -89,7 +92,7 @@
                                 </connections>
                             </scrollView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clue: Click To Reveal The Article's Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-Wq-fYZ">
-                                <rect key="frame" x="16" y="145" width="343" height="122"/>
+                                <rect key="frame" x="16" y="141" width="343" height="122"/>
                                 <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="122" id="jaS-2j-exs"/>
@@ -99,7 +102,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMs-Ed-m6R">
-                                <rect key="frame" x="0.0" y="276" width="375" height="205"/>
+                                <rect key="frame" x="0.0" y="272" width="375" height="205"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-4f-3BE">
                                         <rect key="frame" x="8" y="60" width="359" height="145"/>
@@ -215,7 +218,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mY5-ns-H26">
-                                <rect key="frame" x="16" y="118" width="343" height="220"/>
+                                <rect key="frame" x="16" y="123" width="343" height="220"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="general" translatesAutoresizingMaskIntoConstraints="NO" id="YSM-a2-2hp">
                                         <rect key="frame" x="88.5" y="46" width="50" height="50"/>
@@ -351,13 +354,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter By Category and Region" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFf-5N-e1z">
-                                <rect key="frame" x="8" y="80" width="359" height="30"/>
+                                <rect key="frame" x="8" y="80" width="359" height="35"/>
                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7M4-me-gYd" userLabel="Country Bok">
-                                <rect key="frame" x="16" y="346" width="343" height="154"/>
+                                <rect key="frame" x="16" y="351" width="343" height="154"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Region" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et2-oz-wob">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="38"/>
@@ -379,7 +382,7 @@
                                             <constraint firstAttribute="width" constant="70" id="CXR-Jz-3W3"/>
                                             <constraint firstAttribute="height" constant="28" id="JAP-iU-aVk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="12"/>
                                         <state key="normal" title="Australia">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -398,7 +401,7 @@
                                             <constraint firstAttribute="height" constant="28" id="EWF-4Q-h58"/>
                                             <constraint firstAttribute="width" constant="70" id="KTc-Oo-Km4"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="12"/>
                                         <state key="normal" title="Germany">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -418,7 +421,7 @@
                                             <constraint firstAttribute="height" constant="28" id="TB1-hx-Gas"/>
                                             <constraint firstAttribute="width" constant="70" id="zaf-YK-vWA"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="12"/>
                                         <state key="normal" title="USA">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -437,7 +440,7 @@
                                             <constraint firstAttribute="width" constant="70" id="rsS-av-Ul6"/>
                                             <constraint firstAttribute="height" constant="28" id="ycM-lf-2ff"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="12"/>
                                         <state key="normal" title="UK">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -456,7 +459,7 @@
                                             <constraint firstAttribute="width" constant="70" id="a7n-4o-gxV"/>
                                             <constraint firstAttribute="height" constant="28" id="cM1-Jm-Uco"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="12"/>
                                         <state key="normal" title="India">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -475,7 +478,7 @@
                                             <constraint firstAttribute="height" constant="28" id="1zj-cu-Qbu"/>
                                             <constraint firstAttribute="width" constant="70" id="Cx8-5h-m0l"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="12"/>
                                         <state key="normal" title="Italy">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -494,7 +497,7 @@
                                             <constraint firstAttribute="width" constant="70" id="2oE-vR-oVp"/>
                                             <constraint firstAttribute="height" constant="28" id="K7b-OJ-eEO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="12"/>
                                         <state key="normal" title="All">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -617,13 +620,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your method of filtering articles." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rL5-I3-cNd">
-                                <rect key="frame" x="16" y="80" width="343" height="80"/>
+                                <rect key="frame" x="16" y="80" width="343" height="140"/>
                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QB2-Gd-5xj" userLabel="Option 2">
-                                <rect key="frame" x="27" y="302" width="320" height="70"/>
+                                <rect key="frame" x="27" y="362" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btw-4Y-ZMw">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -658,7 +661,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxW-ll-Szt" userLabel="Option 1">
-                                <rect key="frame" x="27" y="200" width="320" height="70"/>
+                                <rect key="frame" x="27" y="260" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnm-FI-iMd">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -694,7 +697,7 @@
                                 <viewLayoutGuide key="safeArea" id="esu-TZ-N7v"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKg-fK-J6w" userLabel="Option 3">
-                                <rect key="frame" x="27" y="404" width="320" height="70"/>
+                                <rect key="frame" x="27" y="464" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-AJ-uBR">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -936,7 +939,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter with Keywords" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7BP-Hx-LI4">
-                                <rect key="frame" x="8" y="80" width="359" height="30"/>
+                                <rect key="frame" x="8" y="80" width="359" height="35"/>
                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -956,7 +959,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dmz-zF-fDN">
-                                <rect key="frame" x="16" y="126" width="343" height="30"/>
+                                <rect key="frame" x="16" y="131" width="343" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex. 'Trump' or 'Bitcoin'" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3YJ-17-bj8">
                                         <rect key="frame" x="0.0" y="0.0" width="313" height="30"/>
@@ -989,7 +992,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KB4-cd-dad">
-                                <rect key="frame" x="16" y="164" width="343" height="390"/>
+                                <rect key="frame" x="16" y="169" width="343" height="385"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1037,7 +1040,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by Selected Outlets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vr-3V-YhS">
-                                <rect key="frame" x="8" y="80" width="359" height="30"/>
+                                <rect key="frame" x="8" y="80" width="359" height="35"/>
                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1057,7 +1060,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D05-4V-KiI">
-                                <rect key="frame" x="0.0" y="174" width="375" height="380"/>
+                                <rect key="frame" x="0.0" y="179" width="375" height="375"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" textLabel="H4K-eZ-gTI" detailTextLabel="IwL-oD-Cza" style="IBUITableViewCellStyleSubtitle" id="Tdm-oZ-hbX">
@@ -1087,7 +1090,7 @@
                                 </prototypes>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GvB-IA-sHH">
-                                <rect key="frame" x="0.0" y="118" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="123" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>

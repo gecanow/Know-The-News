@@ -19,6 +19,10 @@
 		CC5DD6F621081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC5DD6F721081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */; };
+		CCC10F43210B8ED400783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
+		CCC10F44210B8ED400783130 /* OFL-FAQ.txt in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F42210B8ED300783130 /* OFL-FAQ.txt */; };
+		CCC10F45210B8ED800783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
+		CCC10F46210B8ED800783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
 		CCC11A1520F9026C00D2482C /* BeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCC11A1420F9026C00D2482C /* BeginViewController.swift */; };
 		CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD54D220F5153B007746C4 /* SavedViewController.swift */; };
 		CCE1B38920F4164A004B78B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B38820F4164A004B78B1 /* AppDelegate.swift */; };
@@ -60,6 +64,8 @@
 		CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sofija-Italic.ttf"; sourceTree = "<group>"; };
 		CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFilterViewController.swift; sourceTree = "<group>"; };
+		CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CaslonOS-Regular.otf"; sourceTree = "<group>"; };
+		CCC10F42210B8ED300783130 /* OFL-FAQ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OFL-FAQ.txt"; sourceTree = "<group>"; };
 		CCC11A1420F9026C00D2482C /* BeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginViewController.swift; sourceTree = "<group>"; };
 		CCDD54D220F5153B007746C4 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		CCE1B38520F4164A004B78B1 /* Know The News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Know The News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +134,24 @@
 			path = "Filter VCs";
 			sourceTree = "<group>";
 		};
+		CCC10F40210B8ED300783130 /* caslon-os */ = {
+			isa = PBXGroup;
+			children = (
+				CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */,
+				CCC10F42210B8ED300783130 /* OFL-FAQ.txt */,
+			);
+			path = "caslon-os";
+			sourceTree = "<group>";
+		};
+		CCC10F47210B8F7400783130 /* Custom Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CC5DD6EB2107F5C300FEA0A4 /* sofija */,
+				CCC10F40210B8ED300783130 /* caslon-os */,
+			);
+			path = "Custom Fonts";
+			sourceTree = "<group>";
+		};
 		CCE1B37C20F4164A004B78B1 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +175,7 @@
 		CCE1B38720F4164A004B78B1 /* Know The News */ = {
 			isa = PBXGroup;
 			children = (
+				CCC10F47210B8F7400783130 /* Custom Fonts */,
 				CCE1B38820F4164A004B78B1 /* AppDelegate.swift */,
 				CCE1B38A20F4164A004B78B1 /* ViewController.swift */,
 				CCC10F3E210B67C400783130 /* Filter VCs */,
@@ -160,7 +185,6 @@
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
 				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
-				CC5DD6EB2107F5C300FEA0A4 /* sofija */,
 				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
 				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
 				CCE1B38F20F4164A004B78B1 /* Assets.xcassets */,
@@ -293,6 +317,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCC10F44210B8ED400783130 /* OFL-FAQ.txt in Resources */,
+				CCC10F43210B8ED400783130 /* CaslonOS-Regular.otf in Resources */,
 				CC5DD6F12107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */,
 				CCE1B39320F4164A004B78B1 /* LaunchScreen.storyboard in Resources */,
 				CCE1B39020F4164A004B78B1 /* Assets.xcassets in Resources */,
@@ -305,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCC10F45210B8ED800783130 /* CaslonOS-Regular.otf in Resources */,
 				CC5DD6F22107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */,
 				CC5DD6EF2107F5C500FEA0A4 /* Sofija.ttf in Resources */,
 			);
@@ -314,6 +341,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCC10F46210B8ED800783130 /* CaslonOS-Regular.otf in Resources */,
 				CC5DD6F32107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */,
 				CC5DD6F02107F5C500FEA0A4 /* Sofija.ttf in Resources */,
 			);
