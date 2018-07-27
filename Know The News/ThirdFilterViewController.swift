@@ -1,5 +1,5 @@
 //
-//  SecondFilterViewController.swift
+//  ThirdFilterViewController.swift
 //  Know The News
 //
 //  Created by Necanow on 7/26/18.
@@ -8,11 +8,13 @@
 
 import UIKit
 
-class SecondFilterViewController: UIViewController {
-
+class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var allSources = [[String: String]]()
+    var searchedSources = [[String: String]]()
+    var selectedSources = [[String: String]]()
+    
     var articles = [[String: String]]()
-    var keyword = ""
-    @IBOutlet weak var textField: UITextField!
     
     //=========================================
     // VIEW DID LOAD
@@ -22,19 +24,29 @@ class SecondFilterViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
     }
     
-    @IBAction func onFinishedEditing(_ sender: UITextField) {
-        self.view.endEditing(true)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchedSources.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "yourcellIdentifire", for: indexPath) as! YourCellClass
+        
+        //here is programatically switch make to the table view
+        let switchView = UISwitch(frame: .zero)
+        switchView.setOn(false, animated: true)
+        switchView.tag = indexPath.row // for detect which row switch Changed
+        switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
+        cell.accessoryView = switchView
+        
+        return cell
     }
     
     @IBAction func onTappedBegin(_ sender: Any) {
         articles = [[String: String]]()
-        if textField.text != nil {
-            if textField.text!.count > 0 {
-                keyword = textField.text!
-                setAndSearchQuery()
-            } else {
-                self.loadError(problem: "Please input a keyword.")
-            }
+        if selectedSources.count > 0 {
+            setAndSearchQuery()
+        } else {
+            self.loadError(problem: "Please selected at least one source.")
         }
     }
     
@@ -43,7 +55,7 @@ class SecondFilterViewController: UIViewController {
     //=========================================
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
-        dvc.title = self.keyword
+        dvc.title = "Self-Selected Sources"
         dvc.articles = self.articles
     }
     
@@ -52,7 +64,7 @@ class SecondFilterViewController: UIViewController {
     //--------------------//
     
     func setAndSearchQuery() {
-        let query = "https://newsapi.org/v2/everything?q=\(keyword)&apiKey=\(apiKey)"
+        let query = "https://newsapi.org/v2/everything?"
         print(query)
         
         DispatchQueue.global(qos: .userInitiated).async {

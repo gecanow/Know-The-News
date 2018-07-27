@@ -33,6 +33,7 @@
 		CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3BA20F42696004B78B1 /* WordPlay.swift */; };
 		CCE9D486210A935C00FE0948 /* SecondFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */; };
 		CCE9D488210A943A00FE0948 /* FilterTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */; };
+		CCE9D48A210AA12B00FE0948 /* ThirdFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9D489210AA12B00FE0948 /* ThirdFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		CCE1B3BA20F42696004B78B1 /* WordPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlay.swift; sourceTree = "<group>"; };
 		CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFilterViewController.swift; sourceTree = "<group>"; };
 		CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypeViewController.swift; sourceTree = "<group>"; };
+		CCE9D489210AA12B00FE0948 /* ThirdFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdFilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
 				CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */,
 				CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */,
+				CCE9D489210AA12B00FE0948 /* ThirdFilterViewController.swift */,
 				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
 				CCE1B38F20F4164A004B78B1 /* Assets.xcassets */,
 				CCE1B39120F4164A004B78B1 /* LaunchScreen.storyboard */,
@@ -325,6 +328,7 @@
 				CCE9D488210A943A00FE0948 /* FilterTypeViewController.swift in Sources */,
 				CC0615982106C25C004A9BFB /* ChipHolder.swift in Sources */,
 				CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */,
+				CCE9D48A210AA12B00FE0948 /* ThirdFilterViewController.swift in Sources */,
 				CCE1B38B20F4164A004B78B1 /* ViewController.swift in Sources */,
 				CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */,
 				CCE1B38920F4164A004B78B1 /* AppDelegate.swift in Sources */,
