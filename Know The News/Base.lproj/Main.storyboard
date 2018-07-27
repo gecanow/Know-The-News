@@ -993,6 +993,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Filters" id="TP2-aV-70Q"/>
                     <connections>
+                        <outlet property="textField" destination="3YJ-17-bj8" id="HJ9-Mn-AcK"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="gameSegue2" id="icr-bX-3Dx"/>
                     </connections>
                 </viewController>

@@ -12,6 +12,7 @@ class SecondFilterViewController: UIViewController {
 
     var articles = [[String: String]]()
     var keyword = ""
+    @IBOutlet weak var textField: UITextField!
     
     //=========================================
     // VIEW DID LOAD
@@ -22,16 +23,18 @@ class SecondFilterViewController: UIViewController {
     }
     
     @IBAction func onFinishedEditing(_ sender: UITextField) {
-        if sender.text != nil {
-            keyword = sender.text!
-        }
+        self.view.endEditing(true)
     }
     
     @IBAction func onTappedBegin(_ sender: Any) {
-        if keyword.count > 0 {
-            setAndSearchQuery()
-        } else {
-            self.loadError(problem: "Please input a keyword.")
+        articles = [[String: String]]()
+        if textField.text != nil {
+            if textField.text!.count > 0 {
+                keyword = textField.text!
+                setAndSearchQuery()
+            } else {
+                self.loadError(problem: "Please input a keyword.")
+            }
         }
     }
     
@@ -49,7 +52,8 @@ class SecondFilterViewController: UIViewController {
     //--------------------//
     
     func setAndSearchQuery() {
-        var query = "https://newsapi.org/v1/everything?q=\(keyword)&apiKey=\(apiKey)"
+        let query = "https://newsapi.org/v2/everything?q=\(keyword)&apiKey=\(apiKey)"
+        print(query)
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
@@ -72,6 +76,7 @@ class SecondFilterViewController: UIViewController {
     // Parses for all sources of a given type
     //=========================================
     func parse(json: JSON) {
+        print(json["totalResults"])
         for result in json["articles"].arrayValue {
             let title = result["title"].stringValue
             let description = result["description"].stringValue

@@ -64,6 +64,7 @@ class FirstFilterViewController: UIViewController {
     
     
     @IBAction func onTappedBegin(_ sender: Any) {
+        articles = [[String: String]]()
         setAndSearchQuery()
     }
     
