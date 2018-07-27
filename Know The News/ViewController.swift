@@ -303,7 +303,6 @@ class ViewController: UIViewController {
             let source = wordPlay.article["sourceName"]
             let date = wordPlay.article["date"]
             let fullTitle = wordPlay.article["title"]
-            //alertUser("You got it! On \(date!), \(source!) published \n\"\(fullTitle!)\"")
             updateAndShowCustomAlert("You got it! On \(date!), \(source!) published \n\"\(fullTitle!)\"")
         }
     }
@@ -382,33 +381,7 @@ class ViewController: UIViewController {
     // Alerts the user of a win and gives the
     // option to continue or save and continue
     //=========================================
-    func alertUser(_ withTitle: String) {
-        let alert = UIAlertController(title: withTitle, message: "If you would like to save this article to your library, select 'Save and Continue'", preferredStyle: .alert)
-        
-        let saveArticle = UIAlertAction(title: "Save and Continue", style: .default) { (void) in
-            self.saveButtonAction()
-        }
-        
-        let next = UIAlertAction(title: "Continue to Next Article", style: .default) { (void) in
-            self.nextButtonAction()
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        
-        alert.addAction(next)
-        alert.addAction(saveArticle)
-        alert.addAction(cancel)
-        present(alert, animated: true, completion: nil)
-    }
     func updateAndShowCustomAlert(_ toTitle: String) {
-        // 1 - create a full screen blur
-//        let screenW = self.view.frame.width
-//        let screenH = self.view.frame.height
-//
-//        let blur = UIView(frame: CGRect(x: 0, y: 0, width: screenW, height: screenH))
-//        blur.backgroundColor = .white
-//        blur.alpha = 0.7
-        
         customAlertLabel.text = toTitle
         myAlert.isHidden = false
     }
@@ -495,7 +468,6 @@ class ViewController: UIViewController {
         myAlert.isHidden = true
         self.view.addSubview(myAlert)
     }
-    
     @objc func saveButtonAction() {
         savedArticles.append(self.chosenArticle)
         saveSaved()
