@@ -8,15 +8,16 @@
 
 import UIKit
 
-class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var allSources = [[String: String]]()
     var searchedSources = [[String: String]]()
-    var selectedSources = [[String: String]]()
+    var selectedSourceIDs = [String]()
     
     var articles = [[String: String]]()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     //=========================================
     // VIEW DID LOAD
@@ -26,6 +27,7 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
         
         let query = "https://newsapi.org/v2/sources?apiKey=\(apiKey)"
         DispatchQueue.global(qos: .userInitiated).async {
@@ -52,8 +54,11 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
             let url = result["url"].stringValue
             let language = result["language"].stringValue
             let country = result["country"].stringValue
+            let id = result["id"].stringValue
             
-            let source = ["name": name, "category": category, "url": url, "language": language, "country": country]
+            let myIndex = "\(allSources.count)" // will be my index
+            
+            let source = ["name": name, "category": category, "url": url, "language": language, "country": country, "chosen": "no", "myIndex": myIndex, "id": id]
             allSources.append(source)
         }
         searchedSources = allSources
@@ -63,6 +68,30 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count > 1 {
+            var semiSearchedSources = [[String: String]]()
+            for source in allSources {
+                let allParts = source["name"]! + source["category"]! + source["language"]! + source["country"]!
+                if allParts.lowercased().contains(searchText.lowercased()) {
+                    semiSearchedSources.append(source)
+                }
+            }
+            searchedSources = semiSearchedSources
+        } else {
+            searchedSources = allSources
+        }
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchedSources.count
     }
@@ -70,29 +99,54 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath)
         let index = indexPath.row
+        let allIndex = Int(searchedSources[index]["myIndex"]!)
         
-        //here is programatically switch make to the table view
+        // UISwitch --
+        let switchOn = allSources[allIndex!]["chosen"] == "no" ? false : true
+        
         let switchView = UISwitch(frame: .zero)
-        switchView.setOn(false, animated: true)
-        switchView.tag = index // for detect which row switch Changed
+        switchView.setOn(switchOn, animated: true)
+        switchView.tag = allIndex! // given the ACTUAL source index
         switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
         cell.accessoryView = switchView
+        //------------
         
         let title = searchedSources[index]["name"]
-        let subtitle = searchedSources[index]["type"] //?
+        let subtitle = "\(searchedSources[index]["category"]!) | Country: \(searchedSources[index]["country"]!) | Language: \(searchedSources[index]["language"]!)"
         cell.textLabel?.text = title
         cell.detailTextLabel?.text = subtitle
+        cell.backgroundColor = .clear
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("open url?")
+        let url = URL(string: searchedSources[indexPath.row]["url"]!)
+        UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
+    }
+    
     @objc func switchChanged(_ sender: UISwitch) {
         print(sender.tag)
+        if sender.isOn {
+            allSources[sender.tag]["chosen"] = "yes"
+        } else {
+            allSources[sender.tag]["chosen"] = "no"
+        }
     }
     
     @IBAction func onTappedBegin(_ sender: Any) {
         articles = [[String: String]]()
-        if selectedSources.count > 0 {
+        
+        selectedSourceIDs = [String]()
+        for source in allSources {
+            if source["chosen"] == "yes" {
+                selectedSourceIDs.append(source["id"]!)
+            }
+        }
+        if selectedSourceIDs.count > 20 {
+            self.loadError(problem: "Please select at most 20 sources. (You have \(selectedSourceIDs.count) sources selected.)")
+        } else if selectedSourceIDs.count > 0 {
             setAndSearchQuery()
         } else {
             self.loadError(problem: "Please selected at least one source.")
@@ -113,7 +167,11 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
     //--------------------//
     
     func setAndSearchQuery() {
-        let query = "https://newsapi.org/v2/everything?"
+        var query = "https://newsapi.org/v2/everything?sources="
+        for id in selectedSourceIDs {
+            query += id + ","
+        }
+        query = query.prefix(query.count-1) + "&apiKey=\(apiKey)"
         
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
@@ -151,7 +209,7 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         if articles.count > 0 {
             DispatchQueue.main.async {
                 [unowned self] in
-                self.performSegue(withIdentifier: "gameSegue2", sender: self)
+                self.performSegue(withIdentifier: "gameSegue3", sender: self)
             }
         } else {
             loadError(problem: "Not enough sources available.")
