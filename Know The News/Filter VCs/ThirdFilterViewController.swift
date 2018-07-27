@@ -47,6 +47,10 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    //=========================================
+    // Parses for all sources available
+    // through NewsAPI
+    //=========================================
     func parseForSources(json: JSON) {
         for result in json["sources"].arrayValue {
             let name = result["name"].stringValue
@@ -68,15 +72,25 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    //=========================================
+    // Dismisses the keyboard is user taps
+    // screen
+    //=========================================
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
+    //=========================================
+    // Narrows down the searched sources
+    // based on what the user types into the
+    // search bar
+    //=========================================
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 1 {
             var semiSearchedSources = [[String: String]]()
             for source in allSources {
-                let allParts = source["name"]! + source["category"]! + source["language"]! + source["country"]!
+                print(source["country"]!)
+                let allParts = source["name"]! + source["category"]! + fullLangName(code: source["language"]!) + fullCountryName(code: source["country"]!)
                 if allParts.lowercased().contains(searchText.lowercased()) {
                     semiSearchedSources.append(source)
                 }
@@ -88,10 +102,20 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.reloadData()
     }
     
+    //=========================================
+    // Dismisses the keyboard when the search
+    // button is clicked
+    //=========================================
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
     }
     
+    //=========================================
+    // TABLE VIEW DELEGATE FUNCTIONS
+    // 1 - how many rows
+    // 2 - cell display at each row
+    // 3 - when a user taps on a cell
+    //=========================================
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchedSources.count
     }
@@ -112,10 +136,18 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         //------------
         
         let title = searchedSources[index]["name"]
-        let subtitle = "\(searchedSources[index]["category"]!) | Country: \(searchedSources[index]["country"]!) | Language: \(searchedSources[index]["language"]!)"
+        
+        let cat = fullCategoryName(code: searchedSources[index]["category"]!)
+        let country = fullCountryName(code: searchedSources[index]["country"]!)
+        let lang = fullLangName(code: searchedSources[index]["language"]!)
+        let subtitle = "\(cat) News from \(country) (\(lang))"
+        
         cell.textLabel?.text = title
         cell.detailTextLabel?.text = subtitle
         cell.backgroundColor = .clear
+        
+        cell.detailTextLabel?.numberOfLines = 0
+        cell.detailTextLabel?.lineBreakMode = .byWordWrapping
         
         return cell
     }
@@ -126,6 +158,9 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         UIApplication.shared.open(url! as URL, options: [:], completionHandler: nil)
     }
     
+    //=========================================
+    // Handles when a user taps on a switch
+    //=========================================
     @objc func switchChanged(_ sender: UISwitch) {
         print(sender.tag)
         if sender.isOn {
@@ -135,6 +170,9 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    //=========================================
+    // Handles when begin is tapped
+    //=========================================
     @IBAction func onTappedBegin(_ sender: Any) {
         articles = [[String: String]]()
         
@@ -150,6 +188,104 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
             setAndSearchQuery()
         } else {
             self.loadError(problem: "Please selected at least one source.")
+        }
+    }
+    
+    //=========================================
+    // Return a capitalized category name
+    //=========================================
+    func fullCategoryName(code: String) -> String {
+        return code.prefix(1).uppercased() + code.suffix(code.count-1)
+    }
+    
+    //=========================================
+    // Returns the full country name based on
+    // it's two letter code
+    //=========================================
+    func fullCountryName(code: String) -> String {
+        switch code {
+        case "ar": return "Argentina"
+        case "au": return "Australia"
+        case "at": return "Austria"
+        case "be": return "Belgium"
+        case "br": return "Brazil"
+        case "bg": return "Bulgaria"
+        case "ca": return "Canada"
+        case "cn": return "China"
+        case "zh": return "China" // two options, 'zh' is not a real country code
+        case "co": return "Colombia"
+        case "cu": return "Cuba"
+        case "cz": return "Czech Republic"
+        case "eg": return "Egypt"
+        case "fr": return "France"
+        case "de": return "Germany"
+        case "gr": return "Greece"
+        case "hk": return "Hong Kong"
+        case "hu": return "Hungary"
+        case "in": return "India"
+        case "id": return "Indonesia"
+        case "ie": return "Ireland"
+        case "il": return "Israel"
+        case "is": return "Israel" // two options, 'is' usually iceland...
+        case "it": return "Italy"
+        case "jp": return "Japan"
+        case "lv": return "Latvia"
+        case "lt": return "Lithuania"
+        case "my": return "Malaysia"
+        case "mx": return "Mexico"
+        case "ma": return "Morocco"
+        case "nl": return "Netherlands"
+        case "nz": return "New Zealand"
+        case "ng": return "Nigeria"
+        case "no": return "Norway"
+        case "pk": return "Pakistan"
+        case "ph": return "Philippines"
+        case "pl": return "Poland"
+        case "pt": return "Portugal"
+        case "ro": return "Romania"
+        case "ru": return "Russia"
+        case "sa": return "Saudia Arabia"
+        case "rs": return "Serbia"
+        case "sg": return "Singapore"
+        case "sk": return "Slovakia"
+        case "si": return "Slovenia"
+        case "za": return "South Africa"
+        case "kr": return "South Korea"
+        case "es": return "Spain"
+        case "se": return "Sweden"
+        case "ch": return "Switzerland"
+        case "tw": return "Taiwan"
+        case "th": return "Thailand"
+        case "tr": return "Turkey"
+        case "ae": return "UAE"
+        case "ua": return "Ukraine"
+        case "gb": return "United Kingdom"
+        case "us": return "United States"
+        case "ve": return "Venuzuela"
+        default: return code
+        }
+    }
+    
+    //=========================================
+    // Returns a full langugage name based on
+    // its two letter code
+    //=========================================
+    func fullLangName(code: String) -> String {
+        switch code {
+        case "ar": return "Arabic | عربى"
+        case "de": return "German | Deutsche"
+        case "en": return "English"
+        case "es": return "Spanish | Español"
+        case "fr": return "French | le français"
+        case "he": return "Hebrew | עִברִית"
+        case "it": return "Italian | lo italiano"
+        case "nl": return "Dutch | Nederlands"
+        case "no": return "Norwegian | norsk"
+        case "pt": return "Portuguese | o português"
+        case "ru": return "Russian | русский"
+        case "se": return "Sami" // or Northern Sami?
+        case "zh": return "Chinese | 中文"
+        default: return code // ud?
         }
     }
     

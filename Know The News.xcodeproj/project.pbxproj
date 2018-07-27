@@ -117,6 +117,17 @@
 			path = sofija;
 			sourceTree = "<group>";
 		};
+		CCC10F3E210B67C400783130 /* Filter VCs */ = {
+			isa = PBXGroup;
+			children = (
+				CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */,
+				CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */,
+				CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */,
+				CCE9D489210AA12B00FE0948 /* ThirdFilterViewController.swift */,
+			);
+			path = "Filter VCs";
+			sourceTree = "<group>";
+		};
 		CCE1B37C20F4164A004B78B1 = {
 			isa = PBXGroup;
 			children = (
@@ -142,18 +153,15 @@
 			children = (
 				CCE1B38820F4164A004B78B1 /* AppDelegate.swift */,
 				CCE1B38A20F4164A004B78B1 /* ViewController.swift */,
+				CCC10F3E210B67C400783130 /* Filter VCs */,
 				CC0615952106682B004A9BFB /* Chip.swift */,
 				CC0615972106C25C004A9BFB /* ChipHolder.swift */,
 				CCE1B3B820F4180A004B78B1 /* Source.swift */,
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
-				CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */,
 				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
 				CC5DD6EB2107F5C300FEA0A4 /* sofija */,
 				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
-				CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */,
-				CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */,
-				CCE9D489210AA12B00FE0948 /* ThirdFilterViewController.swift */,
 				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
 				CCE1B38F20F4164A004B78B1 /* Assets.xcassets */,
 				CCE1B39120F4164A004B78B1 /* LaunchScreen.storyboard */,

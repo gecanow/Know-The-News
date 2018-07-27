@@ -139,10 +139,11 @@ class SecondFilterViewController: UIViewController, UITextFieldDelegate {
     func setAndSearchQuery() {
         var queryKeys = ""
         for key in keywords {
-            queryKeys += key + "%20OR%20"
+            queryKeys += key + " AND " //+ "%20OR%20"
         }
-        queryKeys = String(queryKeys.prefix(queryKeys.count-8))
-        let query = "https://newsapi.org/v2/everything?q=\(queryKeys)&apiKey=\(apiKey)"
+        queryKeys = String(queryKeys.prefix(queryKeys.count-5))//8))
+        var query = "https://newsapi.org/v2/everything?q=\(queryKeys)&apiKey=\(apiKey)"
+        query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         print(query)
         
         DispatchQueue.global(qos: .userInitiated).async {
