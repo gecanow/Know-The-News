@@ -623,7 +623,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QB2-Gd-5xj" userLabel="Option 2">
-                                <rect key="frame" x="27" y="294" width="320" height="70"/>
+                                <rect key="frame" x="27" y="302" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btw-4Y-ZMw">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -658,7 +658,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxW-ll-Szt" userLabel="Option 1">
-                                <rect key="frame" x="27" y="192" width="320" height="70"/>
+                                <rect key="frame" x="27" y="200" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnm-FI-iMd">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -694,7 +694,7 @@
                                 <viewLayoutGuide key="safeArea" id="esu-TZ-N7v"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKg-fK-J6w" userLabel="Option 3">
-                                <rect key="frame" x="27" y="396" width="320" height="70"/>
+                                <rect key="frame" x="27" y="404" width="320" height="70"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-AJ-uBR">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -744,7 +744,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ad7-Mv-EbS" firstAttribute="top" secondItem="cp2-LX-vq6" secondAttribute="top" id="0pc-Kv-jHI"/>
-                            <constraint firstItem="xxW-ll-Szt" firstAttribute="top" secondItem="rL5-I3-cNd" secondAttribute="bottom" constant="32" id="1LY-2e-pcW"/>
+                            <constraint firstItem="xxW-ll-Szt" firstAttribute="top" secondItem="rL5-I3-cNd" secondAttribute="bottom" constant="40" id="1LY-2e-pcW"/>
                             <constraint firstItem="QB2-Gd-5xj" firstAttribute="centerX" secondItem="cp2-LX-vq6" secondAttribute="centerX" id="2Lu-s1-joI"/>
                             <constraint firstItem="QB2-Gd-5xj" firstAttribute="top" secondItem="xxW-ll-Szt" secondAttribute="bottom" constant="32" id="2pi-zK-9E4"/>
                             <constraint firstAttribute="bottom" secondItem="ad7-Mv-EbS" secondAttribute="bottom" id="AUd-SH-oM0"/>

@@ -313,7 +313,7 @@ class ViewController: UIViewController {
         if arr.count > 1 {
             var longest = 0
             for wordI in 1..<arr.count {
-                if arr[wordI].count > arr[longest].count && !arr[wordI].contains("-") && !arr[wordI].contains("’") {
+                if arr[wordI].count > arr[longest].count && !arr[wordI].contains("-") && !arr[wordI].contains("’") && arr[wordI].count < 12 {
                     longest = wordI
                 }
             }
