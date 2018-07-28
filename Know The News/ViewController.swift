@@ -580,7 +580,6 @@ class ViewController: UIViewController, SavedIconDelegate {
         savedAlert.addSubview(blur)
         savedAlert.sendSubview(toBack: blur)
         
-        //myAlert.isHidden = true
         savedAlert.addSubview(lab)
         savedAlert.addSubview(savedIcon)
         self.view.addSubview(savedAlert)
