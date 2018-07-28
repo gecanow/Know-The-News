@@ -600,5 +600,9 @@ class ViewController: UIViewController {
             defaults.set(encoded, forKey: savedArticlesID)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("preparing for segue")
+    }
 }
 

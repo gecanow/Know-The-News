@@ -216,7 +216,7 @@
         <!--Game History-->
         <scene sceneID="ttg-7m-rKs">
             <objects>
-                <viewController id="pZA-K5-T0V" sceneMemberID="viewController">
+                <viewController id="pZA-K5-T0V" customClass="HistoryViewController" customModule="Know_The_News" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="b3C-Kw-aPL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -278,6 +278,9 @@
                         <viewLayoutGuide key="safeArea" id="IAm-h7-Uaw"/>
                     </view>
                     <navigationItem key="navigationItem" title="Game History" id="YmE-Gz-dKV"/>
+                    <connections>
+                        <outlet property="tableView" destination="hzi-j5-Okc" id="ibb-P2-ivI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vtz-9V-w09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

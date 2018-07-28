@@ -18,6 +18,7 @@
 		CC5DD6F521081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC5DD6F621081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC5DD6F721081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
+		CC5FB4EE210D20B700283912 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5FB4ED210D20B700283912 /* HistoryViewController.swift */; };
 		CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */; };
 		CCC10F43210B8ED400783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
 		CCC10F44210B8ED400783130 /* OFL-FAQ.txt in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F42210B8ED300783130 /* OFL-FAQ.txt */; };
@@ -65,6 +66,7 @@
 		CC5DD6EC2107F5C300FEA0A4 /* Sofija.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sofija.ttf; sourceTree = "<group>"; };
 		CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sofija-Italic.ttf"; sourceTree = "<group>"; };
 		CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
+		CC5FB4ED210D20B700283912 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFilterViewController.swift; sourceTree = "<group>"; };
 		CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CaslonOS-Regular.otf"; sourceTree = "<group>"; };
 		CCC10F42210B8ED300783130 /* OFL-FAQ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OFL-FAQ.txt"; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				CCE1B3B820F4180A004B78B1 /* Source.swift */,
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
+				CC5FB4ED210D20B700283912 /* HistoryViewController.swift */,
 				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
 				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
 				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
@@ -377,6 +380,7 @@
 				CCE9D48A210AA12B00FE0948 /* ThirdFilterViewController.swift in Sources */,
 				CCE1B38B20F4164A004B78B1 /* ViewController.swift in Sources */,
 				CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */,
+				CC5FB4EE210D20B700283912 /* HistoryViewController.swift in Sources */,
 				CCE1B38920F4164A004B78B1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
