@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     var movable : Int?
     
     var articles : [[String: String]]!
+    var finishedArticles = [[String: String]]()
     
     let defaults = UserDefaults.standard
     var savedArticles = [[String:String]]()
@@ -145,7 +146,8 @@ class ViewController: UIViewController {
             repeat {
                 index = Int(arc4random_uniform(UInt32(articles.count)))
                 chosenArticle = articles[index]
-            } while chosenArticle["title"]!.count == 0
+            } while chosenArticle["title"]!.count == 0 || finishedArticles.contains(chosenArticle)
+            finishedArticles.append(chosenArticle)
             
             let splitTitle = gamePlayTitle(chosenArticle["title"]!)
             headlineLabel.text = splitTitle[0]
@@ -585,7 +587,6 @@ class ViewController: UIViewController {
         savedIcon.setNeedsDisplay()
         
         let _ = Timer.scheduledTimer(withTimeInterval: savedIcon.drawTime + 0.5, repeats: false) { (timer) in
-            print("i guess i should remove the saved icon now")
             self.savedAlert.removeFromSuperview()
             self.reset()
         }
