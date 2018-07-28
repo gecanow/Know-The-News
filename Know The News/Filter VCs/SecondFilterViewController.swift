@@ -46,6 +46,14 @@ class SecondFilterViewController: UIViewController, UITextFieldDelegate {
                 break
             }
         }
+        if keywordLabels.count == 0 {
+            xCor = 0
+            yCor = 8
+        } else {
+            let finalLabel = keywordLabels[keywordLabels.count-1]
+            xCor = Int(finalLabel.frame.maxX+8)
+            yCor = Int(finalLabel.frame.minY)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

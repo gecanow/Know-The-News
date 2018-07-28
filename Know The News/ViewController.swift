@@ -341,7 +341,7 @@ class ViewController: UIViewController {
         if arr.count > 1 {
             var longest = 0
             for wordI in 1..<arr.count {
-                if arr[wordI].count > arr[longest].count && !arr[wordI].contains("-") && !arr[wordI].contains("’") && arr[wordI].count < 12 {
+                if (arr[wordI].count > arr[longest].count && !arr[wordI].contains("-") && !arr[wordI].contains("’") && arr[wordI].count < 10) || (arr[longest].count > 10) {
                     longest = wordI
                 }
             }
@@ -399,22 +399,28 @@ class ViewController: UIViewController {
         clueLabel.isHidden = !clueLabel.isHidden
     }
     
-    //=========================================
+    //==================================================
     // Alerts the user of a win and gives the
     // option to continue or save and continue
-    //=========================================
+    // ====
+    // 1 - updates/shows the custom alert
+    // 2 - creates the custom alert (see ViewDidLoad)
+    // 3,4,5 - UIButton targets
+    //==================================================
     func updateAndShowCustomAlert(_ toTitle: String) {
         customAlertLabel.text = toTitle
         myAlert.isHidden = false
     }
     
     func createCustomAlert() {
+        let appColor = clueLabel.backgroundColor
+        
         // 1 - retreive full screen stats
         let screenW = self.view.frame.width
         let screenH = self.view.frame.height
         
         // 2 - create the alert view
-        let alertW = CGFloat(250)
+        let alertW = CGFloat(275)
         let alertH = CGFloat(400)
         
         let xCor = (screenW - alertW) / 2.0
@@ -424,13 +430,12 @@ class ViewController: UIViewController {
         myAlert.backgroundColor = .white
         myAlert.layer.borderWidth = 2
         myAlert.layer.cornerRadius = 5
-        //myAlert.clipsToBounds = true
         
         // 3 - create the description label
         customAlertLabel = UILabel(frame: CGRect(x: 8, y: 0, width: alertW-16, height: 140.0))
         customAlertLabel.text = ""
         customAlertLabel.textAlignment = .center
-        customAlertLabel.font = UIFont.boldSystemFont(ofSize: 18.0)
+        customAlertLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
         customAlertLabel.numberOfLines = 0
         customAlertLabel.lineBreakMode = .byWordWrapping
 
@@ -448,28 +453,44 @@ class ViewController: UIViewController {
         let messageLabel = UILabel(frame: CGRect(x: 8, y: customHeight, width: alertW-16, height: 284.0-customHeight))
         messageLabel.text = "If you would like to save this article to your library, select 'Save and Continue'"
         messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "AvenirNext", size: 16.0)
         messageLabel.numberOfLines = 0
-        messageLabel.layer.borderWidth = 1
         messageLabel.lineBreakMode = .byWordWrapping
         
         // 5 - create the Save and Continue button
-        let saveButton = UIButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
+        //let saveButton = UIButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
+        let saveButton = GradientButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
+        saveButton.startColor = appColor!
+        saveButton.endColor = .white
+        saveButton.isVerticle = false
+        
         saveButton.setTitle("Save and Continue", for: .normal)
-        saveButton.setTitleColor(.blue, for: .normal)
+        saveButton.setTitleColor(.black, for: .normal)
+        saveButton.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 18.0)
         saveButton.layer.borderWidth = 2
         saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
         
         // 6 - create the continue button
-        let nextButton = UIButton(frame: CGRect(x: 0, y: 322.0, width: alertW, height: 40.0))
+        let nextButton = GradientButton(frame: CGRect(x: 0, y: 322.0, width: alertW, height: 40.0))
+        nextButton.startColor = appColor!
+        nextButton.endColor = .white
+        nextButton.isVerticle = false
+        
         nextButton.setTitle("Continue to Next Article", for: .normal)
-        nextButton.setTitleColor(.blue, for: .normal)
+        nextButton.setTitleColor(.black, for: .normal)
+        nextButton.titleLabel?.font = UIFont(name: "AvenirNext", size: 18.0)
         nextButton.layer.borderWidth = 2
         nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
         
         // 7 - create the cancel button
-        let cancelButton = UIButton(frame: CGRect(x: 0, y: 360.0, width: alertW, height: 40.0))
+        let cancelButton = GradientButton(frame: CGRect(x: 0, y: 360.0, width: alertW, height: 40.0))
+        cancelButton.startColor = appColor!
+        cancelButton.endColor = .white
+        cancelButton.isVerticle = false
+        
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.setTitleColor(.blue, for: .normal)
+        cancelButton.setTitleColor(.black, for: .normal)
+        cancelButton.titleLabel?.font = UIFont(name: "AvenirNext", size: 18.0)
         cancelButton.backgroundColor = .clear
         cancelButton.addTarget(self, action: #selector(hideCustomAlert), for: .touchUpInside)
         
@@ -477,8 +498,8 @@ class ViewController: UIViewController {
         myAlert.addSubview(customAlertLabel)
         myAlert.addSubview(messageLabel)
         myAlert.addSubview(saveButton)
-        myAlert.addSubview(nextButton)
         myAlert.addSubview(cancelButton)
+        myAlert.addSubview(nextButton)
         
         // 9 - add myAlert to the full view
         let blur = UIView(frame: CGRect(x: -xCor, y: -yCor, width: screenW, height: screenH))
@@ -491,7 +512,7 @@ class ViewController: UIViewController {
         self.view.addSubview(myAlert)
     }
     @objc func saveButtonAction() {
-        savedArticles.append(self.chosenArticle)
+        savedArticles.insert(self.chosenArticle, at: 0)
         saveSaved()
         hideCustomAlert()
         
