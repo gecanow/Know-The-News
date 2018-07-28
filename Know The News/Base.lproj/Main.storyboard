@@ -47,9 +47,9 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frt-K1-htJ">
-                                <rect key="frame" x="306" y="564" width="53" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Skip"/>
+                                <rect key="frame" x="275" y="575" width="92" height="39"/>
+                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="22"/>
+                                <state key="normal" title="Give Up!"/>
                                 <connections>
                                     <action selector="onTappedUpdate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZl-4N-wtk"/>
                                 </connections>
@@ -128,19 +128,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcz-9c-OQb">
-                                <rect key="frame" x="8" y="556" width="172" height="54"/>
+                                <rect key="frame" x="8" y="576" width="132" height="34"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stopwatch" translatesAutoresizingMaskIntoConstraints="NO" id="zfz-YL-YMX">
-                                        <rect key="frame" x="4" y="8" width="38" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="38" id="0Qb-04-Jrj"/>
-                                            <constraint firstAttribute="width" constant="38" id="yJK-hK-lPX"/>
+                                            <constraint firstAttribute="height" constant="30" id="0Qb-04-Jrj"/>
+                                            <constraint firstAttribute="width" constant="30" id="yJK-hK-lPX"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-Ay-0p8" customClass="GameTimer" customModule="Know_The_News" customModuleProvider="target">
-                                        <rect key="frame" x="42" y="8" width="122.5" height="38"/>
+                                        <rect key="frame" x="30" y="8" width="98" height="24"/>
                                         <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="27"/>
+                                        <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="21"/>
                                         <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -149,11 +149,11 @@
                                 <constraints>
                                     <constraint firstItem="JdN-Ay-0p8" firstAttribute="leading" secondItem="zfz-YL-YMX" secondAttribute="trailing" id="5d8-hF-ayg"/>
                                     <constraint firstItem="JdN-Ay-0p8" firstAttribute="top" secondItem="Zcz-9c-OQb" secondAttribute="top" constant="8" id="EpR-0j-Hpj"/>
-                                    <constraint firstItem="zfz-YL-YMX" firstAttribute="leading" secondItem="Zcz-9c-OQb" secondAttribute="leading" constant="4" id="GqK-7w-cUr"/>
-                                    <constraint firstAttribute="trailing" secondItem="JdN-Ay-0p8" secondAttribute="trailing" constant="8" id="O5w-Yg-C7m"/>
-                                    <constraint firstAttribute="bottom" secondItem="zfz-YL-YMX" secondAttribute="bottom" constant="8" id="bPG-LV-ooB"/>
-                                    <constraint firstAttribute="bottom" secondItem="JdN-Ay-0p8" secondAttribute="bottom" constant="8" id="geF-FS-92c"/>
-                                    <constraint firstItem="zfz-YL-YMX" firstAttribute="top" secondItem="Zcz-9c-OQb" secondAttribute="top" constant="8" id="oaf-06-ttR"/>
+                                    <constraint firstItem="zfz-YL-YMX" firstAttribute="leading" secondItem="Zcz-9c-OQb" secondAttribute="leading" id="GqK-7w-cUr"/>
+                                    <constraint firstAttribute="trailing" secondItem="JdN-Ay-0p8" secondAttribute="trailing" constant="4" id="O5w-Yg-C7m"/>
+                                    <constraint firstAttribute="bottom" secondItem="zfz-YL-YMX" secondAttribute="bottom" constant="4" id="bPG-LV-ooB"/>
+                                    <constraint firstAttribute="bottom" secondItem="JdN-Ay-0p8" secondAttribute="bottom" constant="2" id="geF-FS-92c"/>
+                                    <constraint firstItem="zfz-YL-YMX" firstAttribute="top" secondItem="Zcz-9c-OQb" secondAttribute="top" id="oaf-06-ttR"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -172,7 +172,7 @@
                             <constraint firstItem="dMs-Ed-m6R" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V4c-sU-rb0"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="VTo-ki-k4E"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="O1v-wJ-juX" secondAttribute="trailing" constant="16" id="VYL-09-HMY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="frt-K1-htJ" secondAttribute="trailing" constant="16" id="VuV-o9-xdP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="frt-K1-htJ" secondAttribute="trailing" constant="8" id="VuV-o9-xdP"/>
                             <constraint firstItem="2M1-cW-OOH" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ar5-2v-FPT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OpQ-FQ-Xkw" secondAttribute="trailing" constant="16" id="b1q-gM-M7e"/>
                             <constraint firstItem="O1v-wJ-juX" firstAttribute="top" secondItem="OpQ-FQ-Xkw" secondAttribute="bottom" constant="8" id="cRB-65-A3i"/>
@@ -180,7 +180,7 @@
                             <constraint firstItem="OpQ-FQ-Xkw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="jNr-bH-hg0"/>
                             <constraint firstItem="2M1-cW-OOH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ln9-lV-b3x"/>
                             <constraint firstItem="Zcz-9c-OQb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="n0w-oA-ebv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="frt-K1-htJ" secondAttribute="bottom" constant="8" id="pfD-EM-NaM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="frt-K1-htJ" secondAttribute="bottom" constant="4" id="pfD-EM-NaM"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dMs-Ed-m6R" secondAttribute="trailing" id="vmX-jB-kfR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -204,7 +204,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3193" y="922"/>
+            <point key="canvasLocation" x="3192.8000000000002" y="921.58920539730138"/>
         </scene>
         <!--Filters-->
         <scene sceneID="cOk-qe-PA3">

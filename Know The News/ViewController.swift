@@ -10,7 +10,7 @@ import UIKit
 
 let titleAttributes = [NSAttributedStringKey.font: UIFont(name: "Sofija", size: 30)!]
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SavedIconDelegate {
     
     @IBOutlet weak var clueLabel: UILabel!
     @IBOutlet weak var headlineLabel: UILabel!
@@ -37,6 +37,8 @@ class ViewController: UIViewController {
     
     var myAlert : UIView!
     var customAlertLabel : UILabel!
+    var savedAlert : UIView!
+    var savedIcon : SavedIconDrawView!
     
     //=========================================
     // VIEW DID LOAD
@@ -45,6 +47,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
+        savedIcon.delegate = self
         
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
         
@@ -57,7 +60,7 @@ class ViewController: UIViewController {
         createCustomAlert()
         
         // start the game!
-        self.onTappedUpdate(self)
+        reset()
     }
     
     //=========================================
@@ -102,6 +105,14 @@ class ViewController: UIViewController {
     // Retrieves new article when user taps next
     //===========================================
     @IBAction func onTappedUpdate(_ sender: Any) {
+        gameTimer.stop()
+        updateAndShowCustomAlert("This was a tough one.", currArticle: wordPlay.article)
+    }
+    
+    //===========================================
+    // Resets the game
+    //===========================================
+    func reset() {
         clueLabel.isHidden = false
         self.gameTimer.reset()
         chooseRandomArticle()
@@ -159,8 +170,8 @@ class ViewController: UIViewController {
         removeAll()
         
         //-------
-        let cols = CGFloat(7.0)
-        let rows = CGFloat(3.0)
+        let cols = CGFloat(5.0)
+        let rows = CGFloat(2.0)
         let space = CGFloat(8.0)
         //-------
         
@@ -177,7 +188,7 @@ class ViewController: UIViewController {
         
         var x = startX
         for ctr in 0..<wordPlay.wordID.count {
-            chipHolderArr.append(createNewChipHolder(atPoint: CGPoint(x: x, y: 16), ofSize: size, atI: ctr))
+            chipHolderArr.append(createNewChipHolder(atPoint: CGPoint(x: x, y: 0), ofSize: size, atI: ctr))
             x += Double(size.width+space)
         }
         
@@ -321,11 +332,7 @@ class ViewController: UIViewController {
         if completed {
             // END THE GAME
             gameTimer.stop()
-            
-            let source = wordPlay.article["sourceName"]
-            let date = wordPlay.article["date"]
-            let fullTitle = wordPlay.article["title"]
-            updateAndShowCustomAlert("You got it! On \(date!), \(source!) published \n\"\(fullTitle!)\"")
+            updateAndShowCustomAlert("You got it!", currArticle: wordPlay.article)
         }
     }
     
@@ -407,8 +414,17 @@ class ViewController: UIViewController {
     // 2 - creates the custom alert (see ViewDidLoad)
     // 3,4,5 - UIButton targets
     //==================================================
-    func updateAndShowCustomAlert(_ toTitle: String) {
-        customAlertLabel.text = toTitle
+    func updateAndShowCustomAlert(_ toTitle: String, currArticle: [String: String]) {
+        let source = wordPlay.article["sourceName"]
+        let date = wordPlay.article["date"]
+        let fullTitle = wordPlay.article["title"]
+        
+        var description = "\(source!) published \n\"\(fullTitle!)\""
+        if date!.count > 0 {
+            description = "On \(date!), " + description
+        }
+        
+        customAlertLabel.text = toTitle + " " + description
         myAlert.isHidden = false
     }
     
@@ -516,14 +532,63 @@ class ViewController: UIViewController {
         saveSaved()
         hideCustomAlert()
         
-        onTappedUpdate(self)
+        createAndDisplaySavedAlert()
+        //reset()
     }
     @objc func nextButtonAction() {
         hideCustomAlert()
-        onTappedUpdate(self)
+        reset()
     }
     @objc func hideCustomAlert() {
         myAlert.isHidden = true
+    }
+    
+    func createAndDisplaySavedAlert() {
+        let appColor = clueLabel.backgroundColor
+        
+        // 1 - retreive full screen stats
+        let screenW = self.view.frame.width
+        let screenH = self.view.frame.height
+        
+        // 2 - create the alert view
+        let alertW = CGFloat(150)
+        let alertH = CGFloat(150)
+        
+        let xCor = (screenW - alertW) / 2.0
+        let yCor = (screenH - alertH) / 2.0
+        
+        savedAlert = UIView(frame: CGRect(x: xCor, y: yCor, width: alertW, height: alertH))
+        savedAlert.backgroundColor = .white
+        savedAlert.layer.borderWidth = 2
+        savedAlert.layer.cornerRadius = 5
+        
+        // 3 - create the description label
+        let lab = UILabel(frame: CGRect(x: 8, y: 0, width: alertW-16, height: 40.0))
+        lab.text = "Saved"
+        lab.textAlignment = .center
+        lab.font = UIFont(name: "AvenirNext-Bold", size: 25.0)
+        
+        // 4 - draw a saved icon
+        savedIcon = SavedIconDrawView(frame: CGRect(x: 8, y: 40, width: alertW-16, height: 100.0))
+        savedIcon.backgroundColor = .clear
+        savedIcon.drawColor = appColor!
+        
+        // 9 - add myAlert to the full view
+        let blur = UIView(frame: CGRect(x: -xCor, y: -yCor, width: screenW, height: screenH))
+        blur.backgroundColor = .white
+        blur.alpha = 0.7
+        savedAlert.addSubview(blur)
+        savedAlert.sendSubview(toBack: blur)
+        
+        //myAlert.isHidden = true
+        savedAlert.addSubview(lab)
+        savedAlert.addSubview(savedIcon)
+        self.view.addSubview(savedAlert)
+        savedIcon.setNeedsDisplay()
+    }
+    
+    func removeSavedIconAlert() {
+        savedAlert.removeFromSuperview()
     }
     
     //=========================================
