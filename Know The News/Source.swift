@@ -64,8 +64,8 @@ class Source: NSObject {
     //===========================================
     // Returns a random article from this source
     //===========================================
-    func retrieveRandomArticle() -> [String: String] {
-        let randomIndex = Int(arc4random_uniform(UInt32(self.articles.count)))
-        return articles[randomIndex]
-    }
+//    func retrieveRandomArticle() -> [String: String] {
+//        let randomIndex = Int(arc4random_uniform(UInt32(self.articles.count)))
+//        return articles[randomIndex]
+//    }
 }

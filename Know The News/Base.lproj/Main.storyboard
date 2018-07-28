@@ -646,18 +646,30 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="T8f-gB-o0Z">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I1E-Ny-kdX">
                                         <rect key="frame" x="70" y="0.0" width="250" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="T8f-gB-o0Z">
+                                                <rect key="frame" x="16" y="0.0" width="200" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="AvF-HH-R7a"/>
+                                                    <constraint firstAttribute="height" constant="70" id="qmU-sx-lhA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
+                                                <state key="normal" title="Related to Keywords"/>
+                                                <connections>
+                                                    <segue destination="wfb-mM-GRh" kind="show" id="YMx-C6-OQr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="AvF-HH-R7a"/>
-                                            <constraint firstAttribute="height" constant="70" id="qmU-sx-lhA"/>
+                                            <constraint firstAttribute="bottom" secondItem="T8f-gB-o0Z" secondAttribute="bottom" id="047-ZU-Tkm"/>
+                                            <constraint firstAttribute="height" constant="70" id="6jD-Kf-nWb"/>
+                                            <constraint firstItem="T8f-gB-o0Z" firstAttribute="top" secondItem="I1E-Ny-kdX" secondAttribute="top" id="GJH-Ng-Wpa"/>
+                                            <constraint firstItem="T8f-gB-o0Z" firstAttribute="leading" secondItem="I1E-Ny-kdX" secondAttribute="leading" constant="16" id="WE6-DF-UQe"/>
+                                            <constraint firstAttribute="width" constant="250" id="sxV-Ow-l1D"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
-                                        <state key="normal" title="Related to Keywords"/>
-                                        <connections>
-                                            <segue destination="wfb-mM-GRh" kind="show" id="YMx-C6-OQr"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xxW-ll-Szt" userLabel="Option 1">
@@ -681,18 +693,30 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="XSP-8p-wrg">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wq4-mc-Hn7">
                                         <rect key="frame" x="70" y="0.0" width="250" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="XSP-8p-wrg">
+                                                <rect key="frame" x="16" y="0.0" width="200" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="0w9-Yj-uGd"/>
+                                                    <constraint firstAttribute="height" constant="70" id="CHJ-Pr-Qfh"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
+                                                <state key="normal" title="News Category and Region"/>
+                                                <connections>
+                                                    <segue destination="Kyj-f9-zzv" kind="show" id="cec-Mv-N9z"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="0w9-Yj-uGd"/>
-                                            <constraint firstAttribute="height" constant="70" id="CHJ-Pr-Qfh"/>
+                                            <constraint firstItem="XSP-8p-wrg" firstAttribute="top" secondItem="wq4-mc-Hn7" secondAttribute="top" id="7PV-g0-f8r"/>
+                                            <constraint firstAttribute="bottom" secondItem="XSP-8p-wrg" secondAttribute="bottom" id="CYf-x4-ySn"/>
+                                            <constraint firstAttribute="height" constant="70" id="kEm-n5-f2N"/>
+                                            <constraint firstAttribute="width" constant="250" id="pnS-kB-dqt"/>
+                                            <constraint firstItem="XSP-8p-wrg" firstAttribute="leading" secondItem="wq4-mc-Hn7" secondAttribute="leading" constant="16" id="s28-Ow-xbB"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
-                                        <state key="normal" title="News Category and Region"/>
-                                        <connections>
-                                            <segue destination="Kyj-f9-zzv" kind="show" id="cec-Mv-N9z"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="esu-TZ-N7v"/>
                             </stackView>
@@ -717,18 +741,30 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="mRX-1W-4UJ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7A5-02-JsL">
                                         <rect key="frame" x="70" y="0.0" width="250" height="70"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="mRX-1W-4UJ">
+                                                <rect key="frame" x="16" y="0.0" width="200" height="70"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="AHT-zO-gE1"/>
+                                                    <constraint firstAttribute="height" constant="70" id="h4I-ib-a5p"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
+                                                <state key="normal" title="Self-selected News Outlets"/>
+                                                <connections>
+                                                    <segue destination="rh6-5h-Zv7" kind="show" id="uoL-sh-jJa"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="AHT-zO-gE1"/>
-                                            <constraint firstAttribute="height" constant="70" id="h4I-ib-a5p"/>
+                                            <constraint firstAttribute="bottom" secondItem="mRX-1W-4UJ" secondAttribute="bottom" id="0nI-7N-oC6"/>
+                                            <constraint firstItem="mRX-1W-4UJ" firstAttribute="leading" secondItem="7A5-02-JsL" secondAttribute="leading" constant="16" id="6WX-vp-CiI"/>
+                                            <constraint firstAttribute="height" constant="70" id="DNL-L8-Btp"/>
+                                            <constraint firstItem="mRX-1W-4UJ" firstAttribute="top" secondItem="7A5-02-JsL" secondAttribute="top" id="IKw-Xs-cYW"/>
+                                            <constraint firstAttribute="width" constant="250" id="Zfv-zD-UiJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
-                                        <state key="normal" title="Self-selected News Outlets"/>
-                                        <connections>
-                                            <segue destination="rh6-5h-Zv7" kind="show" id="uoL-sh-jJa"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="cFV-c2-TqZ"/>
                             </stackView>
@@ -962,33 +998,45 @@
                                 <rect key="frame" x="16" y="126" width="343" height="30"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex. 'Trump' or 'Bitcoin'" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3YJ-17-bj8">
-                                        <rect key="frame" x="0.0" y="0.0" width="313" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTu-pF-P8d">
-                                        <rect key="frame" x="313" y="0.0" width="30" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="laH-yV-YUF">
+                                        <rect key="frame" x="303" y="0.0" width="40" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTu-pF-P8d">
+                                                <rect key="frame" x="10" y="0.0" width="30" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="HII-Rh-vlO"/>
+                                                    <constraint firstAttribute="width" constant="30" id="p3z-Wa-tgo"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="27"/>
+                                                <state key="normal" title="+">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                        <integer key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onTappedAdd:" destination="wfb-mM-GRh" eventType="touchUpInside" id="y3Q-Xe-r32"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="HII-Rh-vlO"/>
-                                            <constraint firstAttribute="width" constant="30" id="p3z-Wa-tgo"/>
+                                            <constraint firstAttribute="bottom" secondItem="cTu-pF-P8d" secondAttribute="bottom" id="Ngy-Tl-Sl2"/>
+                                            <constraint firstAttribute="height" constant="30" id="SYs-yZ-WCK"/>
+                                            <constraint firstItem="cTu-pF-P8d" firstAttribute="top" secondItem="laH-yV-YUF" secondAttribute="top" id="bzJ-my-ymb"/>
+                                            <constraint firstItem="cTu-pF-P8d" firstAttribute="leading" secondItem="laH-yV-YUF" secondAttribute="leading" constant="10" id="cxd-Ep-5mL"/>
+                                            <constraint firstAttribute="width" constant="40" id="r5M-Eh-w4f"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="27"/>
-                                        <state key="normal" title="+">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                <integer key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="onTappedAdd:" destination="wfb-mM-GRh" eventType="touchUpInside" id="y3Q-Xe-r32"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KB4-cd-dad">

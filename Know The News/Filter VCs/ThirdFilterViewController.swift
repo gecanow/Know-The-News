@@ -89,7 +89,6 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         if searchText.count > 1 {
             var semiSearchedSources = [[String: String]]()
             for source in allSources {
-                print(source["country"]!)
                 let allParts = source["name"]! + source["category"]! + fullLangName(code: source["language"]!) + fullCountryName(code: source["country"]!)
                 if allParts.lowercased().contains(searchText.lowercased()) {
                     semiSearchedSources.append(source)

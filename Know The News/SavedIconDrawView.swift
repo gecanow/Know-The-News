@@ -8,21 +8,17 @@
 
 import UIKit
 
-protocol SavedIconDelegate {
-    func removeSavedIconAlert()
-}
-
 class SavedIconDrawView: UIView {
     
+    var drawTime = 1.0
     var drawColor : UIColor = .black
-    var delegate : SavedIconDelegate?
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         let w = self.frame.width
         let h = self.frame.height
-        let xmid = (w/2.0) - (w/8.0)
+        let xmid = (w/2.0) - (w/9.0)
         
         // path a check mark
         let path = UIBezierPath()
@@ -46,11 +42,7 @@ class SavedIconDrawView: UIView {
         layer.addSublayer(shapeLayer)
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
-        animation.duration = 1
+        animation.duration = drawTime
         shapeLayer.add(animation, forKey: "MyAnimation")
-        
-        let _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
-            self.delegate?.removeSavedIconAlert()
-        }
     }
 }

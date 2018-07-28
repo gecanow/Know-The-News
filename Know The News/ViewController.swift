@@ -10,7 +10,7 @@ import UIKit
 
 let titleAttributes = [NSAttributedStringKey.font: UIFont(name: "Sofija", size: 30)!]
 
-class ViewController: UIViewController, SavedIconDelegate {
+class ViewController: UIViewController {
     
     @IBOutlet weak var clueLabel: UILabel!
     @IBOutlet weak var headlineLabel: UILabel!
@@ -47,7 +47,6 @@ class ViewController: UIViewController, SavedIconDelegate {
         super.viewDidLoad()
         sourceLabel.minimumScaleFactor = 0.1
         sourceLabel.adjustsFontSizeToFitWidth = true
-        savedIcon.delegate = self
         
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
         
@@ -143,9 +142,10 @@ class ViewController: UIViewController, SavedIconDelegate {
     func chooseRandomArticle() {
         var index = 0
         if articles.count > 1 {
-            print("LOADING FROM ARTICLES")
-            index = Int(arc4random_uniform(UInt32(articles.count)))
-            chosenArticle = articles[index]
+            repeat {
+                index = Int(arc4random_uniform(UInt32(articles.count)))
+                chosenArticle = articles[index]
+            } while chosenArticle["title"]!.count == 0
             
             let splitTitle = gamePlayTitle(chosenArticle["title"]!)
             headlineLabel.text = splitTitle[0]
@@ -381,22 +381,22 @@ class ViewController: UIViewController, SavedIconDelegate {
             inWord.contains(":") ||
             inWord.contains("?") {
             let finalChar = inWord.suffix(1)
-            return ["______\(finalChar)", "\(inWord.prefix(length-1))"]
+            return ["＿＿＿＿\(finalChar)", "\(inWord.prefix(length-1))"]
         }
         if inWord.contains("’s") || inWord.contains("'s") {
-            return ["______’s", "\(inWord.prefix(length-2))"]
+            return ["＿＿＿＿’s", "\(inWord.prefix(length-2))"]
         }
         if (inWord.prefix(1) == "'" && inWord.suffix(1) == "'") ||
             (inWord.prefix(1) == "\"" && inWord.suffix(1) == "\"") {
             let char = inWord.prefix(1)
             var changed = inWord.prefix(length-1)
             changed = changed.suffix(changed.count-1)
-            return ["\(char)______\(char)", "\(changed)"]
+            return ["\(char)＿＿＿＿\(char)", "\(changed)"]
         }
         if inWord.prefix(2) == "r/" {
-            return ["r/______", "\(inWord.suffix(length-2))"]
+            return ["r/＿＿＿＿", "\(inWord.suffix(length-2))"]
         }
-        return ["______", inWord]
+        return ["＿＿＿＿", inWord]
     }
     
     //=========================================
@@ -533,7 +533,6 @@ class ViewController: UIViewController, SavedIconDelegate {
         hideCustomAlert()
         
         createAndDisplaySavedAlert()
-        //reset()
     }
     @objc func nextButtonAction() {
         hideCustomAlert()
@@ -584,10 +583,12 @@ class ViewController: UIViewController, SavedIconDelegate {
         savedAlert.addSubview(savedIcon)
         self.view.addSubview(savedAlert)
         savedIcon.setNeedsDisplay()
-    }
-    
-    func removeSavedIconAlert() {
-        savedAlert.removeFromSuperview()
+        
+        let _ = Timer.scheduledTimer(withTimeInterval: savedIcon.drawTime + 0.5, repeats: false) { (timer) in
+            print("i guess i should remove the saved icon now")
+            self.savedAlert.removeFromSuperview()
+            self.reset()
+        }
     }
     
     //=========================================
