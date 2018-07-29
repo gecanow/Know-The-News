@@ -16,10 +16,9 @@
 		CC5DD6F22107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */; };
 		CC5DD6F32107F5C500FEA0A4 /* Sofija-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC5DD6ED2107F5C300FEA0A4 /* Sofija-Italic.ttf */; };
 		CC5DD6F521081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
-		CC5DD6F621081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
-		CC5DD6F721081AF200FEA0A4 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */; };
 		CC5FB4EE210D20B700283912 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5FB4ED210D20B700283912 /* HistoryViewController.swift */; };
 		CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */; };
+		CC9E9422210E125700922138 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9E9421210E125700922138 /* CustomAlertView.swift */; };
 		CCC10F43210B8ED400783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
 		CCC10F44210B8ED400783130 /* OFL-FAQ.txt in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F42210B8ED300783130 /* OFL-FAQ.txt */; };
 		CCC10F45210B8ED800783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
@@ -68,6 +67,7 @@
 		CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		CC5FB4ED210D20B700283912 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFilterViewController.swift; sourceTree = "<group>"; };
+		CC9E9421210E125700922138 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CaslonOS-Regular.otf"; sourceTree = "<group>"; };
 		CCC10F42210B8ED300783130 /* OFL-FAQ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OFL-FAQ.txt"; sourceTree = "<group>"; };
 		CCC10F48210BEB0500783130 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
@@ -130,6 +130,21 @@
 			path = "Know The News/Custom Fonts/sofija";
 			sourceTree = SOURCE_ROOT;
 		};
+		CC9E9423210E187600922138 /* Custom Object Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CC9E9421210E125700922138 /* CustomAlertView.swift */,
+				CCC10F4A210C08F500783130 /* SavedIconDrawView.swift */,
+				CCC10F48210BEB0500783130 /* GradientButton.swift */,
+				CC0615952106682B004A9BFB /* Chip.swift */,
+				CC0615972106C25C004A9BFB /* ChipHolder.swift */,
+				CCE1B3B820F4180A004B78B1 /* Source.swift */,
+				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
+				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
+			);
+			path = "Custom Object Classes";
+			sourceTree = "<group>";
+		};
 		CCC10F3E210B67C400783130 /* Filter VCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,21 +198,15 @@
 		CCE1B38720F4164A004B78B1 /* Know The News */ = {
 			isa = PBXGroup;
 			children = (
-				CCC10F47210B8F7400783130 /* Custom Fonts */,
 				CCE1B38820F4164A004B78B1 /* AppDelegate.swift */,
-				CCE1B38A20F4164A004B78B1 /* ViewController.swift */,
-				CCC10F4A210C08F500783130 /* SavedIconDrawView.swift */,
-				CCC10F48210BEB0500783130 /* GradientButton.swift */,
+				CCC10F47210B8F7400783130 /* Custom Fonts */,
+				CC9E9423210E187600922138 /* Custom Object Classes */,
 				CCC10F3E210B67C400783130 /* Filter VCs */,
-				CC0615952106682B004A9BFB /* Chip.swift */,
-				CC0615972106C25C004A9BFB /* ChipHolder.swift */,
-				CCE1B3B820F4180A004B78B1 /* Source.swift */,
-				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CCE1B38C20F4164A004B78B1 /* Main.storyboard */,
+				CCE1B38A20F4164A004B78B1 /* ViewController.swift */,
 				CC5FB4ED210D20B700283912 /* HistoryViewController.swift */,
-				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
-				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
 				CCDD54D220F5153B007746C4 /* SavedViewController.swift */,
+				CCC11A1420F9026C00D2482C /* BeginViewController.swift */,
 				CCE1B38F20F4164A004B78B1 /* Assets.xcassets */,
 				CCE1B39120F4164A004B78B1 /* LaunchScreen.storyboard */,
 				CCE1B39420F4164A004B78B1 /* Info.plist */,
@@ -377,6 +386,7 @@
 				CCE9D488210A943A00FE0948 /* FilterTypeViewController.swift in Sources */,
 				CC0615982106C25C004A9BFB /* ChipHolder.swift in Sources */,
 				CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */,
+				CC9E9422210E125700922138 /* CustomAlertView.swift in Sources */,
 				CCE9D48A210AA12B00FE0948 /* ThirdFilterViewController.swift in Sources */,
 				CCE1B38B20F4164A004B78B1 /* ViewController.swift in Sources */,
 				CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */,
@@ -390,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCE1B39E20F4164B004B78B1 /* Know_The_NewsTests.swift in Sources */,
-				CC5DD6F621081AF200FEA0A4 /* GameTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +408,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCE1B3A920F4164B004B78B1 /* Know_The_NewsUITests.swift in Sources */,
-				CC5DD6F721081AF200FEA0A4 /* GameTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

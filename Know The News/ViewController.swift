@@ -10,7 +10,7 @@ import UIKit
 
 let titleAttributes = [NSAttributedStringKey.font: UIFont(name: "Sofija", size: 30)!]
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CustomAlertProtocol {
     
     @IBOutlet weak var clueLabel: UILabel!
     @IBOutlet weak var headlineLabel: UILabel!
@@ -37,10 +37,7 @@ class ViewController: UIViewController {
     let defaults = UserDefaults.standard
     var savedArticles = [[String:String]]()
     
-    var myAlert : UIView!
-    var customAlertLabel : UILabel!
-    var savedAlert : UIView!
-    var savedIcon : SavedIconDrawView!
+    var myAlert = CustomAlertView()
     
     //=========================================
     // VIEW DID LOAD
@@ -58,7 +55,8 @@ class ViewController: UIViewController {
             }
         }
         
-        createCustomAlert()
+        myAlert.delegate = self
+        myAlert.createCustomAlert(self.view)
         
         // start the game!
         reset()
@@ -417,10 +415,6 @@ class ViewController: UIViewController {
     //==================================================
     // Alerts the user of a win and gives the
     // option to continue or save and continue
-    // ====
-    // 1 - updates/shows the custom alert
-    // 2 - creates the custom alert (see ViewDidLoad)
-    // 3,4,5 - UIButton targets
     //==================================================
     func updateAndShowCustomAlert(_ toTitle: String, currArticle: [String: String]) {
         let source = wordPlay.article["sourceName"]
@@ -432,170 +426,30 @@ class ViewController: UIViewController {
             description = "On \(date!), " + description
         }
         
-        customAlertLabel.text = toTitle + " " + description
+        myAlert.customAlertLabel.text = toTitle + " " + description
         myAlert.isHidden = false
     }
     
-    func createCustomAlert() {
-        let appColor = clueLabel.backgroundColor
-        
-        // 1 - retreive full screen stats
-        let screenW = self.view.frame.width
-        let screenH = self.view.frame.height
-        
-        // 2 - create the alert view
-        let alertW = CGFloat(275)
-        let alertH = CGFloat(400)
-        
-        let xCor = (screenW - alertW) / 2.0
-        let yCor = (screenH - alertH) / 2.0
-        
-        myAlert = UIView(frame: CGRect(x: xCor, y: yCor, width: alertW, height: alertH))
-        myAlert.backgroundColor = .white
-        myAlert.layer.borderWidth = 2
-        myAlert.layer.cornerRadius = 5
-        
-        // 3 - create the description label
-        customAlertLabel = UILabel(frame: CGRect(x: 8, y: 0, width: alertW-16, height: 140.0))
-        customAlertLabel.text = ""
-        customAlertLabel.textAlignment = .center
-        customAlertLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
-        customAlertLabel.numberOfLines = 0
-        customAlertLabel.lineBreakMode = .byWordWrapping
-
-        
-        var labelFrame = customAlertLabel.frame
-        customAlertLabel.sizeToFit()
-        
-        var customHeight = customAlertLabel.frame.height
-        if customHeight < 204 { customHeight = 204 }
-        labelFrame.size.height = customHeight
-        labelFrame.size.width = alertW-16 // must stay the same
-        customAlertLabel.frame = labelFrame
-        
-        // 4 - create the message label
-        let messageLabel = UILabel(frame: CGRect(x: 8, y: customHeight, width: alertW-16, height: 284.0-customHeight))
-        messageLabel.text = "If you would like to save this article to your library, select 'Save and Continue'"
-        messageLabel.textAlignment = .center
-        messageLabel.font = UIFont(name: "AvenirNext", size: 16.0)
-        messageLabel.numberOfLines = 0
-        messageLabel.lineBreakMode = .byWordWrapping
-        
-        // 5 - create the Save and Continue button
-        //let saveButton = UIButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
-        let saveButton = GradientButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
-        saveButton.startColor = appColor!
-        saveButton.endColor = .white
-        saveButton.isVerticle = false
-        
-        saveButton.setTitle("Save and Continue", for: .normal)
-        saveButton.setTitleColor(.black, for: .normal)
-        saveButton.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 18.0)
-        saveButton.layer.borderWidth = 2
-        saveButton.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
-        
-        // 6 - create the continue button
-        let nextButton = GradientButton(frame: CGRect(x: 0, y: 322.0, width: alertW, height: 40.0))
-        nextButton.startColor = appColor!
-        nextButton.endColor = .white
-        nextButton.isVerticle = false
-        
-        nextButton.setTitle("Continue to Next Article", for: .normal)
-        nextButton.setTitleColor(.black, for: .normal)
-        nextButton.titleLabel?.font = UIFont(name: "AvenirNext", size: 18.0)
-        nextButton.layer.borderWidth = 2
-        nextButton.addTarget(self, action: #selector(nextButtonAction), for: .touchUpInside)
-        
-        // 7 - create the cancel button
-        let cancelButton = GradientButton(frame: CGRect(x: 0, y: 360.0, width: alertW, height: 40.0))
-        cancelButton.startColor = appColor!
-        cancelButton.endColor = .white
-        cancelButton.isVerticle = false
-        
-        cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.setTitleColor(.black, for: .normal)
-        cancelButton.titleLabel?.font = UIFont(name: "AvenirNext", size: 18.0)
-        cancelButton.backgroundColor = .clear
-        cancelButton.addTarget(self, action: #selector(hideCustomAlert), for: .touchUpInside)
-        
-        // 8 - add buttons and labels to the view
-        myAlert.addSubview(customAlertLabel)
-        myAlert.addSubview(messageLabel)
-        myAlert.addSubview(saveButton)
-        myAlert.addSubview(cancelButton)
-        myAlert.addSubview(nextButton)
-        
-        // 9 - add myAlert to the full view
-        let blur = UIView(frame: CGRect(x: -xCor, y: -yCor, width: screenW, height: screenH))
-        blur.backgroundColor = .white
-        blur.alpha = 0.7
-        myAlert.addSubview(blur)
-        myAlert.sendSubview(toBack: blur)
-        
-        myAlert.isHidden = true
-        self.view.addSubview(myAlert)
-    }
-    @objc func saveButtonAction() {
+    //==================================================
+    // CustomAlertDelegate Functions
+    //
+    // 1 - called if save button is tapped
+    // 2 - called if next button is tapped
+    // 3 - called if hide button is tapped
+    //==================================================
+    func saveButtonAction() {
         savedArticles.insert(self.chosenArticle, at: 0)
         saveSaved()
         hideCustomAlert()
         
-        createAndDisplaySavedAlert()
+        myAlert.createAndDisplaySavedAlert(self.view)
     }
-    @objc func nextButtonAction() {
+    func nextButtonAction() {
         hideCustomAlert()
         reset()
     }
-    @objc func hideCustomAlert() {
+    func hideCustomAlert() {
         myAlert.isHidden = true
-    }
-    
-    func createAndDisplaySavedAlert() {
-        let appColor = clueLabel.backgroundColor
-        
-        // 1 - retreive full screen stats
-        let screenW = self.view.frame.width
-        let screenH = self.view.frame.height
-        
-        // 2 - create the alert view
-        let alertW = CGFloat(150)
-        let alertH = CGFloat(150)
-        
-        let xCor = (screenW - alertW) / 2.0
-        let yCor = (screenH - alertH) / 2.0
-        
-        savedAlert = UIView(frame: CGRect(x: xCor, y: yCor, width: alertW, height: alertH))
-        savedAlert.backgroundColor = .white
-        savedAlert.layer.borderWidth = 2
-        savedAlert.layer.cornerRadius = 5
-        
-        // 3 - create the description label
-        let lab = UILabel(frame: CGRect(x: 8, y: 0, width: alertW-16, height: 40.0))
-        lab.text = "Saved"
-        lab.textAlignment = .center
-        lab.font = UIFont(name: "AvenirNext-Bold", size: 25.0)
-        
-        // 4 - draw a saved icon
-        savedIcon = SavedIconDrawView(frame: CGRect(x: 8, y: 40, width: alertW-16, height: 100.0))
-        savedIcon.backgroundColor = .clear
-        savedIcon.drawColor = appColor!
-        
-        // 9 - add myAlert to the full view
-        let blur = UIView(frame: CGRect(x: -xCor, y: -yCor, width: screenW, height: screenH))
-        blur.backgroundColor = .white
-        blur.alpha = 0.7
-        savedAlert.addSubview(blur)
-        savedAlert.sendSubview(toBack: blur)
-        
-        savedAlert.addSubview(lab)
-        savedAlert.addSubview(savedIcon)
-        self.view.addSubview(savedAlert)
-        savedIcon.setNeedsDisplay()
-        
-        let _ = Timer.scheduledTimer(withTimeInterval: savedIcon.drawTime + 0.5, repeats: false) { (timer) in
-            self.savedAlert.removeFromSuperview()
-            self.reset()
-        }
     }
     
     //=========================================

@@ -313,7 +313,7 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
         DispatchQueue.global(qos: .userInitiated).async {
             [unowned self] in
             // rest of method goes here
-            
+
             if let url = URL(string: query) {
                 if let data = try? Data(contentsOf: url) {
                     let json = try! JSON(data: data)
@@ -339,7 +339,7 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
             let date = String(result["publishedAt"].stringValue.prefix(10))
             let sourceName = result["source"]["name"].stringValue
             
-            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date]
+            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date, "timeToComplete": ""]
             articles.append(article)
         }
         
