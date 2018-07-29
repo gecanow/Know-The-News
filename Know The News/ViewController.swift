@@ -32,6 +32,7 @@ class ViewController: UIViewController {
     
     var articles : [[String: String]]!
     var finishedArticles = [[String: String]]()
+    var tappedHistory = false
     
     let defaults = UserDefaults.standard
     var savedArticles = [[String:String]]()
@@ -68,6 +69,7 @@ class ViewController: UIViewController {
     // appears (if it was unpaused)
     //=========================================
     override func viewDidAppear(_ animated: Bool) {
+        tappedHistory = false
         if gameTimer != nil {
             if gameTimer.paused {
                 gameTimer.unpause()
@@ -142,12 +144,15 @@ class ViewController: UIViewController {
     //=========================================
     func chooseRandomArticle() {
         var index = 0
-        if articles.count > 1 {
+        if articles.count == finishedArticles.count {
+            print("you're cycled through all the articles!")
+        } else if articles.count > 1 {
             repeat {
                 index = Int(arc4random_uniform(UInt32(articles.count)))
                 chosenArticle = articles[index]
+                print(finishedArticles.contains(chosenArticle))
             } while chosenArticle["title"]!.count == 0 || finishedArticles.contains(chosenArticle)
-            finishedArticles.append(chosenArticle)
+            finishedArticles.insert(chosenArticle, at: 0)
             
             let splitTitle = gamePlayTitle(chosenArticle["title"]!)
             headlineLabel.text = splitTitle[0]
@@ -334,6 +339,7 @@ class ViewController: UIViewController {
         if completed {
             // END THE GAME
             gameTimer.stop()
+            finishedArticles[0]["timeToComplete"] = gameTimer.text!
             updateAndShowCustomAlert("You got it!", currArticle: wordPlay.article)
         }
     }
@@ -601,8 +607,17 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func onTappedListHistory(_ sender: Any) {
+        tappedHistory = true
+        performSegue(withIdentifier: "HistorySegue", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("preparing for segue")
+        if tappedHistory {
+            print(finishedArticles.count)
+            let dvc = segue.destination as! HistoryViewController
+            dvc.articles = self.finishedArticles
+        }
     }
 }
 

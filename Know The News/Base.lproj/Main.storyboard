@@ -187,9 +187,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Game" image="puzzle" id="z7l-es-74U"/>
                     <navigationItem key="navigationItem" title="Game Room" id="R1T-mV-cJZ">
-                        <barButtonItem key="rightBarButtonItem" title="≡" id="FZM-lR-D0u">
+                        <barButtonItem key="rightBarButtonItem" image="history list" id="FZM-lR-D0u">
                             <connections>
-                                <segue destination="pZA-K5-T0V" kind="show" id="rVh-qw-uCp"/>
+                                <action selector="onTappedListHistory:" destination="BYZ-38-t0r" id="zPf-KJ-4K7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -202,6 +202,7 @@
                         <outlet property="headlineLabel" destination="O1v-wJ-juX" id="WkR-bJ-fIX"/>
                         <outlet property="optionsView" destination="Rdk-4f-3BE" id="oBH-YD-gpA"/>
                         <outlet property="sourceLabel" destination="OpQ-FQ-Xkw" id="0TZ-HT-DO9"/>
+                        <segue destination="pZA-K5-T0V" kind="show" identifier="HistorySegue" id="apa-qz-JT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -234,7 +235,7 @@
                                 <rect key="frame" x="16" y="109" width="343" height="501"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" textLabel="DZl-Oy-Fqq" detailTextLabel="B64-PG-nmQ" style="IBUITableViewCellStyleValue1" id="P2O-I2-t06">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCell" textLabel="DZl-Oy-Fqq" detailTextLabel="B64-PG-nmQ" style="IBUITableViewCellStyleSubtitle" id="P2O-I2-t06">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P2O-I2-t06" id="0z9-mQ-cpI">
@@ -242,16 +243,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DZl-Oy-Fqq">
-                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B64-PG-nmQ">
-                                                    <rect key="frame" x="284" y="12" width="44" height="20.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="B64-PG-nmQ">
+                                                    <rect key="frame" x="15" y="25.5" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1263,6 +1264,7 @@
         <image name="check" width="41" height="41"/>
         <image name="entertainment" width="1044" height="1044"/>
         <image name="general" width="1046" height="1046"/>
+        <image name="history list" width="33" height="43"/>
         <image name="news icon" width="26" height="33"/>
         <image name="newspaper" width="6016" height="4016"/>
         <image name="puzzle" width="58" height="57"/>
@@ -1273,6 +1275,6 @@
         <image name="white wall" width="6000" height="4000"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="icr-bX-3Dx"/>
+        <segue reference="0nc-k1-kSZ"/>
     </inferredMetricsTieBreakers>
 </document>
