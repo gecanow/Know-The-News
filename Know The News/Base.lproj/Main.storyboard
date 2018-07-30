@@ -793,7 +793,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="T8f-gB-o0Z">
                                                 <rect key="frame" x="48" y="4" width="209" height="70"/>
                                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
-                                                <state key="normal" title="Related to Keywords"/>
+                                                <state key="normal" title="Enter Your Own Keywords"/>
                                                 <connections>
                                                     <segue destination="wfb-mM-GRh" kind="show" id="YMx-C6-OQr"/>
                                                 </connections>
@@ -837,7 +837,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="mRX-1W-4UJ">
                                                 <rect key="frame" x="48" y="4" width="209" height="70"/>
                                                 <fontDescription key="fontDescription" name="Sofija" family="Sofija" pointSize="35"/>
-                                                <state key="normal" title="Self-selected News Outlets"/>
+                                                <state key="normal" title="Choose From News Outlets"/>
                                                 <connections>
                                                     <segue destination="rh6-5h-Zv7" kind="show" id="uoL-sh-jJa"/>
                                                 </connections>
