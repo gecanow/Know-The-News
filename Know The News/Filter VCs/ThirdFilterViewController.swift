@@ -12,7 +12,7 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
     
     var allSources = [[String: String]]()
     var searchedSources = [[String: String]]()
-    var selectedSourceIDs = [String]()
+    var selectedSources = [[String: String]]()
     
     var articles = [[String: String]]()
     
@@ -177,15 +177,13 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func onTappedBegin(_ sender: Any) {
         articles = [[String: String]]()
         
-        selectedSourceIDs = [String]()
         for source in allSources {
             if source["chosen"] == "yes" {
-                selectedSourceIDs.append(source["id"]!)
+                selectedSources.append(source)
             }
         }
-        if selectedSourceIDs.count > 20 {
-            self.loadError(problem: "Please select at most 20 sources. (You have \(selectedSourceIDs.count) sources selected.)")
-        } else if selectedSourceIDs.count > 0 {
+        
+        if selectedSources.count > 0 {
             setAndSearchQuery()
         } else {
             self.loadError(problem: "Please selected at least one source.")
@@ -304,50 +302,11 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
     //--------------------//
     
     func setAndSearchQuery() {
-        var query = "https://newsapi.org/v2/everything?sources="
-        for id in selectedSourceIDs {
-            query += id + ","
-        }
-        query = query.prefix(query.count-1) + "&apiKey=\(apiKey)"
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            [unowned self] in
-            // rest of method goes here
-
-            if let url = URL(string: query) {
-                if let data = try? Data(contentsOf: url) {
-                    let json = try! JSON(data: data)
-                    if json["status"] == "ok" {
-                        self.parse(json: json)
-                        return
-                    }
-                }
-            }
-            self.loadError(problem: "There was a problem loading the news feed.")
-        }
-    }
-    
-    //=========================================
-    // Parses for all sources of a given type
-    //=========================================
-    func parse(json: JSON) {
-        print(json["totalResults"])
-        for result in json["articles"].arrayValue {
-            let title = result["title"].stringValue
-            let description = result["description"].stringValue
-            let url = result["url"].stringValue
-            let date = String(result["publishedAt"].stringValue.prefix(10))
-            let sourceName = result["source"]["name"].stringValue
-            
-            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date, "timeToComplete": ""]
-            articles.append(article)
-        }
+        let sourceHandler = SourcesHandler(theSources: selectedSources, theApiKey: apiKey)
+        articles = sourceHandler.articles
         
         if articles.count > 0 {
-            DispatchQueue.main.async {
-                [unowned self] in
-                self.performSegue(withIdentifier: "gameSegue3", sender: self)
-            }
+            performSegue(withIdentifier: "gameSegue3", sender: self)
         } else {
             loadError(problem: "Not enough sources available.")
         }

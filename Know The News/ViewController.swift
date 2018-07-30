@@ -144,6 +144,7 @@ class ViewController: UIViewController, CustomAlertProtocol {
         var index = 0
         if articles.count == finishedArticles.count {
             print("you're cycled through all the articles!")
+            myAlert.createAndDisplayGameOverAlert("You've cycled through all the articles!", toView: self.view)
         } else if articles.count > 1 {
             repeat {
                 index = Int(arc4random_uniform(UInt32(articles.count)))

@@ -109,16 +109,17 @@ class FirstFilterViewController: UIViewController {
     // Parses for all sources of a given type
     //=========================================
     func parse(json: JSON) {
-        
+        var sources = [[String: String]]()
         for result in json["sources"].arrayValue {
             let id = result["id"].stringValue
             let name = result["name"].stringValue
             let description = result["description"].stringValue
             
             let source = ["id": id, "name": name, "description": description]
-            let captialSource = Source(theSource: source, theApiKey: apiKey)
-            articles += captialSource.articles
+            sources.append(source)
         }
+        let captialSource = SourcesHandler(theSources: sources, theApiKey: apiKey)
+        articles += captialSource.articles
         
         if articles.count > 0 {
             DispatchQueue.main.async {

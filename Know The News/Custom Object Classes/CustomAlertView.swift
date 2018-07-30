@@ -16,9 +16,13 @@ protocol CustomAlertProtocol {
 
 class CustomAlertView: UIView {
     
+    let screenW = UIScreen.main.bounds.width//self.view.frame.width
+    let screenH = UIScreen.main.bounds.height//self.view.frame.height
     let appColor = #colorLiteral(red: 0.6112467448, green: 0.7109888812, blue: 0.9402669271, alpha: 1) //clueLabel.backgroundColor
+    
     var customAlertLabel = UILabel()
     var savedAlert = UIView()
+    var gameOverAlert = UIView()
     var delegate : CustomAlertProtocol?
 
     /*
@@ -30,10 +34,6 @@ class CustomAlertView: UIView {
     */
     
     func createCustomAlert(_ onView: UIView) {
-        // 1 - retreive full screen stats
-        let screenW = UIScreen.main.bounds.width//self.view.frame.width
-        let screenH = UIScreen.main.bounds.height//self.view.frame.height
-        
         // 2 - create the alert view
         let alertW = CGFloat(275)
         let alertH = CGFloat(400)
@@ -50,7 +50,7 @@ class CustomAlertView: UIView {
         customAlertLabel = UILabel(frame: CGRect(x: 8, y: 0, width: alertW-16, height: 140.0))
         customAlertLabel.text = ""
         customAlertLabel.textAlignment = .center
-        customAlertLabel.font = UIFont(name: "AvenirNext-Bold", size: 20.0)
+        customAlertLabel.font = UIFont(name: "CaslonOS-Regular", size: 19.0) //"AvenirNext-Bold"
         customAlertLabel.numberOfLines = 0
         customAlertLabel.lineBreakMode = .byWordWrapping
         
@@ -137,10 +137,6 @@ class CustomAlertView: UIView {
     }
     
     func createAndDisplaySavedAlert(_ toView: UIView) {
-        // 1 - retreive full screen stats
-        let screenW = UIScreen.main.bounds.width//self.view.frame.width
-        let screenH = UIScreen.main.bounds.height//self.view.frame.height
-        
         // 2 - create the alert view
         let alertW = CGFloat(150)
         let alertH = CGFloat(150)
@@ -181,5 +177,108 @@ class CustomAlertView: UIView {
             self.savedAlert.removeFromSuperview()
             self.delegate?.nextButtonAction()
         }
+    }
+    
+    func createAndDisplayGameOverAlert(_ withMessage: String, toView: UIView) {
+        // 2 - create the alert view
+        let alertW = CGFloat(275)
+        let alertH = CGFloat(400)
+        
+        let xCor = (screenW - alertW) / 2.0
+        let yCor = (screenH - alertH) / 2.0
+        
+        gameOverAlert = UIView(frame: CGRect(x: xCor, y: yCor, width: alertW, height: alertH))
+        gameOverAlert.backgroundColor = .white
+        gameOverAlert.layer.borderWidth = 2
+        gameOverAlert.layer.cornerRadius = 5
+        
+        // 3 - create the description label
+        let mainLabel = UILabel(frame: CGRect(x: 8, y: 0, width: alertW-16, height: 140.0))
+        mainLabel.text = withMessage
+        mainLabel.textAlignment = .center
+        mainLabel.font = UIFont(name: "CaslonOS-Regular", size: 19.0) //"AvenirNext-Bold"
+        mainLabel.numberOfLines = 0
+        mainLabel.lineBreakMode = .byWordWrapping
+        
+        
+        var labelFrame = mainLabel.frame
+        mainLabel.sizeToFit()
+        
+        var customHeight = mainLabel.frame.height
+        if customHeight < 140 { customHeight = 140 }
+        labelFrame.size.height = customHeight
+        labelFrame.size.width = alertW-16 // must stay the same
+        mainLabel.frame = labelFrame
+        
+        // 4 - create the message label
+        let messageLabel = UILabel(frame: CGRect(x: 8, y: customHeight, width: alertW-16, height: 284.0-customHeight))
+        messageLabel.text = "To choose another article filter, select 'Back to Filters.' To view your game play history, select 'Game History.'"
+        messageLabel.textAlignment = .center
+        messageLabel.font = UIFont(name: "AvenirNext", size: 16.0)
+        messageLabel.numberOfLines = 0
+        messageLabel.lineBreakMode = .byWordWrapping
+        
+        // 5 - create the Save and Continue button
+        //let saveButton = UIButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
+        let backButton = GradientButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
+        backButton.startColor = appColor
+        backButton.endColor = .white
+        backButton.isVerticle = false
+        
+        backButton.setTitle("Back to Filters", for: .normal)
+        backButton.setTitleColor(.black, for: .normal)
+        backButton.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 18.0)
+        backButton.layer.borderWidth = 2
+        backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        
+        // 6 - create the continue button
+        let historyButton = GradientButton(frame: CGRect(x: 0, y: 322.0, width: alertW, height: 40.0))
+        historyButton.startColor = appColor
+        historyButton.endColor = .white
+        historyButton.isVerticle = false
+        
+        historyButton.setTitle("Game History", for: .normal)
+        historyButton.setTitleColor(.black, for: .normal)
+        historyButton.titleLabel?.font = UIFont(name: "AvenirNext", size: 18.0)
+        historyButton.layer.borderWidth = 2
+        historyButton.addTarget(self, action: #selector(historyButtonAction), for: .touchUpInside)
+        
+        // 7 - create the cancel button
+        let cancelButton = GradientButton(frame: CGRect(x: 0, y: 360.0, width: alertW, height: 40.0))
+        cancelButton.startColor = appColor
+        cancelButton.endColor = .white
+        cancelButton.isVerticle = false
+        
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.setTitleColor(.black, for: .normal)
+        cancelButton.titleLabel?.font = UIFont(name: "AvenirNext", size: 18.0)
+        cancelButton.backgroundColor = .clear
+        cancelButton.addTarget(self, action: #selector(hideGameOverAlert), for: .touchUpInside)
+        
+        // 8 - add buttons and labels to the view
+        gameOverAlert.addSubview(mainLabel)
+        gameOverAlert.addSubview(messageLabel)
+        gameOverAlert.addSubview(backButton)
+        gameOverAlert.addSubview(cancelButton)
+        gameOverAlert.addSubview(historyButton)
+        
+        // 9 - add myAlert to the full view
+        let blur = UIView(frame: CGRect(x: -xCor, y: -yCor, width: screenW, height: screenH))
+        blur.backgroundColor = .white
+        blur.alpha = 0.7
+        gameOverAlert.addSubview(blur)
+        gameOverAlert.sendSubview(toBack: blur)
+        
+        toView.addSubview(gameOverAlert)
+    }
+    
+    @objc func historyButtonAction() {
+        // delegate?.segueToGameHistory()
+    }
+    @objc func backButtonAction() {
+        // delegate?.unwindToFilters()
+    }
+    @objc func hideGameOverAlert() {
+        gameOverAlert.removeFromSuperview()
     }
 }

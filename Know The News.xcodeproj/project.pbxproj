@@ -19,6 +19,7 @@
 		CC5FB4EE210D20B700283912 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5FB4ED210D20B700283912 /* HistoryViewController.swift */; };
 		CC810F4E20F64D8800EC6F62 /* FirstFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */; };
 		CC9E9422210E125700922138 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9E9421210E125700922138 /* CustomAlertView.swift */; };
+		CC9E9427210E486800922138 /* SourcesHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9E9426210E486800922138 /* SourcesHandler.swift */; };
 		CCC10F43210B8ED400783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
 		CCC10F44210B8ED400783130 /* OFL-FAQ.txt in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F42210B8ED300783130 /* OFL-FAQ.txt */; };
 		CCC10F45210B8ED800783130 /* CaslonOS-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */; };
@@ -35,7 +36,6 @@
 		CCE1B39E20F4164B004B78B1 /* Know_The_NewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B39D20F4164B004B78B1 /* Know_The_NewsTests.swift */; };
 		CCE1B3A920F4164B004B78B1 /* Know_The_NewsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3A820F4164B004B78B1 /* Know_The_NewsUITests.swift */; };
 		CCE1B3B720F416A2004B78B1 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3B620F416A2004B78B1 /* SwiftyJSON.swift */; };
-		CCE1B3B920F4180A004B78B1 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3B820F4180A004B78B1 /* Source.swift */; };
 		CCE1B3BB20F42696004B78B1 /* WordPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE1B3BA20F42696004B78B1 /* WordPlay.swift */; };
 		CCE9D486210A935C00FE0948 /* SecondFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */; };
 		CCE9D488210A943A00FE0948 /* FilterTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */; };
@@ -68,6 +68,7 @@
 		CC5FB4ED210D20B700283912 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		CC810F4D20F64D8800EC6F62 /* FirstFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstFilterViewController.swift; sourceTree = "<group>"; };
 		CC9E9421210E125700922138 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		CC9E9426210E486800922138 /* SourcesHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesHandler.swift; sourceTree = "<group>"; };
 		CCC10F41210B8ED300783130 /* CaslonOS-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CaslonOS-Regular.otf"; sourceTree = "<group>"; };
 		CCC10F42210B8ED300783130 /* OFL-FAQ.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "OFL-FAQ.txt"; sourceTree = "<group>"; };
 		CCC10F48210BEB0500783130 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
@@ -88,7 +89,6 @@
 		CCE1B3A820F4164B004B78B1 /* Know_The_NewsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Know_The_NewsUITests.swift; sourceTree = "<group>"; };
 		CCE1B3AA20F4164B004B78B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCE1B3B620F416A2004B78B1 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		CCE1B3B820F4180A004B78B1 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		CCE1B3BA20F42696004B78B1 /* WordPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPlay.swift; sourceTree = "<group>"; };
 		CCE9D485210A935C00FE0948 /* SecondFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondFilterViewController.swift; sourceTree = "<group>"; };
 		CCE9D487210A943A00FE0948 /* FilterTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTypeViewController.swift; sourceTree = "<group>"; };
@@ -133,12 +133,12 @@
 		CC9E9423210E187600922138 /* Custom Object Classes */ = {
 			isa = PBXGroup;
 			children = (
+				CC9E9426210E486800922138 /* SourcesHandler.swift */,
 				CC9E9421210E125700922138 /* CustomAlertView.swift */,
 				CCC10F4A210C08F500783130 /* SavedIconDrawView.swift */,
 				CCC10F48210BEB0500783130 /* GradientButton.swift */,
 				CC0615952106682B004A9BFB /* Chip.swift */,
 				CC0615972106C25C004A9BFB /* ChipHolder.swift */,
-				CCE1B3B820F4180A004B78B1 /* Source.swift */,
 				CCE1B3BA20F42696004B78B1 /* WordPlay.swift */,
 				CC5DD6F421081AF200FEA0A4 /* GameTimer.swift */,
 			);
@@ -375,10 +375,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCE9D486210A935C00FE0948 /* SecondFilterViewController.swift in Sources */,
+				CC9E9427210E486800922138 /* SourcesHandler.swift in Sources */,
 				CCC10F49210BEB0500783130 /* GradientButton.swift in Sources */,
 				CCC11A1520F9026C00D2482C /* BeginViewController.swift in Sources */,
 				CCDD54D320F5153B007746C4 /* SavedViewController.swift in Sources */,
-				CCE1B3B920F4180A004B78B1 /* Source.swift in Sources */,
 				CC5DD6F521081AF200FEA0A4 /* GameTimer.swift in Sources */,
 				CCE1B3B720F416A2004B78B1 /* SwiftyJSON.swift in Sources */,
 				CCC10F4B210C08F500783130 /* SavedIconDrawView.swift in Sources */,
