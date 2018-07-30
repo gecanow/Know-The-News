@@ -11,13 +11,29 @@ import UIKit
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var articles = [[String: String]]()
+    var allArticles = [[String: String]]()
+    var finishedArticles = [[String: String]]()
+    var finishedArtCount = 0
+    
     var savedArticles = [[String: String]]()
     var defaults = UserDefaults.standard
     var customAlert = CustomAlertView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for _ in 0..<finishedArtCount { finishedArticles.append([String: String]()) }
+        for art in allArticles {
+            if art["isFinished"]! != "false" {
+                finishedArticles[Int(art["isFinished"]!)!] = art
+            }
+        }
+        finishedArticles.reverse() // most recent show first
+        finishedArticles.remove(at: 0) // remove the current article
+        articles = finishedArticles // automatically selected "Seen in Game"
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -50,16 +66,22 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.textLabel?.numberOfLines = 0
         cell.textLabel?.lineBreakMode = .byWordWrapping
         
-        if article["timeToComplete"]!.count > 0 {
+        if article["isFinished"]! == "false" {
+            cell.detailTextLabel?.text = "Unseen"
+            cell.detailTextLabel?.backgroundColor = .gray
+        } else if article["timeToComplete"]!.count > 0 {
             cell.detailTextLabel?.text = "Solved in \(article["timeToComplete"]!)"
             cell.detailTextLabel?.backgroundColor = .green
         } else {
             cell.detailTextLabel?.text = "Unsolved"
+            cell.detailTextLabel?.backgroundColor = .yellow
         }
         cell.detailTextLabel?.font = UIFont(name: "CaslonOS-Regular", size: 12.0)
         
         if savedArticles.contains(article) {
             cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
         }
         
         return cell
@@ -76,6 +98,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             saveSaved()
             cell.accessoryType = .checkmark
             customAlert.createAndDisplaySavedAlert(self.view)
+        }
+        tableView.reloadData()
+    }
+    
+    @IBAction func onTappedSegmentedControl(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            articles = finishedArticles
+        } else {
+            articles = allArticles
         }
         tableView.reloadData()
     }

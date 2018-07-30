@@ -183,7 +183,7 @@ class SecondFilterViewController: UIViewController, UITextFieldDelegate {
             let date = String(result["publishedAt"].stringValue.prefix(10))
             let sourceName = result["source"]["name"].stringValue
             
-            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date, "timeToComplete": ""]
+            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date, "timeToComplete": "", "isFinished": "false"]
             articles.append(article)
         }
         

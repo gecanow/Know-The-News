@@ -67,7 +67,9 @@ class SourcesHandler: NSObject {
             let date = String(result["publishedAt"].stringValue.prefix(10))
             let sourceName = result["source"]["name"].stringValue // check for accuracy
             
-            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date, "timeToComplete": ""]
+            let article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date, "timeToComplete": "", "isFinished": "false"]
+            
+            // article = ["title": title, "description": description, "url": url, "sourceName": sourceName, "date": date, "timeToComplete": ""]
             articles.append(article)
         }
         print("finished loading all articles")

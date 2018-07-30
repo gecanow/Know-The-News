@@ -12,6 +12,8 @@ protocol CustomAlertProtocol {
     func saveButtonAction()
     func nextButtonAction()
     func hideCustomAlert()
+    func segueToGameHistory()
+    func unwindToFilters()
 }
 
 class CustomAlertView: UIView {
@@ -73,7 +75,6 @@ class CustomAlertView: UIView {
         messageLabel.lineBreakMode = .byWordWrapping
         
         // 5 - create the Save and Continue button
-        //let saveButton = UIButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
         let saveButton = GradientButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
         saveButton.startColor = appColor
         saveButton.endColor = .white
@@ -219,7 +220,6 @@ class CustomAlertView: UIView {
         messageLabel.lineBreakMode = .byWordWrapping
         
         // 5 - create the Save and Continue button
-        //let saveButton = UIButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
         let backButton = GradientButton(frame: CGRect(x: 0, y: 284.0, width: alertW, height: 40.0))
         backButton.startColor = appColor
         backButton.endColor = .white
@@ -273,10 +273,10 @@ class CustomAlertView: UIView {
     }
     
     @objc func historyButtonAction() {
-        // delegate?.segueToGameHistory()
+        delegate?.segueToGameHistory()
     }
     @objc func backButtonAction() {
-        // delegate?.unwindToFilters()
+        delegate?.unwindToFilters()
     }
     @objc func hideGameOverAlert() {
         gameOverAlert.removeFromSuperview()

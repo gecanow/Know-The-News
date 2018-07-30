@@ -17,7 +17,7 @@ class ViewController: UIViewController, CustomAlertProtocol {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     var wordPlay = WordPlay()
-    var chosenArticle : [String : String]!
+    var chosenArticleIndex : Int!
     
     @IBOutlet weak var gamePlayView: UIView!
     @IBOutlet weak var guessView: UIView!
@@ -31,7 +31,7 @@ class ViewController: UIViewController, CustomAlertProtocol {
     var movable : Int?
     
     var articles : [[String: String]]!
-    var finishedArticles = [[String: String]]()
+    var finishedArtCount = 0
     var tappedHistory = false
     
     let defaults = UserDefaults.standard
@@ -141,24 +141,22 @@ class ViewController: UIViewController, CustomAlertProtocol {
     // that article's headline
     //=========================================
     func chooseRandomArticle() {
-        var index = 0
-        if articles.count == finishedArticles.count {
-            print("you're cycled through all the articles!")
+        if allArticlesFinished() {
             myAlert.createAndDisplayGameOverAlert("You've cycled through all the articles!", toView: self.view)
         } else if articles.count > 1 {
             repeat {
-                index = Int(arc4random_uniform(UInt32(articles.count)))
-                chosenArticle = articles[index]
-                print(finishedArticles.contains(chosenArticle))
-            } while chosenArticle["title"]!.count == 0 || finishedArticles.contains(chosenArticle)
-            finishedArticles.insert(chosenArticle, at: 0)
+                chosenArticleIndex = Int(arc4random_uniform(UInt32(articles.count)))
+            } while articles[chosenArticleIndex]["title"]!.count == 0 || articles[chosenArticleIndex]["isFinished"]! != "false"
             
-            let splitTitle = gamePlayTitle(chosenArticle["title"]!)
+            articles[chosenArticleIndex]["isFinished"] = "\(finishedArtCount)"
+            finishedArtCount += 1
+            
+            let splitTitle = gamePlayTitle(articles[chosenArticleIndex]["title"]!)
             headlineLabel.text = splitTitle[0]
-            sourceLabel.text = "\(chosenArticle["sourceName"]!) reports:"
-            descriptionLabel.text = chosenArticle["description"]
+            sourceLabel.text = "\(articles[chosenArticleIndex]["sourceName"]!) | \(articles[chosenArticleIndex]["date"]!)"
+            descriptionLabel.text = articles[chosenArticleIndex]["description"]
             
-            wordPlay.updateWord(to: splitTitle[1], fromArticle: chosenArticle)
+            wordPlay.updateWord(to: splitTitle[1], fromArticle: articles[chosenArticleIndex])
             print("The missing word is: \(wordPlay.wordID!)")
             
             //-------
@@ -166,6 +164,12 @@ class ViewController: UIViewController, CustomAlertProtocol {
         } else {
             self.loadError()
         }
+    }
+    func allArticlesFinished() -> Bool {
+        for a in articles {
+            if a["isFinished"]! == "false" { return false }
+        }
+        return true
     }
     
     //=========================================
@@ -338,7 +342,7 @@ class ViewController: UIViewController, CustomAlertProtocol {
         if completed {
             // END THE GAME
             gameTimer.stop()
-            finishedArticles[0]["timeToComplete"] = gameTimer.text!
+            articles[chosenArticleIndex]["timeToComplete"] = gameTimer.text! // ensures consistancy
             updateAndShowCustomAlert("You got it!", currArticle: wordPlay.article)
         }
     }
@@ -439,7 +443,7 @@ class ViewController: UIViewController, CustomAlertProtocol {
     // 3 - called if hide button is tapped
     //==================================================
     func saveButtonAction() {
-        savedArticles.insert(self.chosenArticle, at: 0)
+        savedArticles.insert(self.articles[chosenArticleIndex], at: 0)
         saveSaved()
         hideCustomAlert()
         
@@ -452,6 +456,13 @@ class ViewController: UIViewController, CustomAlertProtocol {
     func hideCustomAlert() {
         myAlert.isHidden = true
     }
+    func segueToGameHistory() {
+        tappedHistory = true
+        performSegue(withIdentifier: "HistorySegue", sender: self)
+    }
+    func unwindToFilters() {
+        _ = navigationController?.popViewController(animated: true)
+    } 
     
     //=========================================
     // Saves the saved articles to defaults
@@ -469,9 +480,9 @@ class ViewController: UIViewController, CustomAlertProtocol {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if tappedHistory {
-            print(finishedArticles.count)
             let dvc = segue.destination as! HistoryViewController
-            dvc.articles = self.finishedArticles
+            dvc.finishedArtCount = self.finishedArtCount
+            dvc.allArticles = self.articles
         }
     }
 }

@@ -28,6 +28,7 @@ class ChipHolder: UILabel, ChipDelegate {
         self.text = " "
         self.textColor = .black
         self.textAlignment = .center
+        self.clipsToBounds = true
         
         layer.cornerRadius = 4
         layer.borderWidth = 1

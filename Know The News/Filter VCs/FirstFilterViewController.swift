@@ -73,8 +73,20 @@ class FirstFilterViewController: UIViewController {
     //=========================================
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc = segue.destination as! ViewController
-        dvc.title = self.passType
+        dvc.title = properTitle(forStr: passType)
         dvc.articles = self.articles
+    }
+    
+    //=========================================
+    // Returns a captialized, proper string
+    //=========================================
+    func properTitle(forStr: String) -> String {
+        if forStr.count > 0 {
+            let body = forStr.suffix(forStr.count-1).lowercased()
+            let caps = forStr.prefix(1).uppercased()
+            return caps + body
+        }
+        return forStr
     }
     
     //--------------------//

@@ -28,7 +28,7 @@ class Chip: UILabel {
         minimumScaleFactor = 0.1
         adjustsFontSizeToFitWidth = true
         
-        layer.cornerRadius = 2
+        layer.cornerRadius = 4
         layer.borderWidth = 1
     }
     
