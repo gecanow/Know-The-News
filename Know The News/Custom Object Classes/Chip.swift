@@ -21,6 +21,7 @@ class Chip: UILabel {
         home = atPoint
         
         self.text = str
+        self.font = UIFont.boldSystemFont(ofSize: 22)
         self.textColor = .black
         self.textAlignment = .center
         
