@@ -130,7 +130,9 @@ class FirstFilterViewController: UIViewController {
             let source = ["id": id, "name": name, "description": description]
             sources.append(source)
         }
-        let captialSource = SourcesHandler(theSources: sources, theApiKey: apiKey)
+        
+        let langCode = (country == "us" || country == "gb" || country == "au") ? "en" : ""
+        let captialSource = SourcesHandler(theSources: sources, theApiKey: apiKey, lang: langCode)
         articles += captialSource.articles
         
         if articles.count > 0 {

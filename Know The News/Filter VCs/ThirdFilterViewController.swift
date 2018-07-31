@@ -302,7 +302,7 @@ class ThirdFilterViewController: UIViewController, UITableViewDelegate, UITableV
     //--------------------//
     
     func setAndSearchQuery() {
-        let sourceHandler = SourcesHandler(theSources: selectedSources, theApiKey: apiKey)
+        let sourceHandler = SourcesHandler(theSources: selectedSources, theApiKey: apiKey, lang: "")
         articles = sourceHandler.articles
         
         if articles.count > 0 {

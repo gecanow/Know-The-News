@@ -15,7 +15,7 @@ class SourcesHandler: NSObject {
     //=========================================
     // INIT - the source, the ApiKey
     //=========================================
-    convenience init(theSources: [[String: String]], theApiKey: String) {
+    convenience init(theSources: [[String: String]], theApiKey: String, lang: String) {
         self.init()
         
         var mySplitSources = [[[String: String]]]()
@@ -36,7 +36,9 @@ class SourcesHandler: NSObject {
             for id in sourceArr {
                 query += id["id"]! + ","
             }
-            query = query.prefix(query.count-1) + "&apiKey=\(theApiKey)"
+            
+            let langKey = lang.count > 0 ? "&language=\(lang)" : ""
+            query = query.prefix(query.count-1) + langKey + "&apiKey=\(theApiKey)"
             print("performing: \(query)")
             
             performQuery(query)

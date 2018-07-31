@@ -266,7 +266,9 @@ class ViewController: UIViewController, CustomAlertProtocol {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let loc = touches.first?.location(in: self.gamePlayView)
         if movable != nil {
-            optionsArr[movable!].frame.origin = loc!
+            let cornerX = loc!.x - (optionsArr[movable!].frame.width)/2
+            let cornerY = loc!.y - (optionsArr[movable!].frame.height)/2
+            optionsArr[movable!].frame.origin = CGPoint(x: cornerX, y: cornerY) //loc!
         }
     }
     
@@ -394,23 +396,42 @@ class ViewController: UIViewController, CustomAlertProtocol {
     func parseForPunctuation(inWord: String) -> [String] {
         let length = inWord.count
         
+        // SUFFIXES
         if inWord.contains(".") ||
             inWord.contains(",") ||
             inWord.contains(":") ||
-            inWord.contains("?") {
+            inWord.contains("?") ||
+            (inWord.prefix(1) != "(" && inWord.suffix(1) == ")") ||
+            (inWord.prefix(1) != "'" && inWord.suffix(1) == "'") ||
+            (inWord.prefix(1) != "\"" && inWord.suffix(1) == "\"") {
             let finalChar = inWord.suffix(1)
             return ["＿＿＿＿\(finalChar)", "\(inWord.prefix(length-1))"]
         }
+        // PREFIXES
+        if (inWord.prefix(1) == "'" && inWord.suffix(1) != "'") ||
+            (inWord.prefix(1) == "\"" && inWord.suffix(1) != "\"") ||
+            (inWord.prefix(1) == "(" && inWord.suffix(1) != ")") {
+            let firstChar = inWord.prefix(1)
+            return ["\(firstChar)＿＿＿＿", "\(inWord.suffix(length-1))"]
+        }
+        
+        // 'S
         if inWord.contains("’s") || inWord.contains("'s") {
             return ["＿＿＿＿’s", "\(inWord.prefix(length-2))"]
         }
+        
+        // DOUBLE PUNCTUATION
         if (inWord.prefix(1) == "'" && inWord.suffix(1) == "'") ||
-            (inWord.prefix(1) == "\"" && inWord.suffix(1) == "\"") {
-            let char = inWord.prefix(1)
+            (inWord.prefix(1) == "\"" && inWord.suffix(1) == "\"") ||
+            (inWord.prefix(1) == "(" && inWord.suffix(1) == ")") {
+            let char1 = inWord.prefix(1)
+            let char2 = inWord.suffix(1)
             var changed = inWord.prefix(length-1)
             changed = changed.suffix(changed.count-1)
-            return ["\(char)＿＿＿＿\(char)", "\(changed)"]
+            return ["\(char1)＿＿＿＿\(char2)", "\(changed)"]
         }
+        
+        // REDDIT
         if inWord.prefix(2) == "r/" {
             return ["r/＿＿＿＿", "\(inWord.suffix(length-2))"]
         }
