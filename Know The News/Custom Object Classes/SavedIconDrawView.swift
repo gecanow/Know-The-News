@@ -18,7 +18,7 @@ class SavedIconDrawView: UIView {
     override func draw(_ rect: CGRect) {
         let w = self.frame.width
         let h = self.frame.height
-        let xmid = (w/2.0) - (w/12.0)
+        let xmid = (w/2.0) - (w/14.0)
         
         // path a check mark
         let path = UIBezierPath()
