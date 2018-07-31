@@ -44,14 +44,16 @@ class WordPlay: NSObject {
             let randomIndex = arc4random_uniform(UInt32(mustHaveChars.count))
             mustHaveChars.insert(myChar, at: Int(randomIndex))
         }
-        let alphabet = "abcdefghijklmnopqrstuvwxyz"
-        for _ in 0..<(length-wordID.count) {
-            let randomChar = arc4random_uniform(26)
-            let index = alphabet.index(alphabet.startIndex, offsetBy: randomChar)
-            let myChar = alphabet[index]
-            
-            let randomIndex = arc4random_uniform(UInt32(mustHaveChars.count))
-            mustHaveChars.insert(myChar, at: Int(randomIndex))
+        if wordID.count < 20 {
+            let alphabet = "abcdefghijklmnopqrstuvwxyz"
+            for _ in 0..<(length-wordID.count) {
+                let randomChar = arc4random_uniform(26)
+                let index = alphabet.index(alphabet.startIndex, offsetBy: randomChar)
+                let myChar = alphabet[index]
+                
+                let randomIndex = arc4random_uniform(UInt32(mustHaveChars.count))
+                mustHaveChars.insert(myChar, at: Int(randomIndex))
+            }
         }
         return mustHaveChars
     }

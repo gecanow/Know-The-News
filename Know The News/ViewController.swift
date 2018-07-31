@@ -151,6 +151,10 @@ class ViewController: UIViewController, CustomAlertProtocol {
             articles[chosenArticleIndex]["isFinished"] = "\(finishedArtCount)"
             finishedArtCount += 1
             
+            print("-- TITLE --")
+            print(articles[chosenArticleIndex]["title"]!)
+            print()
+            
             let splitTitle = gamePlayTitle(articles[chosenArticleIndex]["title"]!)
             headlineLabel.text = splitTitle[0]
             sourceLabel.text = "\(articles[chosenArticleIndex]["sourceName"]!) | \(articles[chosenArticleIndex]["date"]!)"
@@ -377,8 +381,11 @@ class ViewController: UIViewController, CustomAlertProtocol {
                 }
             }
             return [outputString, missingWord]
+        } else if arr.count == 1 {
+            return ["＿＿＿＿", String(arr[0])]
+        } else {
+            return ["", ""]
         }
-        return ["", ""]
     }
     
     //=========================================

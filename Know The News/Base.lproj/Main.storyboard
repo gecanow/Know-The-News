@@ -30,14 +30,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Source | Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpQ-FQ-Xkw">
-                                <rect key="frame" x="16" y="80" width="94.5" height="18"/>
-                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="15"/>
+                                <rect key="frame" x="16" y="80" width="81.5" height="16"/>
+                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News Headline" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-wJ-juX">
-                                <rect key="frame" x="16" y="106" width="343" height="24"/>
-                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="20"/>
+                                <rect key="frame" x="16" y="104" width="343" height="23"/>
+                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -47,22 +47,22 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frt-K1-htJ">
-                                <rect key="frame" x="275" y="575" width="92" height="39"/>
-                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="22"/>
-                                <state key="normal" title="Give Up!"/>
+                                <rect key="frame" x="300" y="578" width="67" height="36"/>
+                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="20"/>
+                                <state key="normal" title="Reveal!"/>
                                 <connections>
                                     <action selector="onTappedUpdate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vZl-4N-wtk"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LdY-1g-H6C">
-                                <rect key="frame" x="16" y="138.5" width="343" height="122"/>
+                                <rect key="frame" x="16" y="135.5" width="343" height="122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bYI-Os-Z1Y" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="8" width="343" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="8" width="343" height="17"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voC-tP-4Hu">
-                                                <rect key="frame" x="8" y="0.0" width="327" height="20.5"/>
-                                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="17"/>
+                                                <rect key="frame" x="8" y="0.0" width="327" height="17"/>
+                                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="14"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -74,6 +74,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="bYI-Os-Z1Y" firstAttribute="width" secondItem="LdY-1g-H6C" secondAttribute="width" id="CbE-kg-I8q"/>
@@ -96,12 +97,12 @@
                                 </connections>
                             </scrollView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clue: Click To Reveal The Article's Description" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0x-Wq-fYZ">
-                                <rect key="frame" x="16" y="137.5" width="343" height="122"/>
+                                <rect key="frame" x="16" y="134.5" width="343" height="122"/>
                                 <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="122" id="jaS-2j-exs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -111,7 +112,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMs-Ed-m6R">
-                                <rect key="frame" x="0.0" y="268.5" width="375" height="215"/>
+                                <rect key="frame" x="0.0" y="265.5" width="375" height="215"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rdk-4f-3BE">
                                         <rect key="frame" x="8" y="70" width="359" height="145"/>
@@ -137,27 +138,25 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcz-9c-OQb">
-                                <rect key="frame" x="8" y="576" width="132" height="34"/>
+                                <rect key="frame" x="8" y="576" width="136" height="34"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stopwatch" translatesAutoresizingMaskIntoConstraints="NO" id="zfz-YL-YMX">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="0Qb-04-Jrj"/>
                                             <constraint firstAttribute="width" constant="30" id="yJK-hK-lPX"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdN-Ay-0p8" customClass="GameTimer" customModule="Know_The_News" customModuleProvider="target">
-                                        <rect key="frame" x="30" y="8" width="98" height="24"/>
-                                        <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="34" y="6" width="98" height="26"/>
                                         <fontDescription key="fontDescription" name="CaslonOS-Regular" family="Caslon OS" pointSize="21"/>
-                                        <color key="textColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.61124674479999996" green="0.71098888120000003" blue="0.94026692710000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="JdN-Ay-0p8" firstAttribute="leading" secondItem="zfz-YL-YMX" secondAttribute="trailing" id="5d8-hF-ayg"/>
-                                    <constraint firstItem="JdN-Ay-0p8" firstAttribute="top" secondItem="Zcz-9c-OQb" secondAttribute="top" constant="8" id="EpR-0j-Hpj"/>
+                                    <constraint firstItem="JdN-Ay-0p8" firstAttribute="leading" secondItem="zfz-YL-YMX" secondAttribute="trailing" constant="4" id="5d8-hF-ayg"/>
+                                    <constraint firstItem="JdN-Ay-0p8" firstAttribute="top" secondItem="Zcz-9c-OQb" secondAttribute="top" constant="6" id="EpR-0j-Hpj"/>
                                     <constraint firstItem="zfz-YL-YMX" firstAttribute="leading" secondItem="Zcz-9c-OQb" secondAttribute="leading" id="GqK-7w-cUr"/>
                                     <constraint firstAttribute="trailing" secondItem="JdN-Ay-0p8" secondAttribute="trailing" constant="4" id="O5w-Yg-C7m"/>
                                     <constraint firstAttribute="bottom" secondItem="zfz-YL-YMX" secondAttribute="bottom" constant="4" id="bPG-LV-ooB"/>
