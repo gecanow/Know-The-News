@@ -951,42 +951,6 @@
             </objects>
             <point key="canvasLocation" x="2420" y="-522"/>
         </scene>
-        <!--Begin View Controller-->
-        <scene sceneID="kAU-F4-26N">
-            <objects>
-                <viewController id="e7J-6k-Gq2" customClass="BeginViewController" customModule="Know_The_News" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H0M-aO-gJj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5nV-ip-J09">
-                                <rect key="frame" x="99" y="278" width="177" height="110"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="47"/>
-                                <state key="normal" title="Begin"/>
-                            </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newspaper" translatesAutoresizingMaskIntoConstraints="NO" id="ba8-Ps-sEd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ba8-Ps-sEd" firstAttribute="bottom" secondItem="wev-ew-a4z" secondAttribute="bottom" id="5zV-ZV-7TJ"/>
-                            <constraint firstItem="ba8-Ps-sEd" firstAttribute="trailing" secondItem="wev-ew-a4z" secondAttribute="trailing" id="Vgs-Nz-QDu"/>
-                            <constraint firstItem="ba8-Ps-sEd" firstAttribute="leading" secondItem="wev-ew-a4z" secondAttribute="leading" id="mPx-dD-eMp"/>
-                            <constraint firstItem="ba8-Ps-sEd" firstAttribute="top" secondItem="H0M-aO-gJj" secondAttribute="top" id="xlb-G1-qw6"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="wev-ew-a4z"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="N5P-SX-zrx"/>
-                    <connections>
-                        <outlet property="imageView" destination="ba8-Ps-sEd" id="8wB-eY-58w"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wRh-Bg-ZUM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-434" y="92"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="OGt-0V-dlq">
             <objects>
@@ -1266,7 +1230,6 @@
         <image name="entertainment" width="1044" height="1044"/>
         <image name="general" width="1046" height="1046"/>
         <image name="news icon" width="26" height="33"/>
-        <image name="newspaper" width="6016" height="4016"/>
         <image name="puzzle" width="58" height="57"/>
         <image name="science" width="872" height="872"/>
         <image name="sports" width="1008" height="1008"/>

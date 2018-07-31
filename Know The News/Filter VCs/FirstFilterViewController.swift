@@ -8,7 +8,7 @@
 
 import UIKit
 
-let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4" // global API Key
+let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4" // global API Key registered with newscluesapi@gmail.com
 
 class FirstFilterViewController: UIViewController {
     

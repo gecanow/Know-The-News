@@ -197,7 +197,7 @@ class CustomAlertView: UIView {
         let mainLabel = UILabel(frame: CGRect(x: 8, y: 0, width: alertW-16, height: 140.0))
         mainLabel.text = withMessage
         mainLabel.textAlignment = .center
-        mainLabel.font = UIFont(name: "CaslonOS-Regular", size: 19.0) //"AvenirNext-Bold"
+        mainLabel.font = UIFont(name: "CaslonOS-Regular", size: 22.0) //"AvenirNext-Bold"
         mainLabel.numberOfLines = 0
         mainLabel.lineBreakMode = .byWordWrapping
         
