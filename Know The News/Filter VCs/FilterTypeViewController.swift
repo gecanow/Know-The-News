@@ -9,8 +9,13 @@
 import UIKit
 
 class FilterTypeViewController: UIViewController {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.adjustsFontSizeToFitWidth = true
     }
     
     //=========================================

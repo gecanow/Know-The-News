@@ -10,19 +10,19 @@ import UIKit
 
 let apiKey = "bd76ccc886ef4d60bcb5443eebdd6cb4" // global API Key registered with newscluesapi@gmail.com
 
-class FirstFilterViewController: UIViewController {
+class FirstFilterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     var articles = [[String: String]]()
     
     @IBOutlet weak var sourceBok: UIView!
     var passType = "general" // default
-    @IBOutlet var typeViews: [UIImageView]!
     let names = ["general", "business", "technology", "entertainment", "science", "sports", "all"]
     
     var country = "us" // default
-    @IBOutlet var countryButtons: [UIButton]!
-    let countryCodes = ["au", "de", "us", "gb", "in", "it", "all"]
+    let countryCodes = ["all", "au", "de", "us", "gb", "in", "it"]
     
+    @IBOutlet weak var regionPickerView: UIPickerView!
+    @IBOutlet weak var categoryPickerView: UIPickerView!
     
     //=========================================
     // VIEW DID LOAD
@@ -30,38 +30,80 @@ class FirstFilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.titleTextAttributes = titleAttributes
+        
+        regionPickerView.dataSource = self
+        regionPickerView.delegate = self
+        
+        categoryPickerView.dataSource = self
+        categoryPickerView.delegate = self
+        
+        regionPickerView.reloadAllComponents()
+        regionPickerView.selectRow(3, inComponent: 0, animated: false)
     }
     
-    //=========================================
-    // Handles when a news type is tapped
-    //=========================================
-    @IBAction func onTappedScreen(_ sender: UITapGestureRecognizer) {
-        let loc = sender.location(in: sourceBok)
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == regionPickerView {
+            return countryCodes.count
+        } else {
+            return names.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         
-        for type in typeViews {
-            if type.frame.contains(loc) {
-                let selected = names[type.tag]
-                
-                if !(passType == selected) {
-                    for t in typeViews { t.backgroundColor = .clear }
-                    type.backgroundColor = .white
-                    passType = selected
-                }
-                break
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 30, height: 60))
+        var rowString = ""
+        
+        if pickerView == categoryPickerView {
+            let myImageView = UIImageView(frame: CGRect(x: 15, y: 15, width: 30, height: 30))
+            myImageView.contentMode = .scaleAspectFit
+            myImageView.clipsToBounds = true
+            
+            switch row {
+            case 2:
+                rowString = "technology"
+                myImageView.image = UIImage(named: "tech")
+            default:
+                rowString = names[row]
+                myImageView.image = UIImage(named: rowString)
             }
+            
+            let myLabel = UILabel(frame: CGRect(x: 60, y: 0, width: pickerView.bounds.width - 90, height: 60))
+            //myLabel.font = UIFont(name:some font, size: 18)
+            myLabel.text = rowString
+            
+            myView.addSubview(myLabel)
+            myView.addSubview(myImageView)
+        } else {
+            switch row {
+            case 1: rowString = "Australia"
+            case 2: rowString = "Germany"
+            case 3: rowString = "USA"
+            case 4: rowString = "UK"
+            case 5: rowString = "India"
+            case 6: rowString = "Italy"
+            default: rowString = "All"
+            }
+            let myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: pickerView.bounds.width - 90, height: 60))
+            //myLabel.font = UIFont(name:some font, size: 18)
+            myLabel.text = rowString
+            
+            myView.addSubview(myLabel)
         }
+        return myView
     }
     
-    @IBAction func onTappedLanguage(_ sender: UIButton) {
-        let selectedCode = countryCodes[sender.tag]
-        
-        if !(country == selectedCode) {
-            for b in countryButtons { b.backgroundColor = .clear }
-            sender.backgroundColor = .white
-            country = selectedCode
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == categoryPickerView {
+            passType = names[row]
+        } else {
+            country = countryCodes[row]
         }
     }
-    
     
     @IBAction func onTappedBegin(_ sender: Any) {
         articles = [[String: String]]()
